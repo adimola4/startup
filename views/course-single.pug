@@ -1,0 +1,260 @@
+include utilities/header.pug
+
+section.site-hero.site-sm-hero.overlay(data-stellar-background-ratio='0.5', style='background-image: url(/static/img/big_image_2.jpg);')
+  .container
+    .row.align-items-center.justify-content-center.site-hero-sm-inner
+      .col-md-7.text-center
+        .mb-5.element-animate
+          h1.mb-2 מתקדם JavaScript
+          p.bcrumb
+            a(href='../courses') קורסים
+            span.sep.ion-android-arrow-dropright.px-2
+            a(href='../') בית
+            span.sep.ion-android-arrow-dropright.px-2
+            span.current(dir='rtl')  JavaScript מתקדם
+// END section
+.site-section.bg-light.element-animate
+  .container
+    .row
+      .col-md-6.col-lg-8.order-md-2.mb-2(style='text-align: right;')
+        .row
+          .col-md-12
+            img.img-fluid(src='/static/images/img_2.jpg', alt='')
+        section.episodes
+          .container
+            .row.mb-5
+              .col-md-12.pt-5(dir='rtl', style='text-align: justify;')
+                h2 תיאור מסלול
+                br
+                p
+                  | מפתחי אתרים העובדים עם מסגרות, ספריות ושפות שונות, ודאי יידרשו להשתמש ב- JavaScript באופן מקצועי. JavaScript מעניק את האינטראקטיביות ואת חוויית המשתמש בכל אתר מרכזי.
+                  | מממשקי משתמש המספקים חוויות עשירות יותר כמו שולחן עבודה ועד יישומי נתונים והעברת הודעות בזמן אמת, תוכלו למצוא JavaScript בדפדפן, בטלפון ובשרת.
+                  | במסלול זה נכיר לך את שפת JavaScript ואת הפרטים הקטנים והוספה של אינטראקטיביות בדפדפן.
+                  | פלטפורמת JavaScript פופולרית לכתיבה ושימוש ביישומי JavaScript מחוץ לדפדפן. לדוגמה, יישומי שורת פקודה לשיפור זרימת העבודה שלך, אתרים דינמיים ועוד.
+                p
+                  | חברות מסוימות שמשתמשות בטכנולוגיות אלה כוללות באופן קבוע: וולמארט, פייפאל, גרופון, Airbnb
+          .container
+            .row
+              .col-md-12.mb-2
+                h2 תוכנית לימודים
+
+            .row.bg-light.align-items-center.p-4.episode
+              .col-md-2.text-center
+                a.video_icon.popup-video(href='https://www.youtube.com/watch?v=ETxuFyAL1RU')
+                  span
+                    i.fas.fa-caret-square-left.blue-play-btn
+              .col-md-10(dir='rtl')
+                p.meta-blue סרטון 1
+                h2
+                  a(href='#') פונקציות ב- JS
+                p
+                  | פונקציות JavaScript מאפשרות לך ליצור נתיבי קוד שניתנים לשימוש חוזר. הם הופכים את התכנות למהירה יותר, קלה יותר ופחות מועדת לטעות. הם גם אחד המושגים החיוניים בתכנות JavaScript.
+            .row.align-items-center.p-4.episode
+              .col-md-2.text-center
+                a.popup-with-move-anim(href='#small-dialog')
+                  span
+                    i.fas.fa-file-alt.green-play-btn
+              .col-md-10(dir='rtl')
+                p.meta-green קריאה 1
+                h2
+                  a(href='#')
+                  | מחסנית הקריאות
+                p
+                  | מחסנית הקריאות היא מנגנון שמיועד לעקוב אחר מקומו בסקריפט שקורא לפונקציות מרובות - איזו פונקציה מופעלת כעת ואילו פונקציות נקראות מתוך אותה פונקציה.
+            .row.align-items-center.p-4.episode
+              .col-md-2.text-center
+                a(href='#')
+                  span
+                    i.fas.fa-file-alt.green-play-btn
+              .col-md-10(dir='rtl')
+                p.meta-green קריאה 2
+                h2
+                  a(href='#')
+                  | Callback Queue ולולאת האירועים
+                p
+                  | מחסנית הקריאות היא מנגנון שמיועד לעקוב אחר מקומו בסקריפט שקורא לפונקציות מרובות - איזו פונקציה מופעלת כעת ואילו פונקציות נקראות מתוך אותה פונקציה.
+            .row.bg-light.align-items-center.p-4.episode
+              .col-md-2.text-center
+                a(href='../Quiz')
+                  span
+                    i.fas.fa-chevron-circle-left.purple-play-btn
+              .col-md-10(dir='rtl')
+                p.meta שאלון 1
+                h2
+                  a(href='#')
+                  | JS & the DOM
+                p
+                  | JavaScript מאפשר לך ליצור דפי אינטרנט אינטראקטיביים שיכולים להגיב לפעולות המשתמש. בקורס זה תלמדו כיצד להביא דפי אינטרנט לחיים בעזרת הכוח של JavaScript.
+            .row.align-items-center.p-4.episode
+              .col-md-2.text-center
+                a(href='#')
+                  span
+                    i.fas.fa-chevron-circle-left.purple-play-btn
+              .col-md-10(dir='rtl')
+                p.meta שאלון 2
+                h2
+                  a(href='#') תכנות אסינכרוני עם JS
+                p
+                  | בקורס זה תלמדו מדוע קוד אסינכרוני חשוב, וכיצד לכתוב קוד שנמנע מחסימה של התנהגות באמצעות שלוש גישות: callbacks, promises ו- async/await.
+            .row.bg-light.align-items-center.p-4.episode
+              .col-md-2.text-center
+                a(href='#')
+                  span
+                    i.fas.fa-chevron-circle-left.purple-play-btn
+              .col-md-10(dir='rtl')
+                p.meta שאלון 3
+                h2(dir='rtl')
+                  a(href='#') תכנות מונחה עצמים עם JS
+                p
+                  | קורס זה תלמדו את היסודות של תכנות מונחה-עצמים ב- JS יחד עם התחביר החדש של ES2015 Class.
+      // END content
+      .col-md-6.col-lg-2.order-md-1
+        .block-29.mb-5
+          //
+            <h2 class="heading">Course Details</h2>
+            <ul>
+            <li><span class="text-1">Duration</span> <span class="text-2">50 days</span></li>
+            <li><span class="text-1">Lectures</span> <span class="text-2">201</span></li>
+            <li><span class="text-1">Quizzes</span> <span class="text-2">8</span></li>
+            <li><span class="text-1">Course Certificate</span> <span class="text-2">Yes</span></li>
+            <li><span class="text-1">Subject</span> <span class="text-2">Web Development</span></li>
+            <li><span class="text-1">Language</span> <span class="text-2">English</span></li>
+            <li><span class="text-1">Price</span> <span class="text-2">$102.00</span></li>
+            </ul>
+      // END Sidebar
+
+#small-dialog.zoom-anim-dialog.mfp-hide
+  h1#h1-center.mb-20 The JavaScript Call Stack
+  p
+    | למדת שג'אווה סקריפט הוא ;single-threaded הוא יכולה להריץ משימה אחת בלבד בכל פעם לפני שתתחיל משימה חדשה. אך ראית גם דוגמאות לאופן פעולתן של משימות עתירות משאבים מסוימות בזמן משימות אחרות פועלות. אז עכשיו אתה תוהה "איך זה ש- JavaScript יכול לעשות רק דבר אחד בכל פעם, כאשר רק הראית שהוא מסוגל לנהל מספר דברים בבת אחת?"
+  p
+    | הסביבה בה פועל JavaScript מספקת ממשקי API שימושיים שיעזרו לו לעבד יותר ממשימה אחת בכל פעם. כעת תוכלו ללמוד כמה מהפרטים הפנימיים של אופן הביצוע של JavaScript הן בצורה סינכרונית והן באופן אסינכרוני, החל מהביצוע בערימת השיחות.
+  p 
+    | לא מצפים ממכם לדעת כל פרט ופרט בכדי להצליח בשאר הקורס הזה. הכרת היסודות של ערימת השיחות ב- JavaScript, כמו גם callback queue and event loop, תעזור לכם להבין טוב יותר את שטף התוכניות שלכם. בנוסף, הקורס מתייחס למושגים אלה בנקודות מסוימות. למידה שמחה!
+  h3 מהי Call Stack ומדוע זה חשוב?
+  p
+    |סביבת זמן ריצה של JavaScript כמו הדפדפן ו- Node יש מתורגמן מובנה שמבצע קוד JavaScript. זה נקרא JavaScript engine. למנוע זה יש מנגנון, שנקרא call stack, למעקב אחר סדר שיחות הפונקציה והיכן הוא נמצא בתוכנית בכל רגע נתון.
+  p
+    |לדוגמה, ערימת השיחות מנהלת את הפונקציה הנוכחית כשקוראים לה, כמו גם את כל הפונקציות הנקראות מתוך פונקציה זו, ופונקציות נוספות לאחר מכן. ערימת השיחה עצמה יכולה לעבד שיחת פונקציה אחת בלבד בכל פעם (היא חד-הברגה). ראה את התמונה הבאה:
+  img#img-center(src="static/img/callStack.gif", alt="")
+  p
+    |בכל פעם שפונקציה מתקשרת, היא נדחפת אל מחסנית הקריאות וכל הפונקציות הנקראות בפונקציה המקורית נדחפות למעלה למעלה הערימה . כאשר הפונקציה מבוצעת, היא נופלת מעל ערימת הקריאות, והפונקציה הבאה בערימה עוברת לעיבוד.
+  p
+    |כאשר מחסנית הקריאות מסיימת לבצע את המשימה האחרונה ולא נשאר שום דבר לביצוע, התוכנית מסתיימת, ומשאירה את מחסנית הקריאות ריקה.
+  img#fit-img(src="static/img/callStackexe.jpg", alt="")
+  p
+    |הרצף להלן מדגים כיצד הקוד הקודם מופעל בערימת השיחות:
+  #text-tab
+    p
+      | 1. ()func1 מופעל, אשר מדפיס Hi לקונסולה
+    p
+      | 2. ()func2 נדחף לערימה, מתבצע ומדפיס את Codern לקונסולה
+    p
+      | 3. ()func2 מבוצע, כך שהוא יוצא מן מהערימה
+    p
+      | 4. ()func3 נדחף אל הערימה, מתבצע ומודפס Students! לקונסולה
+    p
+      | 5. ()func3 מבוצע, כך שהוא יוצא מן מהערימה
+    p
+      | 6. בשלב זה ()func1 מסיים לבצע כל הפונקציות שלו, כך שהוא יוצא מהערימה
+    p
+      | 7. מחסנית הקריאות ריקה  
+    div(style='text-align: left;')  
+      a.popup-with-move-anim(href='#small-dialog2', style='text-align: left;') הבנתי, הלאה!
+
+#small-dialog2.zoom-anim-dialog.mfp-hide
+  h2#h1-center.mb-20 Web APIs
+  p
+    | ערימת הקריאות מטפלת במשימות אסינכרוניות בדרך שונה ממשימות סינכרוניות. בכל פעם שסביבת JavaScript נתקלת בקוד שצריך להריץ ולהוציא לפועל במועד מאוחר יותר, כמו התקנת setTimeout() או בקשת רשת, קוד זה מועבר לממשק API מיוחד המעבד את פעולת ה- async. בינתיים, ערימת השיחות עוברת למשימות אחרות ואז חוזרת שוב למשימת האסינכרון כאשר היא מוכנה לטיפול.
+  p
+    | חשוב לציין כי ההתנהגות האסינכרונית של JavaScript אינה באה ממנוע ה- JavaScript עצמו. מנועי JavaScript כמו V8 של Chrome, למשל, אינם בעלי יכולות אסינכרוניות. האסינכרוניות מגיעה למעשה מסביבת זמן הריצה. סביבות זמן ריצה (כמו דפדפני אינטרנט) מספקות ממשקי API המאפשרים ל- JavaScript להפעיל משימות בצורה סינכרונית.  
+  p
+    | לדוגמה, פיתוח אסינכרוני בדפדפן (שזה מוקד הקורס הזה) מתרחש במספר מקומות המשתמשים בממשקי API של רשת כמו setTimeout (), XMLHttpRequest (XHR), Fetch API ו- API של DOM event.
+  img#fit-img(src="static/img/WebAPIs.png", alt="")
+  #text-tab
+    p
+      | ראה את הקוד למטה, הקוד בו func1 מריץ שלוש משימות:
+    p
+      | 1. console.log('Hi')
+    p
+      | 2. setTimeout קורא ל- func2 אחרי 1000ms
+    p
+      | 3. הפעלה של func3
+  img#fit-img(src="static/img/example2.jpg", alt="")
+  p
+    | הפעם התוצאות שונות. הרצף להלן מדגים כיצד הקוד הקודם מופעל בערימת הקריאות
+  p
+    | ברצף, שימו לב כיצד הפונקציה המועברת ל- setTimeout (func2) מועברת לממשק API מיד לאחר דחיית setTimeout אל מחסנית השיחות. ממשק ה- API מגדיר טיימר של שנייה מסוג אחר. setTimeout יוצא מהערימה, וערימת השיחות ממשיכה לבצע את func3 ולסיים את ביצוע func1. לאחר שההשהיה של setTimeout של שנייה תום, היא מופיעה על ערימת השיחה לביצוע.
+  p
+    | לאן חוזר async callback לפני שהוא נדחף אל מחסנית הקריאות? זה לא מיד חוזר לערימת הקריאות. במקום זאת, התקשרות חוזרת נכנסת למשהו שנקרא callback queue. בשלב הבא תלמדו על callback queue ועל תפקיד אחד חשוב של לולאת האירועים. 
+  button.boxed-btn4#fit-button(type='button',onclick='closePopup();') 
+    | אוקי, הבנתי 
+    i.fas.fa-check 
+  script.
+    function closePopup(){
+    $.magnificPopup.close();}
+.site-section
+  .container
+    .row
+      .col-md-12.text-center
+        .row.justify-content-center
+          .col-lg-6
+            .section_title.mb-50
+              h3.wow.fadeInUp(data-wow-duration='1s', data-wow-delay='.3s')  אולי תאהב גם
+              // <p dir= "rtl" class="wow fadeInUp" data-wow-duration="1s" data-wow-delay=".4s">על סמך השאלונים שתפתור, הסרטונים שתראה, והחומרים שתיקרא נוכל להכיר אותך טוב יותר וכך נוכל להמליץ לך על תכנים אשר יעניינו אותך ויקדמו אותך.</p>
+    .row
+      .col-md-12.block-13.nav-direction-white
+        .nonloop-block-13.owl-carousel
+          .media-image
+            img.img-fluid(src='/static/img/img_1.png', alt='Image')
+            .media-image-body
+              h2.font-secondary.text-uppercase AJAX יסודות
+              p(dir='rtl')
+                | AJAX מאפשר לטעון תוכן חדש מבלי לעזוב את הדף הנוכחי וליצור חוויה טובה ומהירה יותר.
+              p
+                a.boxed-btn4.px-4(href='#') צפה במסלול
+          .media-image
+            img.img-fluid(src='/static/img/img_2.jpg', alt='Image')
+            .media-image-body
+              h2.font-secondary.text-uppercase Express יסודות
+              p למד כיצד להשתמש ב- Express.js לבניית אתרים דינמיים בפלטפורמת Node.js. 
+              p
+                a.boxed-btn4.px-4(href='#') צפה במסלול
+          .media-image
+            img.img-fluid(src='/static/img/img_3.jpg', alt='Image')
+            .media-image-body
+              h2.font-secondary.text-uppercase(dir='rtl') ממשקים ב- JAVA
+              p(dir='rtl') במסלול זה תלמד כיצד ליצור בסיסי קוד חזקים וגמישים יותר באמצעות ממשקים.
+              p
+                a.boxed-btn4.px-4(href='#') צפה במסלול
+          .media-image
+            img.img-fluid(src='/static/img/img_6.jpg', alt='Image')
+            .media-image-body
+              h2.font-secondary.text-uppercase HTML5 / CSS3
+              p(dir='rtl') במסלול זה נלמד כיצד לבנות את תוכן האתר ולעצב אותו בהתאם למדיה בו הוא מוצג.
+              p
+                a.boxed-btn4.px-4(href='#') צפה במסלול
+          .media-image
+            img.img-fluid(src='/static/img/img_4.jpg', alt='Image')
+            .media-image-body
+              h2.font-secondary.text-uppercase Bootstrap 4
+              p(dir='rtl') בואו ללמוד איך לשדרג את העיצוב של האתר שלכם בקלות ובמהירות באמצעות Bootstrap 4.
+              p
+                a.boxed-btn4.px-4(href='#') צפה במסלול
+          .media-image
+            img.img-fluid(src='/static/img/img_5.jpg', alt='Image')
+            .media-image-body
+              h2.font-secondary.text-uppercase SCSS
+              p(dir='rtl') Sass היא שפה שנועדה להוסיף מנגנונים של שימוש חוזר בחלקים מהקוד ל CSS.
+              p
+                a.boxed-btn4.px-4(href='#') צפה במסלול
+// END section
+// loader
+#loader.show.fullscreen
+  svg.circular(width='48px', height='48px')
+    circle.path-bg(cx='24', cy='24', r='22', fill='none', stroke-width='4', stroke='#eeeeee')
+    circle.path(cx='24', cy='24', r='22', fill='none', stroke-width='4', stroke-miterlimit='10', stroke='#f4b214')
+
+
+
+include utilities/footer.pug

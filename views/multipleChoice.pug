@@ -1,0 +1,19 @@
+include utilities/header.pug
+include utilities/headerGame.pug
+.container(dir='rtl') 
+    h2#question(dir='rtl' style= "text-align: right;")
+    .choice-container
+        p.choice-prefix 1
+        p.choice-text(data-number='1')
+    .choice-container
+        p.choice-prefix 2
+        p.choice-text(data-number='2')
+    .choice-container
+        p.choice-prefix 3
+        p.choice-text(data-number='3')
+    .choice-container
+        p.choice-prefix 4
+        p.choice-text(data-number='4')
+    script(src='static/js/quizJS/game.js')
+
+include utilities/footer.pug

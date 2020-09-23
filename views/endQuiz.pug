@@ -1,0 +1,15 @@
+include utilities/header.pug
+link(rel='stylesheet', href='/static/css/quizCss/game.css')
+
+.container(dir='rtl', style = "text-align: center; margin-top: 3.2em; center; margin-bottom: 3em;")
+    h2 הניקוד שלך הוא:
+    h1#finalScore
+    h2#questionsNumber
+    br
+    a.boxed-btn4#color-btn(href='../singleCourse') המשך 
+    br
+    div(style = "line-height: 3em;")
+        a(href='../quiz' style="font-size: 1.1em; color: #e17055") נסה מחדש
+
+script(src='static/js/quizJS/end.js')
+include utilities/footer.pug

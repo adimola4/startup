@@ -1,0 +1,81 @@
+doctype html
+html(lang='he')
+	head
+		meta(charset='utf-8')
+		meta(http-equiv='x-ua-compatible', content='ie=edge')
+		title Sign Up Form
+		meta(name='description', content='')
+		meta(name='viewport', content='width=device-width, initial-scale=1')
+		// CSS here
+		link(rel='stylesheet', href='static/css/bootstrap.min.css')
+		link(rel='stylesheet', href='static/css/owl.carousel.min.css')
+		link(rel='stylesheet', href='static/css/magnific-popup.css')
+		link(rel='stylesheet', href='static/css/font-awesome.min.css')
+		link(rel='stylesheet', href='static/css/themify-icons.css')
+		link(rel='stylesheet', href='static/css/nice-select.css')
+		link(rel='stylesheet', href='static/css/flaticon.css')
+		link(rel='stylesheet', href='static/css/gijgo.css')
+		link(rel='stylesheet', href='static/css/animate.min.css')
+		link(rel='stylesheet', href='static/css/slick.css')
+		link(rel='stylesheet', href='static/css/slicknav.css')
+		link(rel='stylesheet', href='static/css/style.css')
+	body
+		#newImg.how_we_work_area(dir='rtl')
+			.container
+				.row
+					.col-lg-5
+						.work_info
+							h3.mb-4.text-center הרשמה
+							form(action='/api/auth/register' method='post')
+								.mt-10
+									input.single-input(type='text', name='FirstName', placeholder='שם פרטי', onfocus="this.placeholder = ''", onblur="this.placeholder = 'שם פרטי'", required='')
+								.mt-10
+									input.single-input(type='text', name='LastName', placeholder='שם משפחה', onfocus="this.placeholder = ''", onblur="this.placeholder = 'שם משפחה'", required='')
+								.mt-10
+									input.single-input(type='text', name='Title', placeholder='תחום עיסוק', onfocus="this.placeholder = ''", onblur="this.placeholder = 'תחום עיסוק'")
+								.mt-10
+									input.single-input(type='text', name='Address', placeholder='כתובת', onfocus="this.placeholder = ''", onblur="this.placeholder = 'כתובת'", required='')
+								.mt-10
+									input.single-input(type='text', name='Email', placeholder='דואר אלקטרוני', onfocus="this.placeholder = ''", onblur="this.placeholder = 'דואר אלקטוני'", required='')
+								.mt-10
+									input.single-input(type='password', name='Password', placeholder='סיסמא', onfocus="this.placeholder = ''", onblur="this.placeholder = 'סיסמא'", required='')
+								.mt-10
+									input.single-input(type='password', placeholder='אימות סיסמא', onfocus="this.placeholder = ''", onblur="this.placeholder = 'אימות סיסמא'", required='')
+								.mt-10
+									input.single-input(type='text', name = "Phone",placeholder= 'נייד', onfocus="this.placeholder = ''", onblur="this.placeholder = 'נייד'", required='')
+						
+
+
+								.single-element-widget.mt-10(style= "float: right;")
+									.mb-20
+										.default-select#default-select(name='Gender')
+											select#gender(name='Gender')
+												option(value = "male") זכר
+												option(value = "female") נקבה
+								br
+								br
+								br
+							
+								h4.mb-20(style="text-align: right;") רשתות חברתיות 
+								.mt-10
+									input.single-input(type='text', name='Github', placeholder='Github Account', onfocus="this.placeholder = ''", onblur="this.placeholder = 'Github Account'")
+								.mt-10
+									input.single-input(type='text', name='Twitter', placeholder='Twitter Account', onfocus="this.placeholder = ''", onblur="this.placeholder = 'Twitter Account'")
+								.mt-10
+									input.single-input(type='text', name='Instagram', placeholder='Instagram Account', onfocus="this.placeholder = ''", onblur="this.placeholder = 'Instagram Account'")
+								.mt-10
+									input.single-input(type='text', name='Facebook', placeholder='Facebook Account', onfocus="this.placeholder = ''", onblur="this.placeholder = 'Facebook Account'")
+								br
+								.col-lg-3.col-md-4.mt-sm-40
+									.single-element-widget
+										.switch-wrap.d-flex.justify-content-between.mt-10(dir='rtl')
+											p אני מרצה
+											.primary-checkbox
+												input#default-checkbox(type='checkbox' name='IsTeacher')
+												label(for='default-checkbox')
+
+								button.boxed-btn4.mt-5.mb-3(type='submit', style=' width: 100%;') הרשמה
+								.text-center(style='font-size: 0.85em;   color: #707070;')
+									span  כבר יש לך חשבון? 
+									a(href='../sIgnIn', style='color: #615CFD;')  היכנס 
+include utilities/footer.pug

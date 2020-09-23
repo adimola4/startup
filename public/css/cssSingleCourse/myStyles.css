@@ -1,0 +1,25 @@
+.purple-play-btn {
+    font-size: 2.5em; color:#615CFD
+}
+
+.green-play-btn {
+    font-size: 2.5em; color:#00cec9
+}
+
+.blue-play-btn {
+    font-size: 2.5em; color:#2394eb
+}
+
+.episodes .meta-green {
+    text-transform: uppercase;
+    font-size: 18px;
+    letter-spacing: .1em;
+    color: #00cec9;
+  }
+
+  .episodes .meta-blue {
+    text-transform: uppercase;
+    font-size: 18px;
+    letter-spacing: .1em;
+    color: #2394eb;
+  }

@@ -1,0 +1,20 @@
+include utilities/header.pug
+include utilities/headerGame.pug
+.container(dir='rtl', style = "margin-bottom: 174px;")
+    p(style="font-size: 1.2em; text-align: right;") מקם את האלמנט החדש p כילד האחרון של האלמנט המאוחסן בקבוע div.
+    pre.language-js#question(style= "text-align: left; background: #353535; margin: 15px 0;", dir='ltr')
+        code.language-js(style="color: #d5d8df; text-shadow: 0 0")
+            | const div = document.querySelector('div#feedback');
+            | const p = document.createElement('p');
+            |
+        span(contenteditable="true",spellcheck="false", style="text-shadow: 0 0; color: #ddd; border-bottom: 2px solid #b7c0c7; background-color: #434d55; min-width: 20px !important; text-align: center;") 
+        code.language-js(style="color: #d5d8df; text-shadow: 0 0;") .appendChild(
+        span(contenteditable="true",spellcheck="false" ,style = "text-shadow: 0 0; color: #ddd; border-bottom: 2px solid #b7c0c7; background-color: #434d55; min-width: 20px !important; text-align: center;") 
+        code.language-js(style="color: #d5d8df; text-shadow: 0 0") );
+        
+    a.boxed-btn4#color-btn(href='#',style="float: right;") אשר   
+
+//- script(src='static/js/quizJS/game.js')
+script(src='https://cdnjs.cloudflare.com/ajax/libs/prism/1.5.0/prism.min.js')
+
+include utilities/footer.pug

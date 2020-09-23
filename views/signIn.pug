@@ -1,0 +1,48 @@
+doctype html
+html(lang='he')
+	head
+		meta(charset='utf-8')
+		meta(http-equiv='x-ua-compatible', content='ie=edge')
+		title Sign In Form
+		meta(name='description', content='')
+		meta(name='viewport', content='width=device-width, initial-scale=1')
+		// CSS here
+		link(rel='stylesheet', href='static/css/bootstrap.min.css')
+		link(rel='stylesheet', href='static/css/owl.carousel.min.css')
+		link(rel='stylesheet', href='static/css/magnific-popup.css')
+		link(rel='stylesheet', href='static/css/font-awesome.min.css')
+		link(rel='stylesheet', href='static/css/themify-icons.css')
+		link(rel='stylesheet', href='static/css/nice-select.css')
+		link(rel='stylesheet', href='static/css/flaticon.css')
+		link(rel='stylesheet', href='static/css/gijgo.css')
+		link(rel='stylesheet', href='static/css/animate.min.css')
+		link(rel='stylesheet', href='static/css/slick.css')
+		link(rel='stylesheet', href='static/css/slicknav.css')
+		link(rel='stylesheet', href='static/css/style.css')
+	body
+		.how_we_work_area(dir='rtl')
+			.container
+				.row
+					.col-lg-5
+						.work_info
+							h3.mb-4.text-center כניסה לאיזור האישי
+							form(action='api/auth/login' method='post')
+								.mt-10
+									input.single-input(type='text', name='Email', placeholder='דואר אלקטרוני', onfocus="this.placeholder = ''", onblur="this.placeholder = 'דואר אלקטוני'", required='')
+								.mt-10
+									input.single-input(type='password', name='Password', placeholder='סיסמא', onfocus="this.placeholder = ''", onblur="this.placeholder = 'סיסמא'", required='')
+									.col-lg-3.col-md-4.mt-sm-30
+										.single-element-widget
+											.switch-wrap.d-flex.justify-content-between.mt-10(dir='ltr')
+												p אני מרצה
+												.primary-checkbox
+													input#default-checkbox(type='checkbox' name='IsTeacher')
+													label(for='default-checkbox')
+									button.boxed-btn4.mt-5.mb-3(type='submit', style=' width: 100%;') כניסה
+								.text-center(style='font-size: 0.85em;   color: #707070;')
+									span שכחת 
+									a(href='../forgetPassword', style='color: #615CFD;')  שם משתמש / סיסמא? 
+									br
+									span רוצה ליצור חשבון חדש? 
+									a(href='../signUp', style='color: #615CFD;') הירשם
+include utilities/footer.pug

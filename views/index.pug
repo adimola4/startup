@@ -1,0 +1,146 @@
+doctype html
+html.no-js(lang='he')
+	head
+		meta(charset='utf-8')
+		meta(http-equiv='x-ua-compatible', content='ie=edge')
+		title Codern
+		meta(name='description', content='')
+		meta(name='viewport', content='width=device-width, initial-scale=1')
+		// <link rel="manifest" href="site.webmanifest">
+		// Place favicon.ico in the root directory
+		// CSS here
+		link(rel='stylesheet', href='/static/css/bootstrap.min.css')
+		link(rel='stylesheet', href='/static/css/owl.carousel.min.css')
+		link(rel='stylesheet', href='/static/css/magnific-popup.css')
+		link(rel='stylesheet', href='/static/css/font-awesome.min.css')
+		link(rel='stylesheet', href='/static/css/themify-icons.css')
+		link(rel='stylesheet', href='/static/css/nice-select.css')
+		link(rel='stylesheet', href='/static/css/flaticon.css')
+		link(rel='stylesheet', href='/static/css/gijgo.css')
+		link(rel='stylesheet', href='/static/css/animate.min.css')
+		link(rel='stylesheet', href='/static/css/slick.css')
+		link(rel='stylesheet', href='/static/css/slicknav.css')
+		link(rel='stylesheet', href='/static/css/style.css')
+		// <link rel="stylesheet" href="css/responsive.css">
+	body
+		//if lte IE 9
+			p.browserupgrade
+				| You are using an 
+				strong outdated
+				|  browser. Please 
+				a(href='https://browsehappy.com/') upgrade your browser
+				|  to improve your experience and security.
+		// header-start
+		header
+			.header-area
+				#sticky-header.main-header-area
+					.container-fluid.p-0
+						.row.align-items-center.no-gutters
+							.col-xl-2.col-lg-2
+								.logo-img(style='font-size:1.9em;')
+									a(href='/', style='color:white; font-weight: bold;')  Codern 
+							.col-xl-8.col-lg-8
+								.main-menu.d-none.d-lg-block.text-center(dir='rtl')
+									nav
+										ul#navigation
+											li
+												a.active(href='#', data-scroll-nav='0') בית
+											li
+												a(href='#', data-scroll-nav='1') שירותים
+											li
+												a(href='#', data-scroll-nav='2') אודותינו
+											li
+												a(href='#', data-scroll-nav='3') צרו קשר
+							.col-lg-2.d-none.d-lg-block
+								.log_chat_area.d-flex.align-items-end
+									a.say_hi(href='../signIn') כניסה
+							.col-12
+								.mobile_menu.d-block.d-lg-none
+		// header-end
+		// slider_area_start
+		.slider_area(dir='rtl', style='text-align: justify', data-scroll-index='0')
+			.single_slider.d-flex.align-items-center.slider_bg_1.overlay
+				.container
+					.row.align-items-center.justify-content-around
+						.col-lg-10.col-md-10
+							.slider_text
+								h3#title.wow.fadeInLeft(data-wow-duration='1s', data-wow-delay='.2s')
+									| לימוד מיומנות חדשה אינו חייב להפריע ללוח הזמנים העמוס שלך. הסרטונים ואתגרי הקוד שלנו נמצאים בשבילך כשאתה זקוק להם.
+								a.boxed-btn3.wow.fadeInLeft(data-wow-duration='1s', data-wow-delay='.2s', href='../signUp') הרשמה
+		// slider_area_end
+		// service_area
+		.service_area(data-scroll-index='1')
+			.container
+				.row.justify-content-center
+					.col-lg-6
+						.section_title.text-center.mb-70
+							span.wow.fadeInUp(data-wow-duration='1s', data-wow-delay='.1s') המסע שלך מתחיל כאן
+							h3.wow.fadeInUp.amatic(dir='rtl', data-wow-duration='1.2s', data-wow-delay='.2s')
+								| המשימה שלנו היא לעזור לך לשפר את עצמך ולהשיג את משרת החלומות שלך.
+				.row(dir='rtl')
+					.col-xl-4.col-md-4
+						.single_service.text-center.wow.fadeInLeft(data-wow-duration='1.2s', data-wow-delay='.4s')
+							.icon
+								img(src='static/img/svg_icon/1.svg', alt='')
+							h3
+								| המלצות בהתאמה אישית
+							p התאמת חידונים לפי רמות קושי על פי קצב הלימוד ועל פי הצלחות התלמיד.
+					.col-xl-4.col-md-4
+						.single_service.text-center.wow.fadeInUp(data-wow-duration='1s', data-wow-delay='.3s')
+							.icon
+								img(src='static/img/svg_icon/2.svg', alt='')
+							h3 חידונים
+							p
+								| החל את מה שלמד עם חידונים בקצב עצמאי, קבל משוב מקהילה לומדת עולמית.
+					.col-xl-4.col-md-4
+						.single_service.text-center.wow.fadeInRight(data-wow-duration='1.2s', data-wow-delay='.4s')
+							.icon
+								img(src='static/img/svg_icon/3.svg', alt='')
+							h3 למידה יעילה
+							p אתה לומד בצורה הטובה ביותר כשאתה מתחיל ליישם את מה שאתה לומד במהירות.
+		// / service_area
+		.about_area(data-scroll-index='2')
+			.container
+				.row.justify-content-end
+					.col-lg-5.offset-lg-1
+						.about_info
+							.section_title.white_text(dir='rtl', style='text-align: right')
+								span.wow.fadeInUp(data-wow-duration='1s', data-wow-delay='.3s') אודותינו
+								h3.wow.fadeInUp(data-wow-duration='1s', data-wow-delay='.4s') מעצימים אתכם 
+								p.mid_text.wow.fadeInUp(data-wow-duration='1s', data-wow-delay='.5s', style='text-align: justify')
+									| אנו מאמינים כי דברים הנלמדים בהנאה לעולם לא נשכח. הדברים שאנו לומדים הופכים אותנו למי שאנחנו. המשימה שלנו היא לפתוח את הדלת להזדמנויות, להעצים אנשים ולהגשים את חלומותיהם.
+								p.last_text.wow.fadeInUp(data-wow-duration='1s', data-wow-delay='.6s', style='text-align: center; font-style: italic;')
+									| "אמור לי ואשכח, למד אותי ואזכור, שתף אותי ואלמד." 
+									br
+									|  - בנג'מין פרנקלין
+								// <a href="#" class="boxed-btn3 wow fadeInUp" data-wow-duration="1s" data-wow-delay=".7s">About Us</a>
+		.get_in_tauch_area(dir='rtl', data-scroll-index='3')
+			.container
+				.row.justify-content-center
+					.col-lg-6
+						.section_title.text-center.mb-90
+							h3.wow.fadeInUp(data-wow-duration='1s', data-wow-delay='.3s') צרו קשר
+							p.wow.fadeInUp(data-wow-duration='1s', data-wow-delay='.4s') יש לכם שאלה? בכל פניה אתם מוזמנים ליצור איתנו קשר בטופס.
+				.row.justify-content-center
+					.col-lg-8
+						.touch_form
+							form(action='#')
+								.row
+									.col-md-6
+										.single_input.wow.fadeInUp(data-wow-duration='1s', data-wow-delay='.3s')
+											input(type='text', placeholder='שם מלא')
+									.col-md-6
+										.single_input.wow.fadeInUp(data-wow-duration='1s', data-wow-delay='.4s')
+											input(type='email', placeholder='דואר אלקטרוני')
+									.col-md-12
+										.single_input.wow.fadeInUp(data-wow-duration='1s', data-wow-delay='.5s')
+											input(type='email', placeholder='נושא')
+									.col-md-12
+										.single_input.wow.fadeInUp(data-wow-duration='1s', data-wow-delay='.6s')
+											textarea(name='', id='', cols='30', placeholder='כתוב כאן...', rows='10')
+									.col-lg-12
+										.submit_btn.wow.fadeInUp(data-wow-duration='1s', data-wow-delay='.7s')
+											button.boxed-btn3(type='submit') שלח הודעה
+
+
+include utilities/footer.pug

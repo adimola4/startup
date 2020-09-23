@@ -1,0 +1,55 @@
+include utilities/adminHeader.pug
+link(rel='stylesheet', href='/static/css/Quizstyle.css')
+
+
+//- link(rel='stylesheet', href='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css', integrity='sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T', crossorigin='anonymous')
+//- link(rel='stylesheet', href='https://use.fontawesome.com/releases/v5.6.3/css/all.css', integrity='sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/', crossorigin='anonymous')
+//- link(rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.1/css/all.css" integrity="sha384-xxzQGERXS00kBmZW/6qxqJPyxW3UR0BPsL4c8ILaIWXva5kFi7TxkIIaMiKtqV1Q" crossorigin="anonymous")
+link(href='https://unpkg.com/bootstrap-table@1.17.1/dist/bootstrap-table.min.css', rel='stylesheet')
+
+
+.section-top-border(dir = "rtl", style = "margin: 0 20% ")
+    .mb-40(style = "width: 100%;")
+        a.boxed-btn3(href='../AddNewQuiz',style = "width: 25%; float: left; margin-left: 20px;") יצירת שאלון חדש &nbsp;
+                i.fas.fa-plus
+        h3(style = "float: right;") שאלונים
+    br
+   
+    table#table(data-toggle='table', data-height='450', data-click-to-select='false', data-pagination='true', style ="text-align: right;" )
+        button.icon-label-button(type='button',onclick='deleteItem()')
+            i.far.fa-trash-alt.mb-2(dir = "ltr") 
+                span(style=" font-family: 'Muli', sans-serif;") &nbsp; מחיקה &nbsp;
+
+        thead
+            tr
+                th(data-field='state', data-checkbox='true') 
+                th(data-field='name', data-sortable='true')
+                    div(style ="text-align: right") שם שאלון
+        tbody
+            tr
+                td
+                td 
+                    a(href='#') JAVA
+            tr
+                td
+                td 
+                    a(href='#') מבוא למסדי נתונים
+            tr
+                td
+                td 
+                    a(href='#') תכנות מונחה עצמים
+
+        
+   
+
+
+    //-  data-url='https://examples.wenzhixin.net.cn/examples/bootstrap_table/data'
+
+//- script(src="https://unpkg.com/bootstrap-table@1.16.0/dist/bootstrap-table.min.js")
+script(src='https://code.jquery.com/jquery-3.3.1.min.js', integrity='sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=', crossorigin='anonymous')
+script(src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js', integrity='sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1', crossorigin='anonymous')
+script(src='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js', integrity='sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM', crossorigin='anonymous')
+script(src="https://unpkg.com/bootstrap-table@1.17.1/dist/bootstrap-table.min.js")
+script(src='static/js/QuizAdmin/HandleQuiz.js')
+
+include utilities/footer.pug
