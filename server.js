@@ -9,17 +9,21 @@ const helmet = require('helmet')
 const cors = require('cors')
 const bodyParser = require('body-parser');
 const session = require('express-session');
+const cookieParser = require('cookie-parser')
+const jwt = require('jsonwebtoken')
 
 app.use(bodyParser.urlencoded({ extended: false }))
-
+app.use(cookieParser())
 app.use(express.json())
 app.use(helmet())
 app.use(morgan('dev'))
 app.use(cors())
 
+const secret = "heE61FpVRwZ9YXynYeD8"
+
 app.use(session({
     name: "cookie",
-    secret: "heE61FpVRwZ9YXynYeD8",
+    secret,
     user: "user",
     cookie: {
         maxAge: 10 ** 10,
@@ -30,35 +34,31 @@ app.use(session({
     saveUninitialized: true,
 }))
 
-const restricted = (req, res, next) => {
-    //const token = req.headers.authorization;
-    // const secret = "heE61FpVRwZ9YXynYeD8"
-    const cookie = req.session
-
-    if (cookie && cookie.user) {
-        next();
+const verifyLogin = async (req, res, next) => {
+    const token = req.cookies.token || ''
+    if (!token) {
+        return res.status(401).json('You need to Login')
     }
-
-    // if (token) {
-    //   jwt.verify(token, secret, (err, decodedToken) => {
-    //     if (err) {
-    //       res.status(401).json({ message: "Invalid token received" });
-    //     } else {
-    //       req.decodedToken = decodedToken;
-    //       next();
-    //     }
-    //   });
-    else {
-        res.status(401).json({ message: "No token received" });
+    try {
+        const decrypt = await jwt.verify(token, secret);
+        req.user = {
+            uid: decrypt.uid
+        }
+        console.log('AUTHENTICATED !')
+        console.table(req.user)
+        next()
+    } catch (err) {
+        console.log(err)
+        return res.status(500).json(err)
     }
 };
 
 //set Routers
 app.use('/api/auth', require('./routes/auth'))
-app.use('/api/courses', require('./routes/courses'))
-app.use('/api/users', restricted, require('./routes/users'))
-app.use('/api/profile', require('./routes/profiles'))
-app.use('/api/quiz', require('./routes/quiz'))
+app.use('/api/courses', verifyLogin, require('./routes/courses'))
+app.use('/api/users', verifyLogin, require('./routes/users'))
+app.use('/api/profile', verifyLogin, require('./routes/profiles'))
+app.use('/api/quiz', verifyLogin, require('./routes/quiz'))
 
 app.use('/static', express.static('public'));
 

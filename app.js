@@ -11,9 +11,9 @@ app.get('/Quiz', (req, res) => {
 app.get('/AddNewQuiz', (req, res) => {
     res.render('AddNewQuiz')
 })
-app.get('/courses', (req, res) => {
-    res.render('courses')
-})
+// app.get('/courses', (req, res) => {
+//     res.render('courses')
+// })
 
 app.get('/EndQuiz', (req, res) => {
  
