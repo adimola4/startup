@@ -13,17 +13,37 @@ router.get('/', (req, res) => {
   res.render('courses',{subject,title});
 });
 
-router.post('/addCourse' , (req,res) => {
-res.send({body : req.params})
+// router.get('/', (req, res) => {
+//   dbHelpers.coursesAll().then(courses => {
+//     res.render('courses', { courses  })
+//   }).catch(err => {
+//     console.error(err)
+//     res.render('courses', { courses: [] })
+//   })
+// })
+
+router.get('/:id', (req, res) => {
+  courses.findCourseById(req.params.id).then(resp => {
+    res.json({ message: 'success', course: resp })
+  }).catch(err => {
+    res.status(500).json({ message: 'error' })
+  })
 })
 
+router.post('/add', (req, res) => {
+  console.table(req.body)
 
-
+  courses.addCourse(course).then(resp => {
+    return res.json({ message: `Course created successfully` })
+  }).catch(err => {
+    return res.status(500).json({ message: "Unable to create course" });
+  })
+})
 
 router.delete("/:id", (req, res) => {
   const { id } = req.params;
 
-  router.removeCourse(id)
+  courses.removeCourse(id)
     .then((count) => {
       if (count > 0) {
         res
