@@ -28,7 +28,7 @@ const authRouter = require('../auth/auth-routes')
 const usersRouter = require('../Routes/users-routes')
 const coursesRouter = require('../Routes/courses-routes')
 const profileRouter = require('../Routes/profile-routes')
-
+const questionRouter = require('../Routes/question-routes')
 
 app.use(bodyParser.urlencoded({extended : false}))
 
@@ -38,6 +38,7 @@ app.use('/api/auth', authRouter)
 app.use('/api/courses', coursesRouter)
 app.use('/api/users', restricted, usersRouter)
 app.use('/api/profile', profileRouter)
+app.use('/api/question', questionRouter)
 
 app.use('/static', express.static('public'));
 

@@ -4,6 +4,7 @@
   "description": "Thank you for using our template!",
   "main": "app.js",
   "scripts": {
+    "start": "./node_modules/nodemon/bin/nodemon.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],

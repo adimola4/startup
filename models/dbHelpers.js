@@ -11,7 +11,11 @@ module.exports = {
   findUserByEmail,
   addCourse,
   findCourseById,
-  removeCourse
+  removeCourse,
+  questionsAll,
+  questionsAdd,
+  questionsFindById,
+  questionsRemove
 };
 
 // Users function
@@ -127,8 +131,44 @@ function findLessonMessages(lesson_id) {
 
 function removeMessage(id) {
   return db("messages").where({ id }).del()
-  .catch(err => {
+    .catch(err => {
+      console.log(err)
+      throw err;
+    });
+}
+
+// -------- END OF MESSAGES
+
+function questionsAll() {
+  return db('questions')
+    .catch(err => {
+      console.log(err)
+      throw err
+    })
+}
+
+function questionsFindById(id) {
+  return db('questions').where({ id }).first()
+    .catch(err => {
+      console.log(err)
+      throw err
+    })
+}
+
+function questionsAdd(question) {
+  return db('questions').insert(question,
+    ['ID', 'Title', 'Choices',
+      'Answer', 'Type']
+  ).catch(err => {
     console.log(err)
-    throw err;
-  }) ;
+    throw err
+  })
+}
+
+function questionsRemove(id) {
+  return db('questions').where({ id }).del()
+    .catch(err => {
+      console.log(err)
+      throw err
+    })
 }
