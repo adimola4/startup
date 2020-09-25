@@ -1,4 +1,4 @@
-const app = require("./api/server");
+const app = require("./server");
 app.set('view engine', 'pug');
 
 app.get('/', (req, res) => {
@@ -11,6 +11,10 @@ app.get('/Quiz', (req, res) => {
 app.get('/AddNewQuiz', (req, res) => {
     res.render('AddNewQuiz')
 })
+app.get('/courses', (req, res) => {
+    res.render('courses')
+})
+
 app.get('/EndQuiz', (req, res) => {
  
     res.render('endQuiz');

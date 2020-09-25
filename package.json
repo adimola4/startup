@@ -19,13 +19,12 @@
     "express-session": "^1.17.1",
     "helmet": "^3.22.0",
     "jsonwebtoken": "^8.5.1",
-    "knex": "^0.21.5",
+    "mongoose": "^5.10.7",
     "morgan": "^1.10.0",
     "nodemon": "^2.0.4",
     "pg": "^8.0.2",
     "prismjs": "^1.21.0",
-    "pug": "^2.0.4",
-    "sqlite3": "^4.2.0"
+    "pug": "^2.0.4"
   },
   "devDependencies": {}
 }
