@@ -23,9 +23,9 @@ link(rel='stylesheet', href='/static/css/style.css')
 link(rel='stylesheet', href='/static/css/cssSingleCourse/bootstrap.css')
 link(rel='stylesheet', href='/static/css/cssSingleCourse/animate.css')
 link(rel='stylesheet', href='/static/css/cssSingleCourse/owl.carousel.min.css')
-link(rel='stylesheet', href='/static/fonts/singleCourse/fonts/ionicons/css/ionicons.min.css')
-link(rel='stylesheet', href='/static/fonts/singleCourse/fonts/fontawesome/css/font-awesome.min.css')
-link(rel='stylesheet', href='/static/fonts/singleCourse/fonts/flaticon/font/flaticon.css')
+//- link(rel='stylesheet', href='/static/fonts/singleCourse/fonts/ionicons/css/ionicons.min.css')
+//- link(rel='stylesheet', href='/static/fonts/singleCourse/fonts/fontawesome/css/font-awesome.min.css')
+//- link(rel='stylesheet', href='/static/fonts/singleCourse/fonts/flaticon/font/flaticon.css')
 
 
 link(rel='stylesheet', href='/static/css/cssSingleCourse/style.css')
@@ -51,7 +51,7 @@ header
                         nav
                             ul#navigation
                                 li
-                                    a(href='/courses') קטלוג
+                                    a(href='/api/courses') קטלוג
                                 li
                                     a(href='#') תחרויות
                                 li
@@ -69,7 +69,7 @@ header
                                                 span#user אורח
                                     ul.submenu(dir='rtl')
                                         li
-                                            a(href='#')
+                                            a(href='/api/profile')
                                                 i.fas.fa-user(style='font-size: 0.9em;')
                                                 |  פרופיל
                                         li
@@ -84,13 +84,3 @@ header
                     .mobile_menu.d-block.d-lg-none
 // header-end
 .bradcam_area.breadcam_bg_3
-//
-    <div class="container">
-    <div class="row">
-    <div class="col-xl-12">
-    <div class="bradcam_text" dir = "rtl">
-    <h3>מסלולי לימוד</h3>
-    </div>
-    </div>
-    </div>
-    </div>
