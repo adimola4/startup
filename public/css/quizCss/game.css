@@ -115,3 +115,17 @@
     transform: rotate(360deg);
   }
 }
+
+.answerStyle {
+  text-shadow: 0 0; color: #ddd; 
+  border-bottom: 2px solid #b7c0c7; 
+  background-color: #434d55; 
+  min-width: 20px !important; 
+  text-align: center;
+}
+
+.codeColor{
+
+  color: #d5d8df !important; 
+  text-shadow: 0 0 !important;
+}
