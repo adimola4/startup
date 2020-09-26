@@ -38,9 +38,15 @@ var UserSchema = new Schema({
 }, {
     w: "majority",
     j: true,
-    // toJSON: {
-    //     // getters: true
-    // }
+    toJSON: {
+        virtuals: true
+    },
+    toObject: {
+        virtuals: true
+    }
 });
+UserSchema.virtual('fullName').get(function() {
+    return this.firstName + ' ' + this.lastName;
+})
 
 module.exports = mongoose.model("User", UserSchema);

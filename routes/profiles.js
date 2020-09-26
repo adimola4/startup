@@ -4,27 +4,28 @@ const User = require("../models/user");
 const router = express.Router();
 
 router.get('/', async (req, res) => {
-  res.render('profile');
-});
+  try {
+    const user = await User.findById(req.user.uid)
+    return res.render('profile', user)
+  } catch (error) {
+    console.error(error)
+    return res.status(500).json({ message: 'Error while loading profile!', error })
+  }
+})
 
-// router.get('/', async (req, res) => {
-//   console.log({ newCookie: req.session })
-//   console.log("********************")
+router.get('/finishQuiz', async (req, res) => {
+  const result = req.body
+  console.table(req.body)
 
-//   const user = await User.findUserByEmail(req.params.email)
-//   user.fullName = user.firstName + " " + user.lastName
-
-//   return res.render('profile', user)
-// })
-
-// router.get('/finishQuiz', async (req, res) => {
-//   console.log({ newCookie: req.session })
-//   console.log("********************")
-
-//   const user = await User.findUserByEmail(req.params.email)
-//   user.fullName = user.firstName + " " + user.lastName
-
-//   return res.render('profile', user)
-// })
+  try {
+    const newUser = await User.findByIdAndUpdate(req.user.uid,
+      { $push: { quizResults: result } },
+      { new: true }).exec()
+    return res.json({ message: 'Saved!', newUser })
+  } catch (error) {
+    console.error(error)
+    return res.status(500).json({ message: 'Error while saving quiz results!', error })
+  }
+})
 
 module.exports = router;
