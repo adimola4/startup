@@ -8,7 +8,8 @@ const router = express.Router();
 router.get('/', async (req, res) => {
   const subject = 'Full Stack'
   const title = ' עמי ותמי'
-
+  // console.log('[DBG] Authenticated as:')
+  // console.table(req.user)
   return res.render('courses', { subject, title });
 });
 

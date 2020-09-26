@@ -1,52 +1,40 @@
 // MongoDB
 require('./mongodbConnModule').connect()
 
-//express
+// Express and middleware
 const express = require('express')
 const app = express()
-const morgan = require('morgan')
-const helmet = require('helmet')
-const cors = require('cors')
-const bodyParser = require('body-parser');
-const session = require('express-session');
-const cookieParser = require('cookie-parser')
-const jwt = require('jsonwebtoken')
 
-app.use(bodyParser.urlencoded({ extended: false }))
-app.use(cookieParser())
 app.use(express.json())
-app.use(helmet())
-app.use(morgan('dev'))
-app.use(cors())
+app.use(require('body-parser').urlencoded({ extended: false }))
+app.use(require('cookie-parser')())
+app.use(require('helmet')())
+app.use(require('morgan')('dev'))
+app.use(require('cors')())
 
-const secret = "heE61FpVRwZ9YXynYeD8"
+// Load secret key from env file
+require('dotenv').config()
+const secret = process.env.SECRET
 
-app.use(session({
-    name: "cookie",
-    secret,
-    user: "user",
-    cookie: {
-        maxAge: 10 ** 10,
-        secure: false,
-        httpOnly: true
-    },
-    resave: false,
-    saveUninitialized: true,
-}))
-
+const jwt = require('jsonwebtoken')
 const verifyLogin = async (req, res, next) => {
+    // Attempt to parse token from the incoming request
     const token = req.cookies.token || ''
     if (!token) {
         return res.status(401).json('You need to Login')
     }
     try {
+        // Decrypt the token
         const decrypt = await jwt.verify(token, secret);
+        // Attach our requesting User to the passing 'req' object
+        //      so we will be able to determine inside API endpoints
+        //      which user is currently logged in
         req.user = {
             uid: decrypt.uid
         }
-        console.log('AUTHENTICATED !')
-        console.table(req.user)
-        next()
+        // console.log('[DEBUG] User authenticated!')
+        // console.table(req.user)
+        return next()
     } catch (err) {
         console.log(err)
         return res.status(500).json(err)
@@ -54,7 +42,7 @@ const verifyLogin = async (req, res, next) => {
 };
 
 //set Routers
-app.use('/api/auth', require('./routes/auth'))
+app.use('/api/auth', require('./routes/auth')) // Public routes
 app.use('/api/courses', verifyLogin, require('./routes/courses'))
 app.use('/api/users', verifyLogin, require('./routes/users'))
 app.use('/api/profile', verifyLogin, require('./routes/profiles'))

@@ -7,9 +7,9 @@ const User = require("../models/user");
 const router = express.Router();
 
 const generateToken = (res, user) => {
-    const secret = "heE61FpVRwZ9YXynYeD8"
+    const secret = process.env.SECRET
 
-    const expiration = 604800000;
+    const expiration = 7 * 24 * 60 * 60 * 1000; // 7d
     const token = jwt.sign({
         uid: user._id
     }, secret, {
@@ -20,9 +20,9 @@ const generateToken = (res, user) => {
         secure: false, // set to true only if https
         httpOnly: true,
     })
-};
+}
 
-// for all endpoints beginning with /api/users
+// for all endpoints beginning with /api/auth
 
 router.post("/register", async (req, res) => {
     const credentials = req.body;
@@ -49,7 +49,6 @@ router.post("/register", async (req, res) => {
 
 router.post("/login", async (req, res) => {
     const credentials = req.body;
-    let cookie = req.session
 
     if (!(credentials.email && credentials.password)) {
         return res.status(400).json({ message: "Username and password required" });
@@ -58,8 +57,11 @@ router.post("/login", async (req, res) => {
     credentials.isTeacher = (credentials.isTeacher === 'on') ? true : false;
     try {
         const user = await User.findOne({ email: credentials.email })
-        if (user && bycrpt.compareSync(credentials.password, user.hashedPass) && user.isTeacher == credentials.isTeacher) {
-            console.log("login successful")
+        if (user &&
+            bycrpt.compareSync(credentials.password, user.hashedPass) &&
+            user.isTeacher == credentials.isTeacher) {
+
+            console.log("[INFO] Login successful for email: " + user.email)
             await generateToken(res, user)
             return res.redirect('/api/courses');
         } else {
@@ -72,9 +74,9 @@ router.post("/login", async (req, res) => {
 });
 
 router.get("/logout", async (req, res) => {
-    if (req.session) {
-        req.session.destroy()
-    }
+    // Destroy client's cookie
+    res.cookie('testtoken', '', { maxAge: 0 })
+    return res.redirect('/')
 })
 
 module.exports = router;
