@@ -4,16 +4,18 @@ include utilities/headerGame.pug
     h2#question(dir='rtl' style= "text-align: right;")
     .choice-container
         p.choice-prefix 1
-        p.choice-text(data-number='1')
+        p.choice-text(data-number='1' onclick= 'SaveAmericanAnswer()')
     .choice-container
         p.choice-prefix 2
-        p.choice-text(data-number='2')
+        p.choice-text(data-number='2', onclick= 'SaveAmericanAnswer()')
     .choice-container
         p.choice-prefix 3
-        p.choice-text(data-number='3')
+        p.choice-text(data-number='3', onclick= 'SaveAmericanAnswer()')
     .choice-container
         p.choice-prefix 4
-        p.choice-text(data-number='4')
-    script(src='static/js/quizJS/game.js')
+        p.choice-text(data-number='4', onclick= 'SaveAmericanAnswer()')
+        
+    //- script(src='static/js/quizJS/game.js')
+script(src='static/js/quizJS/end.js')
 
 include utilities/footer.pug
