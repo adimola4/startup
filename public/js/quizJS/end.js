@@ -35,3 +35,27 @@ numOfQ.innerText = `ענית נכון על: ${mostRecentScore/10}/${QUESTIONS}`;
     // localStorage.setItem('highScores', JSON.stringify(highScores));
 //     window.location.assign('/');
 // };
+
+
+// Example POST request to the server
+const results = {
+    quizID: '123abc',
+    answers: [
+        0,             // American question answer example
+        true,          // TrueFalse question answer example
+        'log;;console' // FillBlanks question answer example
+    ]
+};
+$.ajax({
+    method: 'POST',
+    url: '/api/profile/finishQuiz', // The endpoint we wish to post to
+    data: results,
+    dataType: 'json',               // Optional
+    xhrFields: {
+        withCredentials: true       // Include JWT token in our request
+    }
+}).then(function() {
+    alert('Quiz results stored successfully!');
+}).catch(function() {
+    alert('Error while saving results!');
+});

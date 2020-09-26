@@ -28,28 +28,28 @@ html(lang='he')
 							h3.mb-4.text-center הרשמה
 							form(action='/api/auth/register' method='post')
 								.mt-10
-									input.single-input(type='text', name='FirstName', placeholder='שם פרטי', onfocus="this.placeholder = ''", onblur="this.placeholder = 'שם פרטי'", required='')
+									input.single-input(type='text', name='firstName', placeholder='שם פרטי', onfocus="this.placeholder = ''", onblur="this.placeholder = 'שם פרטי'", required='')
 								.mt-10
-									input.single-input(type='text', name='LastName', placeholder='שם משפחה', onfocus="this.placeholder = ''", onblur="this.placeholder = 'שם משפחה'", required='')
+									input.single-input(type='text', name='lastName', placeholder='שם משפחה', onfocus="this.placeholder = ''", onblur="this.placeholder = 'שם משפחה'", required='')
 								.mt-10
-									input.single-input(type='text', name='Title', placeholder='תחום עיסוק', onfocus="this.placeholder = ''", onblur="this.placeholder = 'תחום עיסוק'")
+									input.single-input(type='text', name='title', placeholder='תחום עיסוק', onfocus="this.placeholder = ''", onblur="this.placeholder = 'תחום עיסוק'")
 								.mt-10
-									input.single-input(type='text', name='Address', placeholder='כתובת', onfocus="this.placeholder = ''", onblur="this.placeholder = 'כתובת'", required='')
+									input.single-input(type='text', name='address', placeholder='כתובת', onfocus="this.placeholder = ''", onblur="this.placeholder = 'כתובת'", required='')
 								.mt-10
-									input.single-input(type='text', name='Email', placeholder='דואר אלקטרוני', onfocus="this.placeholder = ''", onblur="this.placeholder = 'דואר אלקטוני'", required='')
+									input.single-input(type='text', name='email', placeholder='דואר אלקטרוני', onfocus="this.placeholder = ''", onblur="this.placeholder = 'דואר אלקטוני'", required='')
 								.mt-10
-									input.single-input(type='password', name='Password', placeholder='סיסמא', onfocus="this.placeholder = ''", onblur="this.placeholder = 'סיסמא'", required='')
+									input.single-input(type='password', name='password', placeholder='סיסמא', onfocus="this.placeholder = ''", onblur="this.placeholder = 'סיסמא'", required='')
 								.mt-10
 									input.single-input(type='password', placeholder='אימות סיסמא', onfocus="this.placeholder = ''", onblur="this.placeholder = 'אימות סיסמא'", required='')
 								.mt-10
-									input.single-input(type='text', name = "Phone",placeholder= 'נייד', onfocus="this.placeholder = ''", onblur="this.placeholder = 'נייד'", required='')
+									input.single-input(type='text', name = "phone",placeholder= 'נייד', onfocus="this.placeholder = ''", onblur="this.placeholder = 'נייד'", required='')
 						
 
 
 								.single-element-widget.mt-10(style= "float: right;")
 									.mb-20
-										.default-select#default-select(name='Gender')
-											select#gender(name='Gender')
+										.default-select#default-select(name='gender')
+											select#gender(name='gender')
 												option(value = "male") זכר
 												option(value = "female") נקבה
 								br
@@ -58,20 +58,20 @@ html(lang='he')
 							
 								h4.mb-20(style="text-align: right;") רשתות חברתיות 
 								.mt-10
-									input.single-input(type='text', name='Github', placeholder='Github Account', onfocus="this.placeholder = ''", onblur="this.placeholder = 'Github Account'")
+									input.single-input(type='text', name='github', placeholder='Github Account', onfocus="this.placeholder = ''", onblur="this.placeholder = 'Github Account'")
 								.mt-10
-									input.single-input(type='text', name='Twitter', placeholder='Twitter Account', onfocus="this.placeholder = ''", onblur="this.placeholder = 'Twitter Account'")
+									input.single-input(type='text', name='twitter', placeholder='Twitter Account', onfocus="this.placeholder = ''", onblur="this.placeholder = 'Twitter Account'")
 								.mt-10
-									input.single-input(type='text', name='Instagram', placeholder='Instagram Account', onfocus="this.placeholder = ''", onblur="this.placeholder = 'Instagram Account'")
+									input.single-input(type='text', name='instagram', placeholder='Instagram Account', onfocus="this.placeholder = ''", onblur="this.placeholder = 'Instagram Account'")
 								.mt-10
-									input.single-input(type='text', name='Facebook', placeholder='Facebook Account', onfocus="this.placeholder = ''", onblur="this.placeholder = 'Facebook Account'")
+									input.single-input(type='text', name='facebook', placeholder='Facebook Account', onfocus="this.placeholder = ''", onblur="this.placeholder = 'Facebook Account'")
 								br
 								.col-lg-3.col-md-4.mt-sm-40
 									.single-element-widget
 										.switch-wrap.d-flex.justify-content-between.mt-10(dir='rtl')
 											p אני מרצה
 											.primary-checkbox
-												input#default-checkbox(type='checkbox' name='IsTeacher')
+												input#default-checkbox(type='checkbox' name='isTeacher')
 												label(for='default-checkbox')
 
 								button.boxed-btn4.mt-5.mb-3(type='submit', style=' width: 100%;') הרשמה
