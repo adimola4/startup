@@ -162,35 +162,68 @@ async function saveQuiz() {
             }
         } else if (flavor === 'fillblanks') {
             question.choices = [];
-
             const answers = [];
-            var text = '';
+
             const data = e.find('div.fillblanks-input');
             if (data.children('div').length > 0) {
-                text = [];
+                var carry = null;
+
                 await data.children('div').each(async (i, e) => {
-                    await $(e).children('b').each((i, e) => {
-                        answers.push($(e).text());
-                    });
-                    text.push($(e).text());
+                    var line = '';
+                    if (carry) {
+                        line += carry + '\r\n';
+                    }
+                    line += $(e).html();
+                    while (-1 !== line.indexOf('<b>')) {
+                        var pts = line.split('<b>');
+                        var code = pts.shift();
+                        question.choices.push(['code', code]);
+                        line = pts.join('<b>');
+
+                        var pts = line.split('</b>')
+                        var ans = pts.shift();
+                        answers.push(ans);
+                        question.choices.push(['space', ans.length]);
+                        line = pts.join('</b>');
+                    }
+                    carry = line;
                 });
-                text = text.join('\n');
+                question.choices.push(['code', carry]);
             } else {
-                await data.children('b').each((i, e) => {
-                    answers.push($(e).text());
-                });
-                text = data.text();
-            }
-            console.log(answers);
-            for (const ans of answers) {
-                const pts = text.split(ans);
-                if (pts[0]) {
-                    question.choices.push({ code: pts[0] });
+                { // INITIAL & BUGGY ALGORITHM
+                    // var text = '';
+                    // await data.children('b').each((i, e) => {
+                    //     answers.push($(e).text());
+                    // });
+                    // text = data.text();
+                    // console.log(answers);
+                    // for (const ans of answers) {
+                    //     const pts = text.split(ans);
+                    //     console.table({ text, ans, pts });
+                    //     if (pts[0]) {
+                    //         question.choices.push(['code', pts[0]]);
+                    //     }
+                    //     question.choices.push(['space', ans.length]);
+                    //     text = pts[1];
+                    // }
+                    // question.choices.push(['code', text]);
                 }
-                question.choices.push({ space: ans.length });
-                text = pts[1];
+
+                var line = $(e).html();
+                while (-1 !== line.indexOf('<b>')) {
+                    var pts = line.split('<b>');
+                    var code = pts.shift();
+                    question.choices.push(['code', code]);
+                    line = pts.join('<b>');
+
+                    var pts = line.split('</b>')
+                    var ans = pts.shift();
+                    answers.push(ans);
+                    question.choices.push(['space', ans.length]);
+                    line = pts.join('</b>');
+                }
+                question.choices.push(['code', line]);
             }
-            question.choices.push({ code: text });
             question.answer = answers.join(';;');
         }
         quiz.questions.push(question);
@@ -211,5 +244,6 @@ async function saveQuiz() {
         const content = await rawResponse.json();
         console.log(content);
         alert(content.message);
+        window.location.href = '/quizes';
     })();
 }
