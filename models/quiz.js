@@ -10,10 +10,14 @@ var QuizSchema = new Schema({
             required: true,
             enum: ['truefalse', 'american', 'fillblanks']
         },
+        title: { type: String },
         choices: [{
-            type: String
+            type: mongoose.SchemaTypes.Mixed
         }],
-        answer: { type: String, required: true }
+        answer: {
+            type: mongoose.SchemaTypes.Mixed,
+            required: true
+        }
     }],
 }, {
     w: "majority",
