@@ -9,7 +9,8 @@ link(rel='stylesheet', href='/static/css/quizCss/game.css')
     a.boxed-btn4#color-btn(href='../singleCourse') המשך 
     br
     div(style = "line-height: 3em;")
-        a(href='../quiz' style="font-size: 1.1em; color: #e17055") נסה מחדש
+        a(href='../quizes' style="font-size: 1.1em; color: #e17055") נסה מחדש
 
-script(src='static/js/quizJS/end.js')
+script(src='https://code.jquery.com/jquery-3.3.1.min.js', integrity='sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=', crossorigin='anonymous')
+script(src='/static/js/endQuiz.js')
 include utilities/footer.pug
