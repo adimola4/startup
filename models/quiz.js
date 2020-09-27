@@ -20,7 +20,6 @@ var QuizSchema = new Schema({
         },
         difficulty: {
             type: String,
-            required: true,
             enum: ['easy', 'medium', 'hard']
         }
     }],
