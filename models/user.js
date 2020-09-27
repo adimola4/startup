@@ -25,6 +25,7 @@ var UserSchema = new Schema({
     facebook: { type: String },
 
     quizResults: [{
+        // TODO Add datetime of result
         quizRef: {
             type: mongoose.SchemaTypes.ObjectId,
             ref: 'Quiz',
