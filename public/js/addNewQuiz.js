@@ -109,6 +109,7 @@ function addQuestion(flavor) {
 async function saveQuiz() {
     const quiz = { questions: [] };
     // Collect data and verify integrity
+    // Iterate over all questions and parse every question based on its flavor (aka question type)
     quiz.title = $('textarea.editable-title__input').val();
     if (!quiz.title) {
         return alert('נא להזין שם לשאון!');
@@ -130,7 +131,7 @@ async function saveQuiz() {
                 valid = false;
                 return;
             }
-            // active btn to answer
+            // active btn to answer (true or false)
             question.answer = e.find('span.truefalse-selected').data('truefalse').toString();
             if (!question.answer) {
                 valid = false;
@@ -143,7 +144,7 @@ async function saveQuiz() {
                 valid = false;
                 return;
             }
-            // choices and green radio
+            // choices and green radio (index of answer)
             question.choices = [];
             await e.find('input.rounded-2').each((i, e) => {
                 const choice = $(e).val();
@@ -163,30 +164,47 @@ async function saveQuiz() {
         } else if (flavor === 'fillblanks') {
             question.choices = [];
             const answers = [];
+            /*
+            The container of the text input area is assigned to a constant named 'data'
+                if data's text is consistent of multiple lines
+                then data will have children <div> elements while
+                every <div> will store a line of text.
+
+            The algorithm is designed to parse line by line
+                (in case of multi-lined text we use a 'carry' variable to 
+                connect text from two adjacent lines).
+                otherwise in case of a single line we simply dont use a carry.
+            */
+
+            function parseFillBlanksLine(line) {
+                // Run while we have a selected element in the line
+                while (-1 !== line.indexOf('<b>')) {
+                    var parts = line.split('<b>');    // Split the line where the selection starts
+                    var code = parts.shift();         // Pop from beginning of the array (get the part before the selection)
+                    question.choices.push(['code', code]);
+                    line = parts.join('<b>');         // Join back the line (opposite of .split())
+
+                    // Do the same for the closing tag (</b>)
+                    var parts = line.split('</b>')
+                    var ans = parts.shift();
+                    answers.push(ans);                // Also push to answers array
+                    question.choices.push(['space', ans.length]);
+                    line = parts.join('</b>');
+                }
+                return line // Return the reminder of the line (carry)
+            }
 
             const data = e.find('div.fillblanks-input');
             if (data.children('div').length > 0) {
                 var carry = null;
-
                 await data.children('div').each(async (i, e) => {
                     var line = '';
                     if (carry) {
-                        line += carry + '\r\n';
+                        line += carry + '\r\n'; // Use windows'es newline notation (CRLF)
                     }
-                    line += $(e).html();
-                    while (-1 !== line.indexOf('<b>')) {
-                        var pts = line.split('<b>');
-                        var code = pts.shift();
-                        question.choices.push(['code', code]);
-                        line = pts.join('<b>');
-
-                        var pts = line.split('</b>')
-                        var ans = pts.shift();
-                        answers.push(ans);
-                        question.choices.push(['space', ans.length]);
-                        line = pts.join('</b>');
-                    }
-                    carry = line;
+                    line += $(e).html();        // Load the text with HTML tags
+                    line = parseFillBlanksLine(line);
+                    carry = line;               // Carry the line reminder
                 });
                 question.choices.push(['code', carry]);
             } else {
@@ -210,18 +228,7 @@ async function saveQuiz() {
                 }
 
                 var line = $(e).html();
-                while (-1 !== line.indexOf('<b>')) {
-                    var pts = line.split('<b>');
-                    var code = pts.shift();
-                    question.choices.push(['code', code]);
-                    line = pts.join('<b>');
-
-                    var pts = line.split('</b>')
-                    var ans = pts.shift();
-                    answers.push(ans);
-                    question.choices.push(['space', ans.length]);
-                    line = pts.join('</b>');
-                }
+                line = parseFillBlanksLine(line);
                 question.choices.push(['code', line]);
             }
             question.answer = answers.join(';;');
