@@ -4,14 +4,14 @@ link(rel='stylesheet', href='/static/css/quizCss/game.css')
 
 //- Header Add Quize
 
-.section-top-border(dir = "", style = "margin: auto 50px ")
+.section-top-border#controlBlock(dir = "", style = "margin: auto 50px ")
     label
         div(style= "margin-left: 15px;")
             svg.transition.duration-100.ease-linear(viewBox='0 0 36 36', width='36', height='36', fill='currentColor', focusable='false', aria-hidden='true', style= "margin: 12px 10px; float: right")
                 path(fill-rule='nonzero', d='M26.028 5.284c.596 0 1.134.247 1.519.644l2.493 2.499a2.112 2.112 0 01-.038 3.195L13.058 28.606l.01.01-.026.007-6.446 2.122c-.458.033-.801-.066-1.03-.296-.23-.23-.335-.599-.316-1.106l2.13-6.397.003.003L24.407 6.041a2.11 2.11 0 011.62-.757zM8.648 23.882l-1.722 5.174 5.192-1.708-3.47-3.466zm12.756-12.746L9.674 22.787l3.54 3.536L24.892 14.62l-3.488-3.483zm4.624-4.352a.609.609 0 00-.396.144l-.076.077-.092.1-2.996 2.974 3.483 3.48 2.99-2.996.09-.084a.612.612 0 00.219-.47.624.624 0 00-.183-.434L26.47 6.972a.609.609 0 00-.442-.188z')  
             textarea.text-lg.text-blue-800.resize-none.font-700.rounded-4.leading-14.editable-title__input(cols="30", rows="1", maxlength="128", style="overflow-x: hidden;overflow-wrap: break-word; width: 60%; float: right")  &nbsp; שם שאלון &nbsp;
           
-    a.boxed-btn3(href='../AddNewQuiz',style = "width: 15%; float: right; margin-right: 200px; margin-top: 3px; font-size: 1.2em;") שמירה ויציאה &nbsp;
+    a.boxed-btn3(href='#',onclick="saveQuiz()",style = "width: 15%; float: right; margin-right: 200px; margin-top: 3px; font-size: 1.2em;") שמירה ויציאה &nbsp;
     
     hr(style = "width: 70%;")
 
@@ -20,106 +20,103 @@ link(rel='stylesheet', href='/static/css/quizCss/game.css')
     .container(style= "margin-top: 42.5px; ") 
         h4(style= "text-align: center; color: #3a3f41;") הוסף שאלה
         div(style= "margin: 35px auto;  display: flex; justify-content: center;")
-            btn.choice-container.yellow(type='button',onclick='renderMultipleChoice()', style = "width: 20%;  display:inline-block;  margin-right: 1%; min-height: 65px; background-color: #fff7e5; border: none;")
+            btn.choice-container.yellow(type='button',onclick='addQuestion("american")', style = "width: 20%;  display:inline-block;  margin-right: 1%; min-height: 65px; background-color: #fff7e5; border: none;")
                 p.choice-text(style = "padding: 18px 24px; margin-bottom: 0; width: 100%; font-size: 0.7em; text-align: center; color: #efa946; font-weight: 700; ") אמריקאיות
-            btn.choice-container.blue(type='button',onclick='renderTrueFalse()', style = "width: 20%;  display:inline-block; margin-right: 1%; min-height: 65px; background-color: #e9eefb; border: none;")
+            btn.choice-container.blue(type='button',onclick='addQuestion("truefalse")', style = "width: 20%;  display:inline-block; margin-right: 1%; min-height: 65px; background-color: #e9eefb; border: none;")
                 p.choice-text(style = "padding: 18px 24px; margin-bottom: 0; width: 100%;  font-size: 0.7em; color: #5971a4; text-align: center; font-weight: 700;") נכון &nbsp;/&nbsp; לא נכון
-            btn.choice-container.orange(type='button',onclick='renderFillBlanks()', style = "width: 20%;  display:inline-block;  margin-right: 1%; min-height: 65px; background-color: #ffece6; border: none;")
+            btn.choice-container.orange(type='button',onclick='addQuestion("fillblanks")', style = "width: 20%;  display:inline-block;  margin-right: 1%; min-height: 65px; background-color: #ffece6; border: none;")
                 p.choice-text(style = "padding: 18px 24px; margin-bottom: 0; width: 100%; font-size: 0.7em; color: #ff753f; text-align: center; font-weight: 700;") השלם את הקוד
 
 //- True or False Quistion
-.section-top-border.bg-grey-50.width.trueFalseQ(style="margin: 0 auto; border-radius: 1em;", dir="rtl")
-    .container(style= "margin-top: 0;")
-        .btn(aria-label="Save Question",type="button", style= "float:left; margin-left: 20px; padding: 0 12px")
-            .relative.flex.items-center.justify-center.p-2(style = "background-color: #0099c7; border-radius: 0.5em;")
-               svg(viewBox="0 0 24 24" width="30" height="30" fill="#fff" focusable="false" aria-hidden="true", onclick="disabled()") 
-                  path(fill-rule="nonzero" d="M18.293 6.293a1 1 0 011.497 1.32l-.083.094-10 10a1 1 0 01-1.32.083l-.094-.083-5.5-5.5a1 1 0 011.32-1.497l.094.083L9 15.585l9.293-9.292z")
-        div(style= " margin-left: 30px;")
-            .btn(aria-label="Delete Question",type="button", onclick = "deleteQ()")
-                .relative.p-0.m-0.border-0.rounded-2.appearance-none.outline-none.transition.ease-in-out.duration-100.icon-button.cursor-pointer.text-cyan-600.bg-transparent  
-                    svg(viewBox="0 0 24 24" ,width="24" ,height="24" ,fill="#0099c7" ,focusable="false" ,aria-hidden="true")
-                        path(fill-rule="nonzero", d="M14.5 4a.5.5 0 00-.41-.492L14 3.5h-4a.5.5 0 00-.492.41L9.5 4v1H8V4a2 2 0 012-2h4a2 2 0 012 2v1h4.5a.75.75 0 01.102 1.493L20.5 6.5H19V19a2 2 0 01-2 2H7a2 2 0 01-2-2V6.5H3.5a.75.75 0 01-.102-1.493L3.5 5h11V4zm3 2.5h-11V19a.5.5 0 00.41.492L7 19.5h10a.5.5 0 00.492-.41L17.5 19V6.5zM9 8.25a.75.75 0 01.743.648L9.75 9v8a.75.75 0 01-1.493.102L8.25 17V9A.75.75 0 019 8.25zm3 0a.75.75 0 01.743.648L12.75 9v8a.75.75 0 01-1.493.102L11.25 17V9a.75.75 0 01.75-.75zm3 0a.75.75 0 01.743.648L15.75 9v8a.75.75 0 01-1.493.102L14.25 17V9a.75.75 0 01.75-.75z")
+//- .section-top-border.bg-grey-50.width.aquestion(style="margin: 0 auto; border-radius: 1em;", dir="rtl")
+//-     .container(style= "margin-top: 0;")
+//-         .btn(aria-label="Save Question",type="button", style= "float:left; margin-left: 20px; padding: 0 12px")
+//-             .relative.flex.items-center.justify-center.p-2(style = "background-color: #0099c7; border-radius: 0.5em;")
+//-                svg(viewBox="0 0 24 24" width="30" height="30" fill="#fff" focusable="false" aria-hidden="true", onclick="disabled()") 
+//-                   path(fill-rule="nonzero" d="M18.293 6.293a1 1 0 011.497 1.32l-.083.094-10 10a1 1 0 01-1.32.083l-.094-.083-5.5-5.5a1 1 0 011.32-1.497l.094.083L9 15.585l9.293-9.292z")
+//-         div(style= " margin-left: 30px;")
+//-             .btn(aria-label="Delete Question",type="button", onclick = "deleteQ()")
+//-                 .relative.p-0.m-0.border-0.rounded-2.appearance-none.outline-none.transition.ease-in-out.duration-100.icon-button.cursor-pointer.text-cyan-600.bg-transparent  
+//-                     svg(viewBox="0 0 24 24" ,width="24" ,height="24" ,fill="#0099c7" ,focusable="false" ,aria-hidden="true")
+//-                         path(fill-rule="nonzero", d="M14.5 4a.5.5 0 00-.41-.492L14 3.5h-4a.5.5 0 00-.492.41L9.5 4v1H8V4a2 2 0 012-2h4a2 2 0 012 2v1h4.5a.75.75 0 01.102 1.493L20.5 6.5H19V19a2 2 0 01-2 2H7a2 2 0 01-2-2V6.5H3.5a.75.75 0 01-.102-1.493L3.5 5h11V4zm3 2.5h-11V19a.5.5 0 00.41.492L7 19.5h10a.5.5 0 00.492-.41L17.5 19V6.5zM9 8.25a.75.75 0 01.743.648L9.75 9v8a.75.75 0 01-1.493.102L8.25 17V9A.75.75 0 019 8.25zm3 0a.75.75 0 01.743.648L12.75 9v8a.75.75 0 01-1.493.102L11.25 17V9a.75.75 0 01.75-.75zm3 0a.75.75 0 01.743.648L15.75 9v8a.75.75 0 01-1.493.102L14.25 17V9a.75.75 0 01.75-.75z")
             
-        div(style="width: 80%; margin-right: 20px;") 
-            span.text-md.text-blue-900(style="float: right;")  1.
-                  textarea.rounded-2(name="biography", id="bio", placeholder="הוסף שאלת נכון או לא נכון",dir="ltr",style = "float:right; margin:0 15px; margin-bottom: 25px;")
-        br
-        br
-        br
-        br
-        br
-        .col-span-2.col-start-2.flex.items-start.pl-2#disableTrueFalse(style= "margin-right: 50px;")
-                    label.rounded-2.cursor-pointer.truefalse-option
-                        //- .absolute.pointer-events-none.opacity-0.transition-opacity.duration-100.ease-linear.focus-indicator.shadow-outline.-inset-2.text-cyan-600.is-hidden
-                        input.sr-only(type='radio', name='trueOrFalse', value='false')
-                        span#false.flex.flex-1.items-center.justify-center.px-8.py-2.rounded-2.font-sans.text-base.leading-8.transition.ease-in-out.duration-100.bg-red-500.text-white(class='hover:bg-red-600', onclick="setRed()") False
+//-         div(style="width: 80%; margin-right: 20px;") 
+//-             span.text-md.text-blue-900(style="float: right;")  1.
+//-                   textarea.rounded-2(name="biography", id="bio", placeholder="הוסף שאלת נכון או לא נכון",dir="ltr",style = "float:right; margin:0 15px; margin-bottom: 25px;")
+//-         br
+//-         br
+//-         br
+//-         br
+//-         br
+//-         .col-span-2.col-start-2.flex.items-start.pl-2#disableTrueFalse(style= "margin-right: 50px;")
+//-                     label.rounded-2.cursor-pointer.truefalse-option
+//-                         //- .absolute.pointer-events-none.opacity-0.transition-opacity.duration-100.ease-linear.focus-indicator.shadow-outline.-inset-2.text-cyan-600.is-hidden
+//-                         input.sr-only(type='radio', name='trueOrFalse', value='false')
+//-                         span#false.flex.flex-1.items-center.justify-center.px-8.py-2.rounded-2.font-sans.text-base.leading-8.transition.ease-in-out.duration-100.bg-red-500.text-white(class='hover:bg-red-600', onclick="setRed()") False
 
-                    label.mr-4.rounded-2.cursor-pointer.truefalse-option
-                        //- .absolute.pointer-events-none.opacity-0.transition-opacity.duration-100.ease-linear.focus-indicator.shadow-outline.-inset-2.text-cyan-600.is-hidden
-                        input.sr-only(type='radio', name='trueOrFalse', value='true', checked='')
-                        span#true.flex.flex-1.items-center.justify-center.px-8.py-2.rounded-2.font-sans.text-base.leading-8.transition.ease-in-out.duration-100.font-600.bg-white.text-grey-700(class='hover:text-green-600 hover:bg-green-100 ', onclick="setGreen()") True
-                
-br
+//-                     label.mr-4.rounded-2.cursor-pointer.truefalse-option
+//-                         //- .absolute.pointer-events-none.opacity-0.transition-opacity.duration-100.ease-linear.focus-indicator.shadow-outline.-inset-2.text-cyan-600.is-hidden
+//-                         input.sr-only(type='radio', name='trueOrFalse', value='true', checked='')
+//-                         span#true.flex.flex-1.items-center.justify-center.px-8.py-2.rounded-2.font-sans.text-base.leading-8.transition.ease-in-out.duration-100.font-600.bg-white.text-grey-700(class='hover:text-green-600 hover:bg-green-100 ', onclick="setGreen()") True
+
+//- br
 
 //- Amrican Questions 
 
-.section-top-border.bg-grey-50.width.trueFalseQ(style="margin: 0 auto; border-radius: 1em;", dir="rtl")
-    .container(style= "margin-top: 0;")
-        .btn(aria-label="Save Question",type="button", style= "float:left; margin-left: 20px; padding: 0 12px")
-            .relative.flex.items-center.justify-center.p-2(style = "background-color: #0099c7; border-radius: 0.5em;")
-               svg(viewBox="0 0 24 24" width="30" height="30" fill="#fff" focusable="false" aria-hidden="true", onclick="disabled()") 
-                  path(fill-rule="nonzero" d="M18.293 6.293a1 1 0 011.497 1.32l-.083.094-10 10a1 1 0 01-1.32.083l-.094-.083-5.5-5.5a1 1 0 011.32-1.497l.094.083L9 15.585l9.293-9.292z")
-        div(style="width: 80%; margin-right: 20px;") 
-            span.text-md.text-blue-900(style="float: right;")  1.
-            input(type="text", style = "float:right; margin:0 15px; margin-bottom: 25px;", placeholder="רשום כאן את השאלה")
-        div(style= "margin-top: 15px; margin-left: 30px;")
-            .btn(aria-label="Delete Question",type="button", onclick = "deleteQ()")
-                .relative.p-0.m-0.border-0.rounded-2.appearance-none.outline-none.transition.ease-in-out.duration-100.icon-button.cursor-pointer.text-cyan-600.bg-transparent  
-                    svg(viewBox="0 0 24 24" ,width="24" ,height="24" ,fill="#0099c7" ,focusable="false" ,aria-hidden="true")
-                        path(fill-rule="nonzero", d="M14.5 4a.5.5 0 00-.41-.492L14 3.5h-4a.5.5 0 00-.492.41L9.5 4v1H8V4a2 2 0 012-2h4a2 2 0 012 2v1h4.5a.75.75 0 01.102 1.493L20.5 6.5H19V19a2 2 0 01-2 2H7a2 2 0 01-2-2V6.5H3.5a.75.75 0 01-.102-1.493L3.5 5h11V4zm3 2.5h-11V19a.5.5 0 00.41.492L7 19.5h10a.5.5 0 00.492-.41L17.5 19V6.5zM9 8.25a.75.75 0 01.743.648L9.75 9v8a.75.75 0 01-1.493.102L8.25 17V9A.75.75 0 019 8.25zm3 0a.75.75 0 01.743.648L12.75 9v8a.75.75 0 01-1.493.102L11.25 17V9a.75.75 0 01.75-.75zm3 0a.75.75 0 01.743.648L15.75 9v8a.75.75 0 01-1.493.102L14.25 17V9a.75.75 0 01.75-.75z")
-            
-    //- .col-span-2.col-start-2.flex.items-start.pl-2( dir="rtl")
-    .container
-        legend
-            span.number#numberA A
-            input(type="radio",id="Answer-A", name="rightChoice", onclick= 'checkedButton()')
-            input#A.rounded-2(type="text",placeholder="תשובה א")
-        legend
-            span.number#numberB B 
-            input(type="radio", id="Answer-B", name="rightChoice", onclick= 'checkedButton()')
-            input#B.rounded-2(type="text",placeholder="תשובה ב")
-        legend
-            span.number#numberC C 
-            input(type="radio", id="Answer-C", name="rightChoice", onclick= 'checkedButton()')
-            input#C.rounded-2(type="text",placeholder="תשובה ג")
-        legend
-            span.number#numberD D
-            input(type="radio", id="Answer-D", name="rightChoice", onclick= 'checkedButton()')
-            input#D(type="text",placeholder="תשובה ד")
+//- .section-top-border.bg-grey-50.width.trueFalseQ(style="margin: 0 auto; border-radius: 1em;", dir="rtl")
+//-     .container(style= "margin-top: 0;")
+//-         .btn(aria-label="Save Question",type="button", style= "float:left; margin-left: 20px; padding: 0 12px")
+//-             .relative.flex.items-center.justify-center.p-2(style = "background-color: #0099c7; border-radius: 0.5em;")
+//-                 svg(viewBox="0 0 24 24" width="30" height="30" fill="#fff" focusable="false" aria-hidden="true", onclick="disabled()") 
+//-                     path(fill-rule="nonzero" d="M18.293 6.293a1 1 0 011.497 1.32l-.083.094-10 10a1 1 0 01-1.32.083l-.094-.083-5.5-5.5a1 1 0 011.32-1.497l.094.083L9 15.585l9.293-9.292z")
+//-         div(style="width: 80%; margin-right: 20px;") 
+//-             span.text-md.text-blue-900(style="float: right;")  1.
+//-             input(type="text", style = "float:right; margin:0 15px; margin-bottom: 25px;", placeholder="רשום כאן את השאלה")
+//-         div(style= "margin-top: 15px; margin-left: 30px;")
+//-             .btn(aria-label="Delete Question",type="button", onclick = "deleteQ()")
+//-                 .relative.p-0.m-0.border-0.rounded-2.appearance-none.outline-none.transition.ease-in-out.duration-100.icon-button.cursor-pointer.text-cyan-600.bg-transparent  
+//-                     svg(viewBox="0 0 24 24" ,width="24" ,height="24" ,fill="#0099c7" ,focusable="false" ,aria-hidden="true")
+//-                         path(fill-rule="nonzero", d="M14.5 4a.5.5 0 00-.41-.492L14 3.5h-4a.5.5 0 00-.492.41L9.5 4v1H8V4a2 2 0 012-2h4a2 2 0 012 2v1h4.5a.75.75 0 01.102 1.493L20.5 6.5H19V19a2 2 0 01-2 2H7a2 2 0 01-2-2V6.5H3.5a.75.75 0 01-.102-1.493L3.5 5h11V4zm3 2.5h-11V19a.5.5 0 00.41.492L7 19.5h10a.5.5 0 00.492-.41L17.5 19V6.5zM9 8.25a.75.75 0 01.743.648L9.75 9v8a.75.75 0 01-1.493.102L8.25 17V9A.75.75 0 019 8.25zm3 0a.75.75 0 01.743.648L12.75 9v8a.75.75 0 01-1.493.102L11.25 17V9a.75.75 0 01.75-.75zm3 0a.75.75 0 01.743.648L15.75 9v8a.75.75 0 01-1.493.102L14.25 17V9a.75.75 0 01.75-.75z")
+//-     //- .col-span-2.col-start-2.flex.items-start.pl-2( dir="rtl")
+//-     .container
+//-         legend
+//-             span.number#numberA A
+//-             input(type="radio",id="Answer-A", name="rightChoice", onclick= 'checkedButton(this)')
+//-             input#A.rounded-2(type="text",placeholder="תשובה א")
+//-         legend
+//-             span.number#numberB B 
+//-             input(type="radio", id="Answer-B", name="rightChoice", onclick= 'checkedButton(this)')
+//-             input#B.rounded-2(type="text",placeholder="תשובה ב")
+//-         legend
+//-             span.number#numberC C 
+//-             input(type="radio", id="Answer-C", name="rightChoice", onclick= 'checkedButton(this)')
+//-             input#C.rounded-2(type="text",placeholder="תשובה ג")
+//-         legend
+//-             span.number#numberD D
+//-             input(type="radio", id="Answer-D", name="rightChoice", onclick= 'checkedButton(this)')
+//-             input#D(type="text",placeholder="תשובה ד")
 
-br
+//- br
 
 //- Fill the Blanks 
-.section-top-border.bg-grey-50.width.trueFalseQ(style="margin: 0 auto; border-radius: 1em;", dir="rtl")
-    .container(style= "margin-top: 0;")
-    p(dir="rtl", style= "font-size: 0.9em; float: right; margin-right: 20px;") רשום את השאלה והדגש באמצעות הכפתור את המילים אשר ברצונך שממלאי השאלון ישלימו.
+//- .section-top-border.bg-grey-50.width.trueFalseQ(style="margin: 0 auto; border-radius: 1em;", dir="rtl")
+//-     .container(style= "margin-top: 0;")
+//-     p(dir="rtl", style= "font-size: 0.9em; float: right; margin-right: 20px;") רשום את השאלה והדגש באמצעות הכפתור את המילים אשר ברצונך שממלאי השאלון ישלימו.
+//-         .btn(aria-label="Save Question",type="button", style= "float:left; margin-left: 20px; padding: 0 12px")
+//-             .relative.flex.items-center.justify-center.p-2(style = "background-color: #0099c7; border-radius: 0.5em;")
+//-                 svg(viewBox="0 0 24 24" width="30" height="30" fill="#fff" focusable="false" aria-hidden="true", onclick="disabled()") 
+//-                     path(fill-rule="nonzero" d="M18.293 6.293a1 1 0 011.497 1.32l-.083.094-10 10a1 1 0 01-1.32.083l-.094-.083-5.5-5.5a1 1 0 011.32-1.497l.094.083L9 15.585l9.293-9.292z")
+//-         div(style= " margin-left: 30px;")
+//-             .btn(aria-label="Delete Question",type="button", onclick = "deleteQ()")
+//-                 .relative.p-0.m-0.border-0.rounded-2.appearance-none.outline-none.transition.ease-in-out.duration-100.icon-button.cursor-pointer.text-cyan-600.bg-transparent  
+//-                     svg(viewBox="0 0 24 24" ,width="24" ,height="24" ,fill="#0099c7" ,focusable="false" ,aria-hidden="true")
+//-                         path(fill-rule="nonzero", d="M14.5 4a.5.5 0 00-.41-.492L14 3.5h-4a.5.5 0 00-.492.41L9.5 4v1H8V4a2 2 0 012-2h4a2 2 0 012 2v1h4.5a.75.75 0 01.102 1.493L20.5 6.5H19V19a2 2 0 01-2 2H7a2 2 0 01-2-2V6.5H3.5a.75.75 0 01-.102-1.493L3.5 5h11V4zm3 2.5h-11V19a.5.5 0 00.41.492L7 19.5h10a.5.5 0 00.492-.41L17.5 19V6.5zM9 8.25a.75.75 0 01.743.648L9.75 9v8a.75.75 0 01-1.493.102L8.25 17V9A.75.75 0 019 8.25zm3 0a.75.75 0 01.743.648L12.75 9v8a.75.75 0 01-1.493.102L11.25 17V9a.75.75 0 01.75-.75zm3 0a.75.75 0 01.743.648L15.75 9v8a.75.75 0 01-1.493.102L14.25 17V9a.75.75 0 01.75-.75z")
+//-         br
+//-         div(style="width: 80%; margin-right: 20px; min-height: 150px;")
+//-             span.text-md.text-blue-900(style="float: right;")  1.
+//-             .rounded-2(contenteditable="true" name = "fillTheBlanks", dir="ltr",style = "box-shadow: 1px 3px 0 rgba(0,0,0,0.03) inset; float:right; margin:0 15px; margin-bottom: 25px; min-height: 150px; min-width: 600px; background-color: #f3f3f3; padding: 10px;" ) רשום כאן את השאלה..
+//-         br 
+//-         button.btn.rounded-2(onclick="document.execCommand('bold');", style="float:right; margin-right: 50px; background: #fab1a0;color: white; border: 1px solid #fab1a0;") הדגש
 
-        .btn(aria-label="Save Question",type="button", style= "float:left; margin-left: 20px; padding: 0 12px")
-            .relative.flex.items-center.justify-center.p-2(style = "background-color: #0099c7; border-radius: 0.5em;")
-               svg(viewBox="0 0 24 24" width="30" height="30" fill="#fff" focusable="false" aria-hidden="true", onclick="disabled()") 
-                  path(fill-rule="nonzero" d="M18.293 6.293a1 1 0 011.497 1.32l-.083.094-10 10a1 1 0 01-1.32.083l-.094-.083-5.5-5.5a1 1 0 011.32-1.497l.094.083L9 15.585l9.293-9.292z")
-        div(style= " margin-left: 30px;")
-            .btn(aria-label="Delete Question",type="button", onclick = "deleteQ()")
-                .relative.p-0.m-0.border-0.rounded-2.appearance-none.outline-none.transition.ease-in-out.duration-100.icon-button.cursor-pointer.text-cyan-600.bg-transparent  
-                    svg(viewBox="0 0 24 24" ,width="24" ,height="24" ,fill="#0099c7" ,focusable="false" ,aria-hidden="true")
-                        path(fill-rule="nonzero", d="M14.5 4a.5.5 0 00-.41-.492L14 3.5h-4a.5.5 0 00-.492.41L9.5 4v1H8V4a2 2 0 012-2h4a2 2 0 012 2v1h4.5a.75.75 0 01.102 1.493L20.5 6.5H19V19a2 2 0 01-2 2H7a2 2 0 01-2-2V6.5H3.5a.75.75 0 01-.102-1.493L3.5 5h11V4zm3 2.5h-11V19a.5.5 0 00.41.492L7 19.5h10a.5.5 0 00.492-.41L17.5 19V6.5zM9 8.25a.75.75 0 01.743.648L9.75 9v8a.75.75 0 01-1.493.102L8.25 17V9A.75.75 0 019 8.25zm3 0a.75.75 0 01.743.648L12.75 9v8a.75.75 0 01-1.493.102L11.25 17V9a.75.75 0 01.75-.75zm3 0a.75.75 0 01.743.648L15.75 9v8a.75.75 0 01-1.493.102L14.25 17V9a.75.75 0 01.75-.75z")
-                    
-        br
-        div(style="width: 80%; margin-right: 20px; min-height: 150px;")
-            span.text-md.text-blue-900(style="float: right;")  1.
-            .rounded-2(contenteditable="true" name = "fillTheBlanks", dir="ltr",style = "box-shadow: 1px 3px 0 rgba(0,0,0,0.03) inset; float:right; margin:0 15px; margin-bottom: 25px; min-height: 150px; min-width: 600px; background-color: #f3f3f3; padding: 10px;" ) רשום כאן את השאלה..
-        br 
-        button.btn.rounded-2(onclick="document.execCommand('bold');", style="float:right; margin-right: 50px; background: #fab1a0;color: white; border: 1px solid #fab1a0;") הדגש
-
-script(src='static/js/QuizAdmin/HandleQuiz.js')
+script(src='/static/js/addNewQuiz.js')
 include utilities/footer.pug

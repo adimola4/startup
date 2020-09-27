@@ -5,8 +5,11 @@ app.get('/', (req, res) => {
     res.render('index');
 
 });
-app.get('/Quiz', (req, res) => {
+app.get('/Quizes', (req, res) => {
     res.render('Quizes')
+})
+app.get('/Quiz', (req, res) => {
+    res.render('Quiz')
 })
 app.get('/AddNewQuiz', (req, res) => {
     res.render('AddNewQuiz')

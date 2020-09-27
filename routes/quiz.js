@@ -21,6 +21,7 @@ router.get("/:id", async (req, res) => {
         }
         return res.json({ message: 'success', question })
     } catch (error) {
+        console.error(error)
         return res.status(500).json({ message: "Unable to get", error })
     }
 })
@@ -50,8 +51,9 @@ router.post('/add', async (req, res) => {
     console.table(req.body)
     try {
         await Quiz.create(req.body)
-        return res.status(200).json({ message: `Course created successfully` })
+        return res.json({ message: `Course created successfully` })
     } catch (error) {
+        console.error(error)
         return res.status(500).json({ message: "Unable to create course", error })
     }
 })
@@ -64,6 +66,7 @@ router.delete("/:id", async (req, res) => {
         }
         return res.json({ message: `Course successfully deleted` })
     } catch (error) {
+        console.error(error)
         return res.status(500).json({ message: "Unable to delete course", error })
     }
 })
