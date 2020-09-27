@@ -1,0 +1,69 @@
+include utilities/header.pug
+
+link(rel='stylesheet', href='/static/css/quizCss/game.css')
+link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/prism/1.5.0/themes/prism.min.css')
+
+body
+.container(dir='rtl')
+    #loader
+    #game.justify-center.flex-column.hidden
+    h1#quizTitle Loading...
+    #hud
+        p#progressText.hud-prefix שאלה
+        #hud-item
+            p.hud-prefix(style= "float: right;") ניקוד:
+            h3#score.hud-main-text(style= "float: left;") 0 
+    .table-row(style="padding-top: 10px;")
+    .progress
+        .progress-bar.color-1#progressBarFull(role='progressbar', style='width: 50%', aria-valuenow='80', aria-valuemin='0', aria-valuemax='100')
+
+////// fillblanks
+.container#question(dir='rtl', style = "margin-bottom: 174px;")
+
+#asd
+    p(style="font-size: 1.2em; text-align: right;") מקם את האלמנט החדש p כילד האחרון של האלמנט המאוחסן בקבוע div.
+    pre.language-js(style= "text-align: left; background: #353535; margin: 15px 0;", dir='ltr')
+        code.language-js#codeblock(style="color: #d5d8df; text-shadow: 0 0")
+            | const div = document.querySelector('div#feedback');
+            | const p = document.createElement('p');
+            |
+        span(contenteditable="true",spellcheck="false", style="text-shadow: 0 0; color: #ddd; border-bottom: 2px solid #b7c0c7; background-color: #434d55; min-width: 20px !important; text-align: center;") 
+        code.language-js(style="color: #d5d8df; text-shadow: 0 0;") .appendChild(
+        span(contenteditable="true",spellcheck="false" ,style = "text-shadow: 0 0; color: #ddd; border-bottom: 2px solid #b7c0c7; background-color: #434d55; min-width: 20px !important; text-align: center;") 
+        code.language-js(style="color: #d5d8df; text-shadow: 0 0") );
+    a.boxed-btn4#color-btn(href='#',style="float: right;") אשר   
+
+///// american
+//- .container(dir='rtl') 
+//-     h2(dir='rtl' style= "text-align: right;") asdf asdfasdf adsf adsf 
+//-     .choice-container
+//-         p.choice-prefix 1
+//-         p.choice-text(data-number='1')
+//-     .choice-container
+//-         p.choice-prefix 2
+//-         p.choice-text(data-number='2')
+//-     .choice-container
+//-         p.choice-prefix 3
+//-         p.choice-text(data-number='3')
+//-     .choice-container
+//-         p.choice-prefix 4
+//-         p.choice-text(data-number='4')
+
+/////// truefalse
+//- .container(dir='rtl') 
+//-     pre(style= "text-align: left;", dir='ltr')
+//-         code.language-js#codeblock
+//-             |var a = true; 
+//-             |if(a == 1)
+//-             |&nbsp; &nbsp; console.log("True");
+//-             |else console.log("False");
+//-     div(style= "margin-bottom: 6em; margin-top: 1.65em ;")
+//-         .choice-container(style = "width: 10%;  display:inline-block;")
+//-             p.choice-text#false(data-number='1',style = "padding: 18px 24px; margin-bottom: 0; width: 100%; text-align: center; ") False
+//-         .choice-container(style = "width: 10%;  display:inline-block;  margin-right: 0.5%;")
+//-             p.choice-text#true(data-number='2',style = "padding: 18px 24px; margin-bottom: 0; width: 100%; text-align: center;") True
+ 
+//- script(src='https://cdnjs.cloudflare.com/ajax/libs/prism/1.5.0/prism.min.js')
+script(src='https://code.jquery.com/jquery-3.3.1.min.js', integrity='sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=', crossorigin='anonymous')
+script(src='/static/js/quizJS/game.js')
+include utilities/footer.pug

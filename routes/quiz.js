@@ -9,17 +9,18 @@ router.get('/', async (req, res) => {
     try {
         return res.json(await Quiz.find({}))
     } catch (error) {
+        console.error(error)
         return res.status(500).json(error)
     }
 })
 
 router.get("/:id", async (req, res) => {
     try {
-        const question = await Quiz.findById(req.params.id)
-        if (!question) {
+        const quiz = await Quiz.findById(req.params.id)
+        if (!quiz) {
             return res.status(404).json({ message: 'not found' })
         }
-        return res.json({ message: 'success', question })
+        return res.json({ message: 'success', quiz })
     } catch (error) {
         console.error(error)
         return res.status(500).json({ message: "Unable to get", error })
