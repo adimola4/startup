@@ -17,6 +17,11 @@ var QuizSchema = new Schema({
         answer: {
             type: mongoose.SchemaTypes.Mixed,
             required: true
+        },
+        difficulty: {
+            type: String,
+            required: true,
+            enum: ['easy', 'medium', 'hard']
         }
     }],
 }, {
