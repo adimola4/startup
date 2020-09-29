@@ -83,6 +83,9 @@ function enterQuestion(index) {
     const choices = current.choices || [];
     container.html(templates[current.flavor](current.title, choices));
 
+    // Repaint <code> elements after DOM update
+    Prism.highlightAll();
+
     // Assign onclick handler
     handlers[current.flavor](current.answer);
 

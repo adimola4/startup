@@ -227,7 +227,7 @@ async function saveQuiz() {
                     // question.choices.push(['code', text]);
                 }
 
-                var line = $(e).html();
+                var line = $(data).html();
                 line = parseFillBlanksLine(line);
                 question.choices.push(['code', line]);
             }

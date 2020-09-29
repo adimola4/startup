@@ -62,8 +62,10 @@ router.post("/login", async (req, res) => {
             user.isTeacher == credentials.isTeacher) {
 
             console.log("[INFO] Login successful for email: " + user.email)
-            await generateToken(res, user)
-            return res.redirect('/api/courses');
+            await generateToken(res, user) // Include fresh JWT in response
+            return res.redirect(credentials.isTeacher
+                ? '/quizes'
+                : '/api/courses');
         } else {
             return res.status(401).json({ message: "Invalid credentials" });
         }
@@ -75,7 +77,7 @@ router.post("/login", async (req, res) => {
 
 router.get("/logout", async (req, res) => {
     // Destroy client's cookie
-    res.cookie('testtoken', '', { maxAge: 0 })
+    res.cookie('token', '', { maxAge: 0 })
     return res.redirect('/')
 })
 
