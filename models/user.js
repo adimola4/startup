@@ -15,6 +15,8 @@ var UserSchema = new Schema({
         required: true,
         enum: ['male', 'female']
     },
+    passwordResetToken: {type:String, required:false},
+    passwordResetExpires: {type:String, required:false},
 
     title: { type: String },
     address: { type: String },
