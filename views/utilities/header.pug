@@ -57,16 +57,20 @@ header
                                 li
                                     a(href='#') תמיכה
                 .col-lg-2.d-none.d-lg-block
+                 
                     .log_chat_area.d-flex.align-items-end
                         .main-menu
                             ul#navigation
+                            
                                 li
                                     a(href='#', style='padding: 0.5em; margin-top: 1.2em;')
                                         i.fas.fa-user-circle(style='font-size: 1.75em;')
                                         nav
                                             h6
-                                                | שלום 
-                                                span#user אורח
+                                            if user
+                                             span#user #{user.fullName} 
+                                                |שלום   
+                                               
                                     ul.submenu(dir='rtl')
                                         li
                                             a(href='/api/profile')

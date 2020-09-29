@@ -12,6 +12,11 @@ app.use(require('helmet')())
 app.use(require('morgan')('dev'))
 app.use(require('cors')())
 
+app.use(function(req,res,next){
+    res.locals.user = req.user;
+    next();
+});
+
 // Load secret key from env file
 require('dotenv').config()
 const secret = process.env.SECRET

@@ -5,11 +5,11 @@ const jwt = require("jsonwebtoken");
 const User = require("../models/user");
 
 const router = express.Router();
-
+const expiration = 7 * 24 * 60 * 60 * 1000; // 7d
 const generateToken = (res, user) => {
     const secret = process.env.SECRET
 
-    const expiration = 7 * 24 * 60 * 60 * 1000; // 7d
+   
     const token = jwt.sign({
         uid: user._id
     }, secret, {
@@ -60,12 +60,12 @@ router.post("/login", async (req, res) => {
         if (user &&
             bycrpt.compareSync(credentials.password, user.hashedPass) &&
             user.isTeacher == credentials.isTeacher) {
-
             console.log("[INFO] Login successful for email: " + user.email)
             await generateToken(res, user) // Include fresh JWT in response
-            return res.redirect(credentials.isTeacher
-                ? '/quizes'
-                : '/api/courses');
+           
+            return res.render(credentials.isTeacher
+                ? '/Quizes'
+                : 'courses',user);
         } else {
             return res.status(401).json({ message: "Invalid credentials" });
         }
