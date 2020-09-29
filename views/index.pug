@@ -124,20 +124,20 @@ html.no-js(lang='he')
 				.row.justify-content-center
 					.col-lg-8
 						.touch_form
-							form(action='#')
+							form(action='api/contact' method='post')
 								.row
 									.col-md-6
 										.single_input.wow.fadeInUp(data-wow-duration='1s', data-wow-delay='.3s')
-											input(type='text', placeholder='שם מלא')
+											input(type='text',name="name", placeholder='שם מלא')
 									.col-md-6
 										.single_input.wow.fadeInUp(data-wow-duration='1s', data-wow-delay='.4s')
-											input(type='email', placeholder='דואר אלקטרוני')
+											input(type='email', name="email", placeholder='דואר אלקטרוני')
 									.col-md-12
 										.single_input.wow.fadeInUp(data-wow-duration='1s', data-wow-delay='.5s')
-											input(type='email', placeholder='נושא')
+											input(type='text', name="subject", placeholder='נושא')
 									.col-md-12
 										.single_input.wow.fadeInUp(data-wow-duration='1s', data-wow-delay='.6s')
-											textarea(name='', id='', cols='30', placeholder='כתוב כאן...', rows='10')
+											textarea(name='body', id='', cols='30', placeholder='כתוב כאן...', rows='10')
 									.col-lg-12
 										.submit_btn.wow.fadeInUp(data-wow-duration='1s', data-wow-delay='.7s')
 											button.boxed-btn3(type='submit') שלח הודעה
