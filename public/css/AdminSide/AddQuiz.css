@@ -251,6 +251,11 @@ select {
     background-color: #daf0de !important;
 }
 
+.textBold{
+    font-weight: bold;
+    text-decoration: underline;
+}
+
 .rounded-2 {
     border-radius: .5rem;
 }

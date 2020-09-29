@@ -1,0 +1,26 @@
+.boxed-btn3:hover {
+    border: 1px solid #ffa100 ;
+    color: #ffa100 !important;
+    background: #fff ;
+  }
+
+  .boxed-btn3{
+    
+    float: right; 
+    background: #ffa100; 
+    border: 1px solid #ffa100;
+  }
+
+  .icon-label-button {
+    margin-left: 20px; 
+    font-size: 1.1em; 
+    float: right;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    color: #8a8a8a;
+    font-family: 'Muli', sans-serif;
+   
+    /* outline: none;
+    position: relative; */
+}
