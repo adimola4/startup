@@ -48,10 +48,13 @@ const verifyLogin = async (req, res, next) => {
 
 //set Routers
 app.use('/api/auth', require('./routes/auth')) // Public routes
+app.use('/api/contact', require('./routes/contact'))
+app.use('/api/forgotPassword', require('./routes/forgotPassword'))
 app.use('/api/courses', verifyLogin, require('./routes/courses'))
 app.use('/api/users', verifyLogin, require('./routes/users'))
 app.use('/api/profile', verifyLogin, require('./routes/profiles'))
 app.use('/api/quiz', verifyLogin, require('./routes/quiz'))
+
 
 app.use('/static', express.static('public'));
 
