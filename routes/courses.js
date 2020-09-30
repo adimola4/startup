@@ -1,5 +1,6 @@
 const express = require("express");
 const Course = require("../models/course");
+const User = require("../models/user")
 
 const router = express.Router();
 
@@ -8,9 +9,15 @@ const router = express.Router();
 router.get('/', async (req, res) => {
   const subject = 'Full Stack'
   const title = 'JS מתקדם'
-  // console.log('[DBG] Authenticated as:')
-  // console.table(req.user)
-  return res.render('courses', { subject, title });
+// console.log('[DBG] Authenticated as:')
+  try{
+    let user =  await User.findById(req.user.uid);
+    return res.render('courses', { subject, title ,user});
+  }catch(err){
+    console.log(err);
+    return res.render('courses', { subject, title });
+  }
+
 });
 
 // router.get('/', async (req, res) => {

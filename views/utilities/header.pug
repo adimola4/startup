@@ -57,16 +57,20 @@ header
                                 li
                                     a(href='#') תמיכה
                 .col-lg-2.d-none.d-lg-block
+                 
                     .log_chat_area.d-flex.align-items-end
                         .main-menu
                             ul#navigation
+                            
                                 li
                                     a(href='#', style='padding: 0.5em; margin-top: 1.2em;')
                                         i.fas.fa-user-circle(style='font-size: 1.75em;')
                                         nav
                                             h6
-                                                | שלום 
-                                                span#user אורח
+                                            if user
+                                             span#user #{user.fullName} 
+                                                |שלום   
+                                               
                                     ul.submenu(dir='rtl')
                                         li
                                             a(href='/api/profile')
@@ -77,7 +81,7 @@ header
                                                 i.fas.fa-cog(style='font-size: 0.9em;')
                                                 |  הגדרות
                                         li
-                                            a(href='#')
+                                            a(href="/api/auth/logout")
                                                 i.fas.fa-sign-out-alt(style='font-size: 0.9em;')
                                                 |  התנתק
                 .col-12
