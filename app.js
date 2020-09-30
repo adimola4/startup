@@ -14,9 +14,13 @@ app.get('/Quiz', (req, res) => {
 app.get('/AddNewQuiz', (req, res) => {
     res.render('AddNewQuiz')
 })
-// app.get('/courses', (req, res) => {
-//     res.render('courses')
-// })
+app.get('/404', (req, res) => {
+    res.render('404')
+})
+
+app.get('/Dashboard', (req, res) => {
+    res.render('Dashboard')
+})
 
 app.get('/EndQuiz', (req, res) => {
  
