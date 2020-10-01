@@ -12,25 +12,25 @@ body
                                 .col-sm-3
                                     h6.mb-0 שם מלא
                                 .col-sm-9.text-secondary
-                                    | #{fullName}
+                                    | #{user.fullName}
                             hr
                             .row
                                 .col-sm-3
                                     h6.mb-0 מייל
                                 .col-sm-9.text-secondary
-                                    | #{email}
+                                    | #{user.email}
                             hr
                             .row
                                 .col-sm-3
                                     h6.mb-0 נייד
                                 .col-sm-9.text-secondary
-                                    | #{phone}
+                                    | #{user.phone}
                             hr
                             .row
                                 .col-sm-3
                                     h6.mb-0 כתובת
                                 .col-sm-9.text-secondary
-                                    | #{address}
+                                    | #{user.address}
                     .row.gutters-sm(dir = "rtl" style= "text-align: right;")
                         .col-sm-12.mb-3
                             .card.h-100
@@ -57,17 +57,22 @@ body
                     .card
                         .card-body
                             .d-flex.flex-column.align-items-center.text-center
-                                img.rounded-circle(src='https://bootdey.com/img/Content/avatar/avatar7.png', alt='Admin', width='150')
+
+                           
+                    
+
+
+                                img.rounded-circle(src='https://bootdey.com/img/Content/avatar/avatar'+ randomNumber+'.png', alt='Admin', width='150')
                                 .mt-3
-                                    h4 #{fullName}
+                                    h4 #{user.fullName}
                                     
-                                        if gender == true
+                                         if user.gender == "female"
                                             i.fas.fa-venus(style="color: pink; float: left;")
-                                        else    
+                                         else    
                                             i.fas.fa-mars(style="color: #0984e3; float: left;")
                                     
-                                    p.text-secondary.mb-1 #{title}
-                                    p.text-muted.font-size-sm #{address}
+                                    p.text-secondary.mb-1 #{user.title}
+                                    p.text-muted.font-size-sm #{user.address}
                                 
                                     //- button.btn.btn-primary Follow
                                     //- button.btn.btn-outline-primary Message
