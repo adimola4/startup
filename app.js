@@ -9,6 +9,9 @@ app.get('/:page', (req, res) => {
     res.render(req.params.page)
 })
 
+app.all('/:action', function(req, res){res.sendStatus(404)});
+
+
 app.listen(3000, function(){
     console.log("server listening on port 3000...")
 })
