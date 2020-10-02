@@ -52,4 +52,9 @@ UserSchema.virtual('fullName').get(function() {
     return this.firstName + ' ' + this.lastName;
 })
 
+UserSchema.virtual('points').get(function() {
+    for()
+    ;
+})
+
 module.exports = mongoose.model("User", UserSchema);
