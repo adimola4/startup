@@ -2073,7 +2073,7 @@ textarea.form-control {
   width: 100%;
   margin-top: 0.25rem;
   font-size: 80%;
-  color: #1cc88a;
+  color: #a7d091;
 }
 
 .valid-tooltip {
@@ -9591,8 +9591,14 @@ a.text-secondary:hover, a.text-secondary:focus {
 }
 
 .text-success {
+  color: #f50ca7 !important;
+}
+
+.text-anual {
   color: #1cc88a !important;
 }
+
+
 
 a.text-success:hover, a.text-success:focus {
   color: #13855c !important;

@@ -75,6 +75,8 @@ function checkedDifficultyButton(element) {
     });
 
     checked.next().addClass('textBold');
+
+    checked.parents('div.aquest').first().data('difficulty',checked.attr('id'));
 }
     // // Remove all green classes
     // const container = $(element).parents('div.sectionDifficult').first();
@@ -158,7 +160,8 @@ async function saveQuiz() {
     await questions.each(async (i, e) => {
         e = $(e);
         const flavor = e.data('flavor');
-        const question = { flavor };
+        const difficulty = e.data('difficulty')
+        const question = { flavor,difficulty};
  
         await e.find('input.selected').each((i, e) => {
                

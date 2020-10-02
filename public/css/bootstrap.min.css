@@ -9112,6 +9112,8 @@ button.bg-dark:hover {
 }
 
 .text-primary {
+    text-align: center;
+    direction: rtl;
     color: #007bff!important
 }
 
