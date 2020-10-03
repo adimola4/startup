@@ -65,7 +65,7 @@ router.post("/login", async (req, res) => {
             await generateToken(res, user) // Include fresh JWT in response
            
             return res.render(credentials.isTeacher
-                ? '/Quizes'
+                ? 'Quizes'
                 : 'courses',user);
         } else {
             return res.status(401).json({ message: "Invalid credentials" });
