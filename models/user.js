@@ -66,6 +66,5 @@ UserSchema.virtual('fullName').get(function() {
 //     return points;
 // })
 
-
 module.exports = mongoose.model("User", UserSchema);
  
