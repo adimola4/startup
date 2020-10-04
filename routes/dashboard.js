@@ -5,13 +5,30 @@ const router = express.Router();
 // for all endpoints starting with /api/dashboard/
 
 router.get('/', async (req, res) => {
-    const users = {
+    const Queries = {
         totalMales : await User.find({ gender: 'male' }).countDocuments(),
         totalFemales : await User.find({ gender: 'female' }).countDocuments(),
-        totalUsers : await User.find().countDocuments()
+        
+        totalUsers : await User.find().countDocuments(),
+        
+        //  maxPonits : await User.find().sort({ points: -1 }).limit(5),
+
+        //  answerHard : await User.find().sort({ points: -1 }).limit(5),
+
+        //  userPerMonth = await User.aggregate()([{
+        //       $group: {
+        //          _id: "$joinDate.month",
+        //          count: { $sum: 1 }
+        //       }
+        //     },
+        // ])
+
+
+
     }
-    console.log(users)
-    res.render('dashboard', {users});
+
+    console.log(Queries)
+    res.render('dashboard', {Queries});
 })
 
 // const getGender =  () => {

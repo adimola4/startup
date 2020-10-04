@@ -1,5 +1,6 @@
 var mongoose = require("mongoose");
 var Schema = mongoose.Schema;
+//var date_ob = new Date();
 
 var UserSchema = new Schema({
     email: { type: String, required: true },
@@ -25,6 +26,12 @@ var UserSchema = new Schema({
     twitter: { type: String },
     instagram: { type: String },
     facebook: { type: String },
+
+    // joinDate: {
+    //     year : date_ob.getFullYear(),
+    //     month : date_ob.getMonth(),
+    //     day : date_ob.getDay()
+    // },
 
     quizResults: [{
         // TODO Add datetime of result
@@ -52,9 +59,13 @@ UserSchema.virtual('fullName').get(function() {
     return this.firstName + ' ' + this.lastName;
 })
 
-UserSchema.virtual('points').get(function() {
-    for()
-    ;
-})
+// UserSchema.virtual('points').get(function() {
+//     const points = 0
+//     this.quizResults.forEach((i) => { points += this.quizResults[i] });
+//     points = Math.floor(points) / 10  
+//     return points;
+// })
+
 
 module.exports = mongoose.model("User", UserSchema);
+ 
