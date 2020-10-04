@@ -1,9 +1,9 @@
 const express = require("express");
 const router = express.Router();
 const nodemailer = require('nodemailer');
+const Contacts = require('../models/contact')
 
 router.get('/', async (req, res) => {
-  res.send("mami")
   
   });
   
@@ -392,9 +392,14 @@ router.post('/',async(req,res)=>{
       };
 
       return await transporter.sendMail(mailOptions)
-      .then(() => {
+      .then(async () => {
           console.log("send mail!");
-          res.render('index');
+          try {
+              await Contacts.create({});
+          } catch(err) {
+            console.error(err);
+          }
+          return res.render('index');
           
       })
       .catch((err) => {

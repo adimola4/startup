@@ -11,7 +11,9 @@ router.get('/', async (req, res) => {
         
         totalUsers : await User.find().countDocuments(),
         
-        //  maxPonits : await User.find().sort({ points: -1 }).limit(5),
+
+
+        //  maxPoints : await User.find().sort({ points: -1 }).limit(5),
 
         //  answerHard : await User.find().sort({ points: -1 }).limit(5),
 
@@ -28,7 +30,7 @@ router.get('/', async (req, res) => {
     }
 
     console.log(Queries)
-    res.render('dashboard', {Queries});
+    res.json(Queries);
 })
 
 // const getGender =  () => {
