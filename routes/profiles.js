@@ -6,7 +6,24 @@ const router = express.Router();
 router.get('/', async (req, res) => {
   try {
     const user = await User.findById(req.user.uid)
-    return res.render('profile', user)
+
+    let randomNumber;
+    if (user.gender == "female"){
+      randomNumber = Math.floor(Math.random() * 2);
+        if (randomNumber == 0) 
+          randomNumber = 3; 
+        else 
+          randomNumber = 8;
+    }
+    else {
+    randomNumber = Math.floor(Math.random() * 9);
+      while (randomNumber == 3 || randomNumber == 8)
+        randomNumber = Math.floor(Math.random() * 9);
+    }
+
+    return res.render('profile', {user, randomNumber})
+
+    // return res.render('profile', user)
   } catch (error) {
     console.error(error)
     return res.status(500).json({ message: 'Error while loading profile!', error })

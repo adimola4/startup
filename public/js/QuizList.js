@@ -2,8 +2,9 @@ const table = $('#quizzesTable');
 const title = $('#titleLabel');
 
 function appendQuizEntryToTable(quiz) {
-    var html = '<tr data-id="' + quiz._id + '"><td></td><td><a href="/quiz?id=' +
-        quiz._id + '">' + quiz.title + '</a></td></tr>';
+    // var html = '<tr data-id="' + quiz._id + '"><td></td><td><a href="/quiz?id=' +
+    //     quiz._id + '">' + quiz.title + '</a></td></tr>';
+    var html = '<tr data-id="' + quiz._id + '"><td></td><td><a href="#">' + quiz.title + '</a></td></tr>';
     table.append(html);
 }
 

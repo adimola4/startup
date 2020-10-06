@@ -152,12 +152,15 @@ const handlers = {
             if (answerTrue) {
                 addScore();
             }
+           
             $(this).text(answerTrue ? 'correct' : 'incorrect');
-
+            $(this).css(answerTrue ?{"background-color": "#00b894;"} : {"background-color": "#d63031"});
+                
             setTimeout(() => {
                 // move to next question
                 enterQuestion(currentIndex + 1);
-            }, 1000);
+            }, 1500);
+
         });
     },
     american: (trueAnswer) => {
