@@ -33,14 +33,14 @@ section.site-hero.site-sm-hero.overlay(data-stellar-background-ratio='0.5', styl
                   | פלטפורמת JavaScript פופולרית לכתיבה ושימוש ביישומי JavaScript מחוץ לדפדפן. לדוגמה, יישומי שורת פקודה לשיפור זרימת העבודה שלך, אתרים דינמיים ועוד.
                 p
                   | חברות מסוימות שמשתמשות בטכנולוגיות אלה כוללות באופן קבוע: וולמארט, פייפאל, גרופון, Airbnb
-          .container
+          .container.learningSection
             .row
               .col-md-12.mb-2
                 h2 תוכנית לימודים
 
             .row.bg-light.align-items-center.p-4.episode
               .col-md-2.text-center
-                a.video_icon.popup-video(href='https://www.youtube.com/watch?v=ETxuFyAL1RU')
+                a.video_icon.popup-video(href='https://www.youtube.com/watch?v=nRaYr-DJ4zk')
                   span
                     i.fas.fa-caret-square-left.blue-play-btn
               .col-md-10(dir='rtl')
@@ -73,40 +73,41 @@ section.site-hero.site-sm-hero.overlay(data-stellar-background-ratio='0.5', styl
                   | Callback Queue ולולאת האירועים
                 p
                   | מחסנית הקריאות היא מנגנון שמיועד לעקוב אחר מקומו בסקריפט שקורא לפונקציות מרובות - איזו פונקציה מופעלת כעת ואילו פונקציות נקראות מתוך אותה פונקציה.
-            .row.bg-light.align-items-center.p-4.episode
-              .col-md-2.text-center
-                a(href='#')
-                  span
-                    i.fas.fa-chevron-circle-left.purple-play-btn
-              .col-md-10(dir='rtl')
-                p.meta שאלון 1
-                h2
-                  a(href='#')
-                  | JS & the DOM
-                p
-                  | JavaScript מאפשר לך ליצור דפי אינטרנט אינטראקטיביים שיכולים להגיב לפעולות המשתמש. בקורס זה תלמדו כיצד להביא דפי אינטרנט לחיים בעזרת הכוח של JavaScript.
-            .row.align-items-center.p-4.episode
-              .col-md-2.text-center
-                a(href='#')
-                  span
-                    i.fas.fa-chevron-circle-left.purple-play-btn
-              .col-md-10(dir='rtl')
-                p.meta שאלון 2
-                h2
-                  a(href='#') תכנות אסינכרוני עם JS
-                p
-                  | בקורס זה תלמדו מדוע קוד אסינכרוני חשוב, וכיצד לכתוב קוד שנמנע מחסימה של התנהגות באמצעות שלוש גישות: callbacks, promises ו- async/await.
-            .row.bg-light.align-items-center.p-4.episode
-              .col-md-2.text-center
-                a(href='#')
-                  span
-                    i.fas.fa-chevron-circle-left.purple-play-btn
-              .col-md-10(dir='rtl')
-                p.meta שאלון 3
-                h2(dir='rtl')
-                  a(href='#') תכנות מונחה עצמים עם JS
-                p
-                  | קורס זה תלמדו את היסודות של תכנות מונחה-עצמים ב- JS יחד עם התחביר החדש של ES2015 Class.
+            //- .row.bg-light.align-items-center.p-4.episode
+            //-   .col-md-2.text-center
+            //-     a(href='#')
+            //-       span
+            //-         i.fas.fa-chevron-circle-left.purple-play-btn
+            //-   .col-md-10(dir='rtl')
+            //-     p.meta שאלון 1
+            //-     h2
+            //-       a(href='#')
+            //-       | JS & the DOM
+                //- p
+                //-   | JavaScript מאפשר לך ליצור דפי אינטרנט אינטראקטיביים שיכולים להגיב לפעולות המשתמש. בקורס זה תלמדו כיצד להביא דפי אינטרנט לחיים בעזרת הכוח של JavaScript.
+      //-       .row.align-items-center.p-4.episode
+      //-         .col-md-2.text-center
+      //-           a(href='#')
+      //-             span
+      //-               i.fas.fa-chevron-circle-left.purple-play-btn
+      //-         .col-md-10(dir='rtl')
+      //-           p.meta שאלון 2
+      //-           h2
+      //-             a(href='#') תכנות אסינכרוני עם JS
+      //-           p
+      //-             | בקורס זה תלמדו מדוע קוד אסינכרוני חשוב, וכיצד לכתוב קוד שנמנע מחסימה של התנהגות באמצעות שלוש גישות: callbacks, promises ו- async/await.
+      //-       .row.bg-light.align-items-center.p-4.episode
+      //-         .col-md-2.text-center
+      //-           a(href='#')
+      //-             span
+      //-               i.fas.fa-chevron-circle-left.purple-play-btn
+      //-         .col-md-10(dir='rtl')
+      //-           p.meta שאלון 3
+      //-           h2(dir='rtl')
+      //-             a(href='#') תכנות מונחה עצמים עם JS
+      //-           p
+      //-             | קורס זה תלמדו את היסודות של תכנות מונחה-עצמים ב- JS יחד עם התחביר החדש של ES2015 Class.
+      //- 
       // END content
       .col-md-6.col-lg-2.order-md-1
         .block-29.mb-5
@@ -255,6 +256,10 @@ section.site-hero.site-sm-hero.overlay(data-stellar-background-ratio='0.5', styl
     circle.path-bg(cx='24', cy='24', r='22', fill='none', stroke-width='4', stroke='#eeeeee')
     circle.path(cx='24', cy='24', r='22', fill='none', stroke-width='4', stroke-miterlimit='10', stroke='#f4b214')
 
+script(src='https://code.jquery.com/jquery-3.3.1.min.js', integrity='sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=', crossorigin='anonymous')
+script(src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js', integrity='sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1', crossorigin='anonymous')
+script(src='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js', integrity='sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM', crossorigin='anonymous')
 
+script(src='/static/js/showQuizes.js')
 
 include utilities/footer.pug

@@ -221,7 +221,6 @@ async function saveQuiz() {
                 otherwise in case of a single line we simply dont use a carry.
             */
             function parseFillBlanksLine(line) {
-              
                 // Run while we have a selected element in the line
                 while (-1 !== line.indexOf('<b>')) {
                     var parts = line.split('<b>');    // Split the line where the selection starts
