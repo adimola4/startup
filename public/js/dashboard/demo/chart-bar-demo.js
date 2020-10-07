@@ -1,3 +1,4 @@
+const generateBar = (users) =>{
 // Set new default font family and font color to mimic Bootstrap's default styling
 Chart.defaults.global.defaultFontFamily = 'Nunito', '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
 Chart.defaults.global.defaultFontColor = '#858796';
@@ -32,13 +33,17 @@ var ctx = document.getElementById("myBarChart");
 var myBarChart = new Chart(ctx, {
   type: 'bar',
   data: {
-    labels: ["User#5", "User#5", "User#5", "User#5", "User#5", "User#5"],
+    labels: users.map((e) => {
+      return e.fullName;
+    }),
     datasets: [{
       label: "נקודות",
       backgroundColor: "#4e73df",
       hoverBackgroundColor: "#2e59d9",
       borderColor: "#4e73df",
-      data: [123, 150, 170, 190, 210, 450],
+      data: users.map((e) => {
+        return e.points;
+      }),
     }],
   },
   options: {
@@ -68,7 +73,7 @@ var myBarChart = new Chart(ctx, {
       yAxes: [{
         ticks: {
           min: 0,
-          max: 500,
+          max: 50,
           maxTicksLimit: 5,
           padding: 10,
           // Include a dollar sign in the ticks
@@ -109,3 +114,19 @@ var myBarChart = new Chart(ctx, {
     },
   }
 });
+}
+
+$(async () => {
+  // Fetch all quizes
+  var resp = await fetch('/api/dashboard/');
+  resp = await resp.json();
+  resp.users.sort((a, b) => {
+    if (a.poits > b.points){ 
+      return 1;
+    } else return -1;
+  })
+  resp.users = resp.users.slice(0,5);
+  generateBar(resp.users);
+})
+
+

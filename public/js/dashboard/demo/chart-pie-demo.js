@@ -1,5 +1,5 @@
 
-const gen = (male ,female) => {
+const generatePie = (male ,female) => {
 
   
 // Set new default font family and font color to mimic Bootstrap's default styling
@@ -45,8 +45,5 @@ $(async () => {
   // Fetch all quizes
   var resp = await fetch('/api/dashboard/');
   resp = await resp.json();
-  console.log(resp);
-  resp.totalMale
-  console.log( resp.totalMale)
-  gen(resp.totalMales,resp.totalFemales);
+  generatePie(resp.totalMales,resp.totalFemales);
 })

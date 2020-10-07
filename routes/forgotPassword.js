@@ -6,7 +6,6 @@ const User = require("../models/user");
 
 
 router.post('/', async (req, res, next) => {
-  console.table(req.body);
   if (!req.body.email) res.render('/forgotPassword', { msg: "Please enter a valid email address" });
 
   // let token = "";
@@ -30,11 +29,7 @@ router.post('/', async (req, res, next) => {
   //   });
 
   const user = await User.findOne({ email: req.body.email })
-
-  console.table(user);
-
   if (!user) {
-    console.log("!user")
     return;
   }
 

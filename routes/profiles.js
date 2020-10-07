@@ -42,7 +42,7 @@ router.get('/results', async (req, res) => {
 
 router.post('/finishQuiz', async (req, res) => {
   const result = req.body
-  console.table(req.body)
+ // console.table(req.body)
 
   try {
     await User.findByIdAndUpdate(req.user.uid,
