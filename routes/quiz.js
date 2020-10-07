@@ -49,7 +49,7 @@ router.get("/:id", async (req, res) => {
 
 router.post('/add', async (req, res) => {
     console.log('adding quiz, got data:')
-    console.table(req.body)
+    //console.table(req.body)
     try {
         await Quiz.create(req.body)
         return res.json({ message: `Course created successfully` })

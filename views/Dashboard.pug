@@ -23,7 +23,7 @@ body
               .row.no-gutters.align-items-center
                 .col.mr-2
                   .text-xs.font-weight-bold.text-primary.text-uppercase.mb-1 סה"כ משתמשים באתר
-                  .h5.mb-0.font-weight-bold.text-gray-800 300
+                  #totalUsers.h5.mb-0.font-weight-bold.text-gray-800 
                 .col-auto
                   i.fas.fa-calendar.fa-2x.text-gray-300
       
@@ -49,7 +49,7 @@ body
               .row.no-gutters.align-items-center
                 .col.mr-2
                   .text-xs.font-weight-bold.text-warning.text-uppercase.mb-1 פניות למערכת
-                  .h5.mb-0.font-weight-bold.text-gray-800 18
+                  #contactCounter.h5.mb-0.font-weight-bold.text-gray-800 0
                 .col-auto
                   i.fas.fa-comments.fa-2x.text-gray-300
       // Content Row
@@ -118,7 +118,7 @@ body
           // avg grade by question difficulty level
           .card.shadow.mb-4
             .card-header.py-3
-              h6.m-0.font-weight-bold.text-primary ציון ממוצע לפי רמת קושי
+              h6.m-0.font-weight-bold.text-primary מספר משתמשים שענו נכון על שאלה לפי רמת קושי
             .card-body
               h4.small.font-weight-bold
                 |רמה קשה 
@@ -232,6 +232,8 @@ body
     script(src='/static/js/dashboard/demo/chart-area-demo.js')
     script(src='/static/js/dashboard/demo/chart-pie-demo.js')
     script(src='/static/js/dashboard/demo/chart-bar-demo.js')
+    script(src='/static/js/dashboard/demo/cube-data.js')
+
 
 
 include utilities/footer.pug

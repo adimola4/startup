@@ -26,6 +26,8 @@ var UserSchema = new Schema({
     instagram: { type: String },
     facebook: { type: String },
 
+    joinDate: {type: Date , default : Date.now()},
+
     quizResults: [{
         // TODO Add datetime of result
         quizRef: {
@@ -38,6 +40,12 @@ var UserSchema = new Schema({
             required: true
         }
     }],
+    // courses: [{
+    //     courseName: {
+    //         type: String,
+    //         required: true
+    //     },
+    // }],
 }, {
     w: "majority",
     j: true,
@@ -53,8 +61,11 @@ UserSchema.virtual('fullName').get(function() {
 })
 
 UserSchema.virtual('points').get(function() {
-    // for()
-    // ;
+    var points = 0
+    this.quizResults.forEach((n,i) => { points += n.grade });
+    points = Math.floor(points) / 10  
+    return points;
 })
 
 module.exports = mongoose.model("User", UserSchema);
+ 

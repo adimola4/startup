@@ -1,3 +1,6 @@
+
+const generateLine = (userPerMonth) => {
+
 // Set new default font family and font color to mimic Bootstrap's default styling
 Chart.defaults.global.defaultFontFamily = 'Nunito', '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
 Chart.defaults.global.defaultFontColor = '#858796';
@@ -29,10 +32,14 @@ function number_format(number, decimals, dec_point, thousands_sep) {
 
 // Area Chart Example
 var ctx = document.getElementById("myAreaChart");
+var months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep","Oct", "Nov", "Dec" ]
+
 var myLineChart = new Chart(ctx, {
   type: 'line',
   data: {
-    labels: ["Oct", "Nov", "Dec","Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", ],
+    labels: userPerMonth.map((e) => {
+      return months[e._id];
+    }),
     datasets: [{
       label: "כמות משתמשים",
       lineTension: 0.3,
@@ -46,7 +53,9 @@ var myLineChart = new Chart(ctx, {
       pointHoverBorderColor: "rgba(78, 115, 223, 1)",
       pointHitRadius: 10,
       pointBorderWidth: 2,
-      data: [10, 20, 35, 70, 110, 210, 300, 500, 743, 800, 900, 1231],
+      data: userPerMonth.map((e) => {
+        return e.count;
+      }),
     }],
   },
   options: {
@@ -110,9 +119,22 @@ var myLineChart = new Chart(ctx, {
       callbacks: {
         label: function(tooltipItem, chart) {
           var datasetLabel = chart.datasets[tooltipItem.datasetIndex].label || '';
-          return datasetLabel + ': $' + number_format(tooltipItem.yLabel);
+          return datasetLabel + " " + number_format(tooltipItem.yLabel);
         }
       }
     }
   }
 });
+}
+
+$(async () => {
+  // Fetch all quizes
+  var resp = await fetch('/api/dashboard/');
+  resp = await resp.json();
+  resp.userPerMonth.sort((a, b) => {
+    if (a._id > b._id){ 
+      return 1;
+    } else return -1;
+  })
+  generateLine(resp.userPerMonth);
+})

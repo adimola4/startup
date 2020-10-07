@@ -54,10 +54,7 @@ header
                             ul#navigation
                                 li
                                     a(href='/api/courses') קטלוג
-                                li
-                                    a(href='#') תחרויות
-                                li
-                                    a(href='#') תמיכה
+                                
                 .col-lg-2.d-none.d-lg-block
                  
                     .log_chat_area.d-flex.align-items-end
@@ -70,18 +67,13 @@ header
                                         nav
                                             h6
                                             if user
-                                             span#user #{user.fullName} 
-                                                |שלום   
+                                             span#user שלום #{user.firstName} 
                                                
                                     ul.submenu(dir='rtl')
                                         li
                                             a(href='/api/profile')
                                                 i.fas.fa-user(style='font-size: 0.9em;')
                                                 |  פרופיל
-                                        li
-                                            a(href='#')
-                                                i.fas.fa-cog(style='font-size: 0.9em;')
-                                                |  הגדרות
                                         li
                                             a(href="/api/auth/logout")
                                                 i.fas.fa-sign-out-alt(style='font-size: 0.9em;')
