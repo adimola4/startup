@@ -150,9 +150,8 @@ async function saveQuiz() {
         e = $(e);
         const flavor = e.data('flavor');
         const question = { flavor};
-   
-        console.log(flavor)
 
+        console.log(flavor)
         function getDifficultyLevel() {
 
             const difficulties = e.find('input.selected');
@@ -168,7 +167,6 @@ async function saveQuiz() {
             // title
             question.title = e.find('textarea.rounded-2').val();
             question.difficulty = getDifficultyLevel();
-            console.log(question.difficulty);
             if (!question.title) {
                 valid = false;
                 return;
@@ -182,7 +180,6 @@ async function saveQuiz() {
         } else if (flavor === 'american') {
             // title
             question.difficulty = getDifficultyLevel(); 
-            console.log(question.difficulty);
             question.title = e.find('input.american-title').val();
             if (!question.title) {
                 valid = false;
@@ -209,7 +206,6 @@ async function saveQuiz() {
             question.choices = [];
             const answers = [];
             question.difficulty = getDifficultyLevel();
-            console.log(question.difficulty);
             /*
             The container of the text input area is assigned to a constant named 'data'
                 if data's text is consistent of multiple lines
@@ -291,7 +287,6 @@ async function saveQuiz() {
             body: JSON.stringify(quiz)
         });
         const content = await rawResponse.json();
-        console.log(content);
         alert(content.message);
         window.location.href = '/quizes';
     })();
