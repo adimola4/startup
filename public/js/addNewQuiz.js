@@ -1,9 +1,12 @@
+let numberOfEasyQuestions = 0
+let numberOfMediumQuestions = 0
+let numberOfHardQuestions = 0
 
 function setGreen(element) {
     const container = $(element).parents('div').first();
     let trueElement = container.children().last().children().last();
     let falselement = container.children().first().children().last();
-
+ 
     trueElement.removeClass('hover:text-green-600');
     trueElement.removeClass('hover:bg-green-100');
     trueElement.removeClass('bg-white');
@@ -130,28 +133,39 @@ let levelname = 0
 function addQuestion(flavor) {
     currentIndex += 1;
     levelname += 1; 
+    
     $('#controlBlock').before(templates[flavor](currentIndex,levelname));
 }
 
 async function saveQuiz() {
     const quiz = { questions: [] };
+    
     // Collect data and verify integrity
     // Iterate over all questions and parse every question based on its flavor (aka question type)
     quiz.title = $('textarea.editable-title__input').val();
+   
+    quiz.hardQuestions = 0
+    quiz.mediumQuestions = 0
+    quiz.easyQuestions = 0
+   
     if (!quiz.title) {
-        return alert('נא להזין שם לשאון!');
+        return alert('נא להזין שם שאלון!');
     }
     var valid = true;
     const questions = $('.section-top-border.aquest');
     if (questions.length === 0) {
         return;
     }
+
+
     await questions.each(async (i, e) => {
         e = $(e);
         const flavor = e.data('flavor');
-        const question = { flavor};
+         const question = { flavor};
 
         console.log(flavor)
+
+
         function getDifficultyLevel() {
 
             const difficulties = e.find('input.selected');
@@ -162,11 +176,33 @@ async function saveQuiz() {
 
         }
 
+        function isHard (difficulty){
+            return (difficulty === 'hard') ? 1 : 0
+        }
+        
+        function isEasy (difficulty){
+            return (difficulty === 'easy') ? 1 : 0
+        }
+        
+        function isMedium (difficulty){
+            const ll = (difficulty === 'medium') ? 1 : 0
+
+            
+            return ll
+        }
+
         if (flavor === 'truefalse') {
             
             // title
             question.title = e.find('textarea.rounded-2').val();
             question.difficulty = getDifficultyLevel();
+            numberOfEasyQuestions =  numberOfEasyQuestions + isEasy(question.difficulty);
+            numberOfMediumQuestions = numberOfMediumQuestions + isMedium(question.difficulty)
+            numberOfHardQuestions  = numberOfHardQuestions + isHard(question.difficulty);
+   
+            
+            
+
             if (!question.title) {
                 valid = false;
                 return;
@@ -180,6 +216,11 @@ async function saveQuiz() {
         } else if (flavor === 'american') {
             // title
             question.difficulty = getDifficultyLevel(); 
+            numberOfEasyQuestions =  numberOfEasyQuestions + isEasy(question.difficulty);
+            numberOfMediumQuestions = numberOfMediumQuestions + isMedium(question.difficulty)
+            numberOfHardQuestions  = numberOfHardQuestions + isHard(question.difficulty);
+
+
             question.title = e.find('input.american-title').val();
             if (!question.title) {
                 valid = false;
@@ -206,6 +247,12 @@ async function saveQuiz() {
             question.choices = [];
             const answers = [];
             question.difficulty = getDifficultyLevel();
+            numberOfEasyQuestions =  numberOfEasyQuestions + isEasy(question.difficulty);
+            numberOfMediumQuestions = numberOfMediumQuestions + isMedium(question.difficulty)
+            numberOfHardQuestions  = numberOfHardQuestions + isHard(question.difficulty);
+
+            
+        
             /*
             The container of the text input area is assigned to a constant named 'data'
                 if data's text is consistent of multiple lines
@@ -246,34 +293,29 @@ async function saveQuiz() {
                     carry = line;               // Carry the line reminder
                 });
                 question.choices.push(['code', carry]);
-            } else {
-                { // INITIAL & BUGGY ALGORITHM
-                    // var text = '';
-                    // await data.children('b').each((i, e) => {
-                    //     answers.push($(e).text());
-                    // });
-                    // text = data.text();
-                    // console.log(answers);
-                    // for (const ans of answers) {
-                    //     const pts = text.split(ans);
-                    //     console.table({ text, ans, pts });
-                    //     if (pts[0]) {
-                    //         question.choices.push(['code', pts[0]]);
-                    //     }
-                    //     question.choices.push(['space', ans.length]);
-                    //     text = pts[1];
-                    // }
-                    // question.choices.push(['code', text]);
-                }
+            } else 
+            {
                 var line = $(data).html();
                 line = parseFillBlanksLine(line);
                 question.choices.push(['code', line]);
             }
+           
             question.answer = answers.join(';;');
+
+            
+            
+
+            
+            
         }
 
         
         quiz.questions.push(question);
+        quiz.mediumQuestions = numberOfMediumQuestions
+        quiz.easyQuestions = numberOfEasyQuestions
+        quiz.hardQuestions = numberOfHardQuestions
+       
+
     });
     // console.table(quiz);
     if (!valid) return;

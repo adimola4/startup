@@ -45,4 +45,7 @@ html(lang='he')
 									br
 									span רוצה ליצור חשבון חדש? 
 									a(href='../signUp', style='color: #615CFD;') הירשם
+
+								if (message && message.length > 0)
+									div.alert.alert-success #{ messages }									
 include utilities/footer.pug

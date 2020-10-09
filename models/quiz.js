@@ -1,8 +1,11 @@
-var mongoose = require("mongoose");
+ var mongoose = require("mongoose");
 var Schema = mongoose.Schema;
 
 var QuizSchema = new Schema({
     title: { type: String, required: true },
+    hardQuestions : {type : Number , required: true},
+    mediumQuestions : {type : Number , required: true},
+    easyQuestions : {type : Number, required: true},
 
     questions: [{
         flavor: {
@@ -20,8 +23,10 @@ var QuizSchema = new Schema({
         },
         difficulty: {
             type: String,
-            enum: ['easy', 'medium', 'hard']
-        }
+            enum: ['easy', 'medium', 'hard'],
+            default: 'easy'
+        },
+        
     }],
 }, {
     w: "majority",

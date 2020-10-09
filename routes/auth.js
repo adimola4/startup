@@ -9,6 +9,19 @@ const User = require("../models/user");
 const router = express.Router();
 const secret = process.env.SECRET
 
+const session = require('express-session'); 
+const flash = require('connect-flash'); 
+  
+  
+  
+router.use(session({ 
+    secret:'geeksforgeeks', 
+    saveUninitialized: true, 
+    resave: true
+})); 
+  
+router.use(flash()); 
+
 const expiration = 7 * 24 * 60 * 60 * 1000; // 7d
 const generateToken = (res, user) => {
     const token = jwt.sign({
@@ -68,8 +81,9 @@ router.post("/login", async (req, res) => {
                 ? 'Quizes'
                 : 'courses',user);
         } else {
-            return res.status(401).json({ message: "Invalid credentials" });
-        }
+            req.flash('info', "Credenciales invalidas, intente nuevamente");
+            res.render('signIn', {messages: req.flash('info')});
+             }
     } catch (error) {
         console.log(error);
         return res.status(500).json(error);
@@ -81,7 +95,5 @@ router.get("/logout", async (req, res) => {
     res.cookie('token', '', { maxAge: 0 })
     return res.redirect('/')
 })
-
-
 
 module.exports = router;
