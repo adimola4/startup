@@ -15,5 +15,10 @@ $(async () => {
     $("#mediumQuestions").text((resp.mediumQuestions[0].count))
     $("#hardQuestions").text((resp.hardQuestions[0].count))
 
+    $("#hardQuestions").css('width',resp.easyQuestions[1].count *100 +'%')
+    
+
+
+
 
   })

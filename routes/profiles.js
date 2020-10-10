@@ -55,4 +55,17 @@ router.post('/finishQuiz', async (req, res) => {
   }
 })
 
+router.post("/updateProfile", async (req, res) => {
+  const user = await User.findByIdAndUpdate(req.user.uid,req.body,
+      {
+      new : true,
+      runValidators : true
+      }
+  );
+  console.table()
+  return res.render('profile', {user, randomNumber})
+
+});
+
 module.exports = router;
+

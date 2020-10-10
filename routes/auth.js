@@ -2,25 +2,12 @@ const express = require("express");
 const bycrpt = require('bcryptjs')
 const jwt = require("jsonwebtoken");
 
-
+const path = require('path')
 
 const User = require("../models/user");
 
 const router = express.Router();
 const secret = process.env.SECRET
-
-const session = require('express-session'); 
-const flash = require('connect-flash'); 
-  
-  
-  
-router.use(session({ 
-    secret:'geeksforgeeks', 
-    saveUninitialized: true, 
-    resave: true
-})); 
-  
-router.use(flash()); 
 
 const expiration = 7 * 24 * 60 * 60 * 1000; // 7d
 const generateToken = (res, user) => {
@@ -57,7 +44,7 @@ router.post("/register", async (req, res) => {
         await User.create(credentials)
         return res.redirect('/')
     } catch (error) {
-        res.status(500).json({ error: error.message });
+         res.status(500).json({ error: error.message });
     }
 })
 
@@ -81,14 +68,15 @@ router.post("/login", async (req, res) => {
                 ? 'Quizes'
                 : 'courses',user);
         } else {
-            req.flash('info', "Credenciales invalidas, intente nuevamente");
-            res.render('signIn', {messages: req.flash('info')});
-             }
+            res.redirect('/signIn?message=' + 'שם משתמש או סיסמא לא נכונים');
+             } 
     } catch (error) {
         console.log(error);
         return res.status(500).json(error);
     }
 });
+
+
 
 router.get("/logout", async (req, res) => {
     // Destroy client's cookie

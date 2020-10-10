@@ -4,6 +4,8 @@ require('./mongodbConnModule').connect()
 // Express and middleware
 const express = require('express')
 const app = express()
+const path = require("path")
+
 
 app.use(express.json())
 app.use(require('body-parser').urlencoded({ extended: false }))
@@ -11,6 +13,11 @@ app.use(require('cookie-parser')())
 app.use(require('helmet')())
 app.use(require('morgan')('dev'))
 app.use(require('cors')())
+
+
+app.set('view engine', 'pug');
+app.set('views',path.join(__dirname,'views'))
+app.use('/static', express.static(path.join(__dirname,'public')));
 
 app.use(function(req,res,next){
     res.locals.user = req.user;
@@ -53,11 +60,11 @@ app.use('/api/forgotPassword', require('./routes/forgotPassword'))
 app.use('/api/courses', verifyLogin, require('./routes/courses'))
 app.use('/api/users', verifyLogin, require('./routes/users'))
 app.use('/api/profile', verifyLogin, require('./routes/profiles'))
+
 app.use('/api/quiz', verifyLogin, require('./routes/quiz'))
 app.use('/api/dashboard', verifyLogin, require('./routes/dashboard'))
 
 
 
-app.use('/static', express.static('public'));
 
 module.exports = app

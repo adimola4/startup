@@ -19,6 +19,7 @@ html(lang='he')
 		link(rel='stylesheet', href='static/css/slick.css')
 		link(rel='stylesheet', href='static/css/slicknav.css')
 		link(rel='stylesheet', href='static/css/style.css')
+		script(src='/static/js/jsSingleCourse/js/jquery-3.2.1.min.js')
 	body
 		.how_we_work_area(dir='rtl')
 			.container
@@ -26,7 +27,7 @@ html(lang='he')
 					.col-lg-5
 						.work_info
 							h3.mb-4.text-center כניסה לאיזור האישי
-							form(action='api/auth/login' method='post')
+							form#loginForm(action='api/auth/login' method='post')
 								.mt-10
 									input.single-input(type='text', name='email', placeholder='דואר אלקטרוני', onfocus="this.placeholder = ''", onblur="this.placeholder = 'דואר אלקטוני'", required='')
 								.mt-10
@@ -46,6 +47,8 @@ html(lang='he')
 									span רוצה ליצור חשבון חדש? 
 									a(href='../signUp', style='color: #615CFD;') הירשם
 
-								if (message && message.length > 0)
-									div.alert.alert-success #{ messages }									
+								//- if (message && message.length > 0)
+								div#messageDiv.alert.alert-danger(style='display:none;' , direction ='rtl')
+
+script(src='/static/js/login.js')
 include utilities/footer.pug
