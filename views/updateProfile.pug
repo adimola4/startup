@@ -92,27 +92,27 @@ html(lang='en')
                 .form-group
                   label.col-sm-2.control-label שם פרטי
                   .col-sm-10
-                    input.form-control(type='text'  ,value = `#{user.email}`, name = "firstName" )
+                    input.form-control(type='text'  ,value = `${user.firstName}`, name = "firstName" )
                 .form-group
                   label.col-sm-2.control-label שם משפחה
                   .col-sm-10
-                    input.form-control(type='text' , name = "lastName")
+                    input.form-control(type='text' ,value = `${user.lastName}`, name = "lastName")
                 .form-group
                   label.col-sm-2.control-label תחום עיסוק
                   .col-sm-10
-                    input.form-control(type='text' , name = "titleName")
+                    input.form-control(type='text' ,value = `${user.title}`, name = "titleName")
                 .form-group
                   label.col-sm-2.control-label איימל
                   .col-sm-10
-                    input.form-control(type='email' , name = "email")
+                    input.form-control(type='email' ,value = `${user.email}`, name = "email")
                 .form-group
                   label.col-sm-2.control-label נייד
                   .col-sm-10
-                    input.form-control(type='tel' , name = "phone")
+                    input.form-control(type='tel' ,value = `${user.phone}`, name = "phone")
                 .form-group
                   label.col-sm-2.control-label כתובת
                   .col-sm-10
-                    input.form-control(type='text' , name = "address")
+                    input.form-control(type='text' ,value = `${user.address}`, name = "address")
             .panel.panel-default
               .panel-heading
                 h4(style="text-align:right;").panel-title רשתות חברתיות
@@ -120,19 +120,19 @@ html(lang='en')
                 .form-group
                   label.col-sm-2.control-label Github
                   .col-sm-10
-                    input.form-control(type='text' , name = "github")
+                    input.form-control(type='text' ,value = `${user.github}`, name = "github")
                 .form-group
                   label.col-sm-2.control-label Twitter
                   .col-sm-10
-                    input.form-control(type='text' , name = "twitter")
+                    input.form-control(type='text' ,value = `${user.twitter}`, name = "twitter")
                 .form-group
                   label.col-sm-2.control-label Instagram
                   .col-sm-10
-                    input.form-control(type='text' , name = "instagram")
+                    input.form-control(type='text' ,value = `${user.instagram}`, name = "instagram")
                 .form-group
                   label.col-sm-2.control-label Facebook
                   .col-sm-10
-                    input.form-control(type='text' , name = "facebook")
+                    input.form-control(type='text' ,value = `${user.facebook}`, name = "facebook")
 
             .panel.panel-default
               .panel-heading

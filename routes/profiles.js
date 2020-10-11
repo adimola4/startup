@@ -55,6 +55,15 @@ router.post('/finishQuiz', async (req, res) => {
   }
 })
 
+router.get("/updateProfile", async (req, res) => {
+  const user = await User.findById(req.user.uid)
+
+  return res.render('updateProfile',{user})
+
+});
+
+
+
 router.post("/updateProfile", async (req, res) => {
   const user = await User.findByIdAndUpdate(req.user.uid,req.body,
       {
@@ -63,7 +72,7 @@ router.post("/updateProfile", async (req, res) => {
       }
   );
   console.table()
-  return res.render('profile', {user, randomNumber})
+  return res.redirect('/api/profile')
 
 });
 
