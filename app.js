@@ -1,5 +1,5 @@
 const app = require("./server");
-app.set('view engine', 'pug');
+
 
 
 app.get('/favicon.ico', (req, res) => res.status(404));

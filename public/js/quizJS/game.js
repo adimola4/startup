@@ -3,6 +3,7 @@ const progressText = document.getElementById('progressText');
 const scoreText = document.getElementById('score');
 const progressBarFull = document.getElementById('progressBarFull');
 const quizTitle = document.getElementById('quizTitle');
+const quiz = {}
 
 // Read a page's GET URL variables and return them as an associative array.
 function getUrlVars() {
@@ -36,8 +37,11 @@ const quizID = (() => {
 $(async () => {
     var resp = await fetch('/api/quiz/' + quizID);
     resp = await resp.json();
+    quiz.questions = resp.quiz.questions
+    quiz.title = resp.quiz.title
     // console.table(resp.quiz);
     questions = resp.quiz.questions;
+    console.table(resp.quiz)
     // Set quiz title
     quizTitle.innerHTML = resp.quiz.title;
     // Show first question
@@ -54,6 +58,7 @@ function enterQuestion(index) {
     if (index === questions.length) {
         // Finish quiz!
         const data = {
+            title : quiz.title,
             quizRef: quizID,
             grade: Math.round(score)
         };

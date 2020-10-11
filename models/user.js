@@ -29,7 +29,8 @@ var UserSchema = new Schema({
     joinDate: {type: Date , default : Date.now()},
 
     quizResults: [{
-        // TODO Add datetime of result
+        title : { type: String },
+        date : {type: Date , default : Date.now()},
         quizRef: {
             type: mongoose.SchemaTypes.ObjectId,
             ref: 'Quiz',
@@ -39,6 +40,7 @@ var UserSchema = new Schema({
             type: Number,
             required: true
         }
+        
     }],
     // courses: [{
     //     courseName: {

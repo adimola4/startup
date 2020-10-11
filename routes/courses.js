@@ -7,15 +7,14 @@ const router = express.Router();
 // for all endpoints starting with /api/courses/
 
 router.get('/', async (req, res) => {
-  const subject = 'Full Stack'
-  const title = 'JS מתקדם'
+
 // console.log('[DBG] Authenticated as:')
   try{
     let user =  await User.findById(req.user.uid);
     return res.render('courses', { subject, title ,user});
   }catch(err){
     console.log(err);
-    return res.render('courses', { subject, title });
+    return res.render('courses');
   }
 
 });

@@ -2,7 +2,7 @@ const express = require("express");
 const bycrpt = require('bcryptjs')
 const jwt = require("jsonwebtoken");
 
-
+const path = require('path')
 
 const User = require("../models/user");
 
@@ -44,7 +44,7 @@ router.post("/register", async (req, res) => {
         await User.create(credentials)
         return res.redirect('/')
     } catch (error) {
-        res.status(500).json({ error: error.message });
+         res.status(500).json({ error: error.message });
     }
 })
 
@@ -68,20 +68,20 @@ router.post("/login", async (req, res) => {
                 ? 'Quizes'
                 : 'courses',user);
         } else {
-            return res.status(401).json({ message: "Invalid credentials" });
-        }
+            res.redirect('/signIn?message=' + 'שם משתמש או סיסמא לא נכונים');
+             } 
     } catch (error) {
         console.log(error);
         return res.status(500).json(error);
     }
 });
 
+
+
 router.get("/logout", async (req, res) => {
     // Destroy client's cookie
     res.cookie('token', '', { maxAge: 0 })
     return res.redirect('/')
 })
-
-
 
 module.exports = router;
