@@ -40,8 +40,6 @@ html(lang='he')
 								.mt-10
 									input.single-input(type='password', name='password', placeholder='סיסמא', onfocus="this.placeholder = ''", onblur="this.placeholder = 'סיסמא'", required='')
 								.mt-10
-									input.single-input(type='password', placeholder='אימות סיסמא', onfocus="this.placeholder = ''", onblur="this.placeholder = 'אימות סיסמא'", required='')
-								.mt-10
 									input.single-input(type='text', name = "phone",placeholder= 'נייד', onfocus="this.placeholder = ''", onblur="this.placeholder = 'נייד'", required='')
 						
 
@@ -78,4 +76,8 @@ html(lang='he')
 								.text-center(style='font-size: 0.85em;   color: #707070;')
 									span  כבר יש לך חשבון? 
 									a(href='../sIgnIn', style='color: #615CFD;')  היכנס 
+
+								div#messageDiv.alert.alert-danger(style='display:none;' , direction ='rtl')
+script(src='/static/js/jsSingleCourse/js/jquery-3.2.1.min.js')
+script(src='/static/js/login.js')
 include utilities/footer.pug

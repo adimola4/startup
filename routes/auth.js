@@ -38,11 +38,31 @@ router.post("/register", async (req, res) => {
     try {
         const user = await User.findOne({ email: credentials.email })
         if (user) {
-            return res.status(400).json({ message: "Username already taken" });
+            // return res.status(400).json({ message: "Username already taken" });
+            res.redirect('/signUp?message=' + 'המייל כבר קיים במערכת');
+                 
         }
+
+        let randomNumber;
+        if (credentials.gender == "female"){
+          randomNumber = Math.floor(Math.random() * 2);
+            if (randomNumber == 0) 
+              randomNumber = 3; 
+            else 
+              randomNumber = 8;
+        }
+        else {
+        randomNumber = Math.floor(Math.random() * 9);
+          while (randomNumber == 3 || randomNumber == 8)
+            randomNumber = Math.floor(Math.random() * 9);
+        }
+        let imgUrl = 'https://bootdey.com/img/Content/avatar/avatar'+ randomNumber+'.png'
+
         console.table(credentials)
         await User.create(credentials)
-        return res.redirect('/')
+        await User.updateOne({ email: credentials.email }, { $set: { img: imgUrl } });
+
+        return res.redirect('/signIn')
     } catch (error) {
          res.status(500).json({ error: error.message });
     }

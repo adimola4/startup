@@ -75,10 +75,13 @@ header
                                                 i.fas.fa-user(style='font-size: 0.9em;')
                                                 |  פרופיל
                                         li
+                                            a(href='/api/profile/gradeHistory', style = "")
+                                                i.fas.fa-history(style='font-size: 0.9em;')
+                                                |  הסטוריית ציונים 
                                         li
-                                            a(href='/api/profile/updateProfile')
-                                                i.fas.fa-user(style='font-size: 0.9em;')
-                                                |  עדכן פרופיל
+                                            a(href='/api/profile/updatePassword', style = "")
+                                                i.fas.fa-key(style='font-size: 0.9em;')
+                                                |  עדכון סיסמא
                                         li
                                             a(href="/api/auth/logout")
                                                 i.fas.fa-sign-out-alt(style='font-size: 0.9em;')
