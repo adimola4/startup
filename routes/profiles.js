@@ -7,21 +7,7 @@ router.get('/', async (req, res) => {
   try {
     const user = await User.findById(req.user.uid)
 
-    let randomNumber;
-    if (user.gender == "female"){
-      randomNumber = Math.floor(Math.random() * 2);
-        if (randomNumber == 0) 
-          randomNumber = 3; 
-        else 
-          randomNumber = 8;
-    }
-    else {
-    randomNumber = Math.floor(Math.random() * 9);
-      while (randomNumber == 3 || randomNumber == 8)
-        randomNumber = Math.floor(Math.random() * 9);
-    }
-
-    return res.render('profile', {user, randomNumber})
+    return res.render('profile', {user})
 
     // return res.render('profile', user)
   } catch (error) {
@@ -29,6 +15,20 @@ router.get('/', async (req, res) => {
     return res.status(500).json({ message: 'Error while loading profile!', error })
   }
 })
+
+router.get('/AdminProfile', async (req, res) => {
+  try {
+    const user = await User.findById(req.user.uid)
+
+    return res.render('AdminProfile', {user})
+
+    // return res.render('profile', user)
+  } catch (error) {
+    console.error(error)
+    return res.status(500).json({ message: 'Error while loading profile!', error })
+  }
+})
+
 
 router.get('/results', async (req, res) => {
   try {
@@ -62,6 +62,19 @@ router.get("/updateProfile", async (req, res) => {
 
 });
 
+router.get("/updatePassword", async (req, res) => {
+  const user = await User.findById(req.user.uid)
+
+  return res.render('updatePassword',{user})
+
+});
+
+router.get("/gradeHistory", async (req, res) => {
+  const user = await User.findById(req.user.uid)
+
+  return res.render('gradeHistory',{user})
+
+});
 
 
 router.post("/updateProfile", async (req, res) => {
@@ -75,6 +88,7 @@ router.post("/updateProfile", async (req, res) => {
   return res.redirect('/api/profile')
 
 });
+
 
 module.exports = router;
 

@@ -60,8 +60,10 @@ app.use('/api/forgotPassword', require('./routes/forgotPassword'))
 app.use('/api/courses', verifyLogin, require('./routes/courses'))
 app.use('/api/users', verifyLogin, require('./routes/users'))
 app.use('/api/profile', verifyLogin, require('./routes/profiles'))
+app.use('/api/AdminProfile', verifyLogin, require('./routes/profiles'))
 app.use('/api/updateProfile', verifyLogin, require('./routes/profiles'))
-
+app.use('/api/updatePassword', verifyLogin, require('./routes/profiles'))
+app.use('/api/gradeHistory', verifyLogin, require('./routes/profiles'))
 app.use('/api/quiz', verifyLogin, require('./routes/quiz'))
 app.use('/api/dashboard', verifyLogin, require('./routes/dashboard'))
 

@@ -10,7 +10,6 @@ html(lang='en')
     link(href='http://netdna.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css' rel='stylesheet')
     style(type='text/css').
       body{
-      margin-top:20px;
       background:#f5f5f5;
       }
       /**
@@ -32,6 +31,7 @@ html(lang='en')
       }
       .panel-body *:first-child {
       margin-top: 0;
+      text-align: right;
       }
       .panel-footer {
       border-top: 0;
@@ -76,80 +76,85 @@ html(lang='en')
       }
   body
     link(href='https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css' rel='stylesheet')
-    .container.bootstrap.snippets.bootdeys
+    .container.bootstrap.snippets.bootdeys(style= "padding-left: 230px;")
       .row
-        .col-xs-12.col-sm-9
+        .col-xs-12.col-sm-9(style="padding-top: 15px;")
           form.form-horizontal(action ="/api/profile/updateProfile" method = "POST" )
             .panel.panel-default
               .panel-body.text-center
-                img.img-circle.profile-avatar(src='https://bootdey.com/img/Content/avatar/avatar6.png' alt='User avatar')
+                img.img-circle.profile-avatar(src= user.img, alt='User avatar')
             .panel.panel-default
               .panel-heading
                 h4(style="text-align:right;").panel-title מידע כללי
               .panel-body
                    
                 .form-group
-                  label.col-sm-2.control-label שם פרטי
                   .col-sm-10
                     input.form-control(type='text'  ,value = `${user.firstName}`, name = "firstName" )
+                  label.col-sm-2.control-label שם פרטי
                 .form-group
-                  label.col-sm-2.control-label שם משפחה
                   .col-sm-10
                     input.form-control(type='text' ,value = `${user.lastName}`, name = "lastName")
+                  label.col-sm-2.control-label שם משפחה
                 .form-group
-                  label.col-sm-2.control-label תחום עיסוק
                   .col-sm-10
                     input.form-control(type='text' ,value = `${user.title}`, name = "titleName")
+                  label.col-sm-2.control-label תחום עיסוק
                 .form-group
-                  label.col-sm-2.control-label איימל
                   .col-sm-10
                     input.form-control(type='email' ,value = `${user.email}`, name = "email")
+                  label.col-sm-2.control-label מייל
                 .form-group
-                  label.col-sm-2.control-label נייד
                   .col-sm-10
                     input.form-control(type='tel' ,value = `${user.phone}`, name = "phone")
+                  label.col-sm-2.control-label נייד
                 .form-group
-                  label.col-sm-2.control-label כתובת
                   .col-sm-10
                     input.form-control(type='text' ,value = `${user.address}`, name = "address")
+                  label.col-sm-2.control-label כתובת
             .panel.panel-default
               .panel-heading
                 h4(style="text-align:right;").panel-title רשתות חברתיות
               .panel-body
                 .form-group
-                  label.col-sm-2.control-label Github
                   .col-sm-10
                     input.form-control(type='text' ,value = `${user.github}`, name = "github")
+                  label.col-sm-2.control-label Github
                 .form-group
-                  label.col-sm-2.control-label Twitter
                   .col-sm-10
                     input.form-control(type='text' ,value = `${user.twitter}`, name = "twitter")
+                  label.col-sm-2.control-label Twitter
                 .form-group
-                  label.col-sm-2.control-label Instagram
                   .col-sm-10
                     input.form-control(type='text' ,value = `${user.instagram}`, name = "instagram")
+                  label.col-sm-2.control-label Instagram
                 .form-group
-                  label.col-sm-2.control-label Facebook
                   .col-sm-10
                     input.form-control(type='text' ,value = `${user.facebook}`, name = "facebook")
-
-            .panel.panel-default
-              .panel-heading
-                h4.panel-title איפוס סיסמא
-              .panel-body
-                .form-group
-                  label.col-sm-2.control-label סיסמא נוכחית
-                  .col-sm-10
-                    input.form-control(type='password')
-                .form-group
-                  label.col-sm-2.control-label סיסמא חדשה
-                  .col-sm-10
-                    input.form-control(type='password')
+                  label.col-sm-2.control-label Facebook
                 .form-group
                   .col-sm-10.col-sm-offset-2
                 .form-group
                   .col-sm-10.col-sm-offset-2
                     button.btn.btn-primary(type='submit') שלח
+
+            //- .panel.panel-default
+            //-   .panel-heading
+            //-     h4(style="text-align:right;").panel-title איפוס סיסמא
+            //-   .panel-body
+            //-     .form-group
+            //-       .col-sm-10
+            //-         input.form-control(type='password')
+            //-       label.col-sm-2.control-label סיסמא נוכחית
+            //-     .form-group
+            //-       .col-sm-10
+            //-         input.form-control(type='password')
+            //-       label.col-sm-2.control-label סיסמא חדשה
+            //-     .form-group
+            //-       .col-sm-10.col-sm-offset-2
+            //-     .form-group
+            //-       .col-sm-10.col-sm-offset-2
+            //-         button.btn.btn-primary(type='submit') שלח
     script(src='http://code.jquery.com/jquery-1.10.2.min.js')
     script(src='http://netdna.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js')
     script(type='text/javascript').

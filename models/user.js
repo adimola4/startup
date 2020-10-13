@@ -25,6 +25,8 @@ var UserSchema = new Schema({
     twitter: { type: String },
     instagram: { type: String },
     facebook: { type: String },
+    img: {type: String},
+
 
     joinDate: {type: Date , default : Date.now()},
 
