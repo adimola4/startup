@@ -30,30 +30,33 @@ router.get('/', async (req, res) => {
             }
           ] ) ,
 
-        easyQuestions : await Quizzes.aggregate( [{
-              $group: {
-                 _id: {count : "$easyQuestions"},
-                 count: { $sum: "$easyQuestions" }
+          easyQuestions : await Quizzes.aggregate([
+            { $group:
+                {
+                  _id: "easyQuestions",
+                  totalAmount: { $sum:"$easyQuestions" },
+                  count: { $sum: 1 }
+                }
+            }]
+       ),
+          mediumQuestions : await Quizzes.aggregate([
+              { $group:
+                  {
+                    _id: "mediumQuestions",
+                    totalAmount: { $sum:"$mediumQuestions" },
+                    count: { $sum: 1 }
+                  }
+              }]
+         ),
+         hardQuestions : await Quizzes.aggregate([
+          { $group:
+              {
+                _id: "hardQuestions",
+                totalAmount: { $sum:"$hardQuestions" },
+                count: { $sum: 1 }
               }
-            }
-          ] ) ,
-
-          mediumQuestions : await Quizzes.aggregate( [{
-            $group: {
-               _id: {count : "$mediumQuestions"},
-               count: { $sum: "$mediumQuestions" }
-            }
-          }
-        ] ) ,
-
-        hardQuestions : await Quizzes.aggregate( [{
-          $group: {
-             _id: {count : "$hardQuestions"},
-             count: { $sum: "$hardQuestions" }
-          }
-        }
-      ] ) ,
-
+          }]
+     ),
         
         
 

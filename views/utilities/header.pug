@@ -65,10 +65,11 @@ header
                                     a(href='#', style='padding: 0.5em; margin-top: 1.2em;')
                                         i.fas.fa-user-circle(style='font-size: 1.75em;')
                                         nav
-                                            h6
-                                            if user
-                                             span#user שלום #{user.firstName} 
-                                               
+                                          h6
+                                          if user
+                                                | שלום 
+                                                span #{user.firstName} <br>
+                                                |   #{user.points} נקודות
                                     ul.submenu(dir='rtl')
                                         li
                                             a(href='/api/profile')

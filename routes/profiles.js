@@ -71,11 +71,13 @@ router.get("/updatePassword", async (req, res) => {
 
 router.get("/gradeHistory", async (req, res) => {
   const user = await User.findById(req.user.uid)
-
   return res.render('gradeHistory',{user})
-
 });
 
+router.get("/dashboard", async (req, res) => {
+  const user = await User.findById(req.user.uid)
+  return res.render('gradeHistory',{user})
+});
 
 router.post("/updateProfile", async (req, res) => {
   const user = await User.findByIdAndUpdate(req.user.uid,req.body,
@@ -84,8 +86,17 @@ router.post("/updateProfile", async (req, res) => {
       runValidators : true
       }
   );
-  console.table()
   return res.redirect('/api/profile')
+});
+
+router.post('/changePassword', async (req, res, next) => {
+  // 1) Get user from collection
+  const user = await User.findById(req.user.uid).select('+password');
+
+  // 3) If so, update password
+  user.password = req.body.password;
+  await user.save();
+  // User.findByIdAndUpdate will NOT work as intended!
 
 });
 

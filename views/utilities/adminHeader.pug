@@ -53,7 +53,7 @@ header
                                 li
                                     a(href='../../Dashboard') Dashbord
                                 li
-                                    a(href='../Quizes') השאלונים שלי
+                                    a(href='../../Quizes') השאלונים שלי
                             
 
                             
@@ -66,8 +66,9 @@ header
                                         i.fas.fa-user-circle(style='font-size: 1.75em;')
                                         nav
                                             h6
+                                            if  user
                                                 | שלום 
-                                                span#user אורח
+                                                span #{user.firstName} 
                                     ul.submenu(dir='rtl')
                                         li
                                             a(href='/api/profile/AdminProfile')

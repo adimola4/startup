@@ -86,7 +86,7 @@ router.post("/login", async (req, res) => {
            
             return res.render(credentials.isTeacher
                 ? 'Quizes'
-                : 'courses',user);
+                : 'courses',{user});
         } else {
             res.redirect('/signIn?message=' + 'שם משתמש או סיסמא לא נכונים');
              } 
@@ -95,8 +95,6 @@ router.post("/login", async (req, res) => {
         return res.status(500).json(error);
     }
 });
-
-
 
 router.get("/logout", async (req, res) => {
     // Destroy client's cookie

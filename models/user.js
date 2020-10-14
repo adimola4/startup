@@ -67,9 +67,16 @@ UserSchema.virtual('fullName').get(function() {
 UserSchema.virtual('points').get(function() {
     var points = 0
     this.quizResults.forEach((n,i) => { points += n.grade });
-    points = Math.floor(points) / 10  
+    points = Math.round(Math.floor(points) / 10,0)  
     return points;
 })
+
+UserSchema.methods.correctPassword = async function(
+    candidatePassword,
+    userPassword
+  ) {
+    return await bcrypt.compare(candidatePassword, userPassword);
+  };
 
 module.exports = mongoose.model("User", UserSchema);
  

@@ -126,7 +126,13 @@ $(async () => {
     } else return -1;
   })
   resp.users = resp.users.slice(0,5);
-  generateBar(resp.users);
+
+  const users = resp.users.map((e) => {
+    return e;
+  }).sort(function(a, b) {
+    return a.points - b.points;
+  })
+  generateBar(users);
 })
 
 
