@@ -1,4 +1,6 @@
 const express = require("express");
+const bycrpt = require('bcryptjs')
+
 const User = require("../models/user");
 
 const router = express.Router();
@@ -89,17 +91,12 @@ router.post("/updateProfile", async (req, res) => {
   return res.redirect('/api/profile')
 });
 
-router.post('/changePassword', async (req, res, next) => {
-  // 1) Get user from collection
-  const user = await User.findById(req.user.uid).select('+password');
+router.post('/updatePassword', async (req, res) => {
+  const user = await User.findById(req.user.uid)
+  User.update(user, {$set: {"password" : bycrpt.hashSync(req.body.newPassword, 12)}})
+  return res.redirect('/api/profile')
+}
 
-  // 3) If so, update password
-  user.password = req.body.password;
-  await user.save();
-  // User.findByIdAndUpdate will NOT work as intended!
-
-});
-
+);
 
 module.exports = router;
-
