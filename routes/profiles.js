@@ -92,9 +92,14 @@ router.post("/updateProfile", async (req, res) => {
 });
 
 router.post('/updatePassword', async (req, res) => {
-  const user = await User.findById(req.user.uid)
-  User.update(user, {$set: {"password" : bycrpt.hashSync(req.body.newPassword, 12)}})
+  const user = await User.findByIdAndUpdate( {_id:req.user.uid },
+    { $set: 
+      { hashedPass : bycrpt.hashSync(req.body.newPassword, 12)}
+    }
+)
+
   return res.redirect('/api/profile')
+
 }
 
 );
