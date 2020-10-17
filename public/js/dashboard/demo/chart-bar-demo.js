@@ -73,7 +73,7 @@ var myBarChart = new Chart(ctx, {
       yAxes: [{
         ticks: {
           min: 0,
-          max: 50,
+          max: 80,
           maxTicksLimit: 5,
           padding: 10,
           // Include a dollar sign in the ticks

@@ -1,7 +1,7 @@
 doctype html
 meta(charset='utf-8')
 meta(http-equiv='x-ua-compatible', content='ie=edge')
-title Curses
+title Codern
 meta(name='description', content='')
 meta(name='viewport', content='width=device-width, initial-scale=1')
 // <link rel="manifest" href="site.webmanifest">
@@ -53,7 +53,7 @@ header
                         nav
                             ul#navigation
                                 li
-                                    a(href='/api/courses') קטלוג
+                                    a(href='../../courses') קטלוג
                                 
                 .col-lg-2.d-none.d-lg-block
                  
@@ -63,13 +63,13 @@ header
                             
                                 li
                                     a(href='#', style='padding: 0.5em; margin-top: 1.2em;')
-                                        i.fas.fa-user-circle(style='font-size: 1.75em;')
-                                        nav
-                                          h6
-                                          if user
-                                                | שלום 
-                                                span #{user.firstName} <br>
-                                                |   #{user.points} נקודות
+                                        //- i.fas.fa-user-circle(style='font-size: 1.75em;')
+                                        //- nav
+                                        h6
+                                        if user
+                                            | שלום 
+                                            span #{user.firstName} <br>
+                                            p   #{user.points} נקודות
                                     ul.submenu(dir='rtl')
                                         li
                                             a(href='/api/profile')

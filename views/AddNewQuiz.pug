@@ -1,10 +1,12 @@
 include utilities/adminHeader.pug
+link(href='vendor/fontawesome-free/css/all.min.css' rel='stylesheet' type="text/css")
+link(href='/static/css/AdminSide/sb-admin-2.css' rel='stylesheet')
+
 link(rel='stylesheet', href='/static/css/AdminSide/AddQuiz.css')
 link(rel='stylesheet', href='/static/css/quizCss/game.css')
-
 //- Header Add Quize
 
-.section-top-border(dir = "", style = "margin: auto 50px ")
+.section-top-border(dir = "", style = "margin: auto 50px", data-scroll-index='0')
     label
         div(style= "margin-left: 15px;")
             svg.transition.duration-100.ease-linear(viewBox='0 0 36 36', width='36', height='36', fill='currentColor', focusable='false', aria-hidden='true', style= "margin: 12px 10px; float: right")
@@ -18,7 +20,7 @@ link(rel='stylesheet', href='/static/css/quizCss/game.css')
     //- button to add quize
 
     .container#controlBlock(style= "margin-top: 42.5px; ") 
-        h4(style= "text-align: center; color: #3a3f41;") הוסף שאלה
+        h4(style= "text-align: center; color: #3a3f41; font-weight: bold;") הוסף שאלה
         div(style= "margin: 35px auto;  display: flex; justify-content: center;")
             btn.choice-container.yellow(type='button',onclick='addQuestion("american")', style = "width: 20%;  display:inline-block;  margin-right: 1%; min-height: 65px; background-color: #fff7e5; border: none;")
                 p.choice-text(style = "padding: 18px 24px; margin-bottom: 0; width: 100%; font-size: 0.7em; text-align: center; color: #efa946; font-weight: 700; ") אמריקאיות
@@ -26,245 +28,12 @@ link(rel='stylesheet', href='/static/css/quizCss/game.css')
                 p.choice-text(style = "padding: 18px 24px; margin-bottom: 0; width: 100%;  font-size: 0.7em; color: #5971a4; text-align: center; font-weight: 700;") נכון &nbsp;/&nbsp; לא נכון
             btn.choice-container.orange(type='button',onclick='addQuestion("fillblanks")', style = "width: 20%;  display:inline-block;  margin-right: 1%; min-height: 65px; background-color: #ffece6; border: none;")
                 p.choice-text(style = "padding: 18px 24px; margin-bottom: 0; width: 100%; font-size: 0.7em; color: #ff753f; text-align: center; font-weight: 700;") השלם את הקוד
+    
+  
+    .container-fluid
+        a.scroll-to-top.rounded(href='#',data-scroll-nav='0', style="display: inline;")
+            i.fas.fa-angle-up
 
-//- True or False Quistion
-//- .section-top-border.bg-grey-50.width.aquestion(style="margin: 0 auto; border-radius: 1em;", dir="rtl")
-//-     .container(style= "margin-top: 0;")
-//-         .btn(aria-label="Save Question",type="button", style= "float:left; margin-left: 20px; padding: 0 12px")
-//-             .relative.flex.items-center.justify-center.p-2(style = "background-color: #0099c7; border-radius: 0.5em;")
-//-                svg(viewBox="0 0 24 24" width="30" height="30" fill="#fff" focusable="false" aria-hidden="true", onclick="disabled()") 
-//-                   path(fill-rule="nonzero" d="M18.293 6.293a1 1 0 011.497 1.32l-.083.094-10 10a1 1 0 01-1.32.083l-.094-.083-5.5-5.5a1 1 0 011.32-1.497l.094.083L9 15.585l9.293-9.292z")
-//-         div(style= " margin-left: 30px;")
-//-             .btn(aria-label="Delete Question",type="button", onclick = "deleteQ()")
-//-                 .relative.p-0.m-0.border-0.rounded-2.appearance-none.outline-none.transition.ease-in-out.duration-100.icon-button.cursor-pointer.text-cyan-600.bg-transparent  
-//-                     svg(viewBox="0 0 24 24" ,width="24" ,height="24" ,fill="#0099c7" ,focusable="false" ,aria-hidden="true")
-//-                         path(fill-rule="nonzero", d="M14.5 4a.5.5 0 00-.41-.492L14 3.5h-4a.5.5 0 00-.492.41L9.5 4v1H8V4a2 2 0 012-2h4a2 2 0 012 2v1h4.5a.75.75 0 01.102 1.493L20.5 6.5H19V19a2 2 0 01-2 2H7a2 2 0 01-2-2V6.5H3.5a.75.75 0 01-.102-1.493L3.5 5h11V4zm3 2.5h-11V19a.5.5 0 00.41.492L7 19.5h10a.5.5 0 00.492-.41L17.5 19V6.5zM9 8.25a.75.75 0 01.743.648L9.75 9v8a.75.75 0 01-1.493.102L8.25 17V9A.75.75 0 019 8.25zm3 0a.75.75 0 01.743.648L12.75 9v8a.75.75 0 01-1.493.102L11.25 17V9a.75.75 0 01.75-.75zm3 0a.75.75 0 01.743.648L15.75 9v8a.75.75 0 01-1.493.102L14.25 17V9a.75.75 0 01.75-.75z")
-            
-//-         div(style="width: 80%; margin-right: 20px;") 
-//-             span.text-md.text-blue-900(style="float: right;")  1.
-//-                   textarea.rounded-2(name="biography", id="bio", placeholder="הוסף שאלת נכון או לא נכון",dir="ltr",style = "float:right; margin:0 15px; margin-bottom: 25px;")
-//-         br
-//-         br
-//-         br
-//-         br
-//-         br
-//-         .col-span-2.col-start-2.flex.items-start.pl-2#disableTrueFalse(style= "margin-right: 50px;")
-//-                     label.rounded-2.cursor-pointer.truefalse-option
-//-                         //- .absolute.pointer-events-none.opacity-0.transition-opacity.duration-100.ease-linear.focus-indicator.shadow-outline.-inset-2.text-cyan-600.is-hidden
-//-                         input.sr-only(type='radio', name='trueOrFalse', value='false')
-//-                         span#false.flex.flex-1.items-center.justify-center.px-8.py-2.rounded-2.font-sans.text-base.leading-8.transition.ease-in-out.duration-100.bg-red-500.text-white(class='hover:bg-red-600', onclick="setRed()") False
-
-//-                     label.mr-4.rounded-2.cursor-pointer.truefalse-option
-//-                         //- .absolute.pointer-events-none.opacity-0.transition-opacity.duration-100.ease-linear.focus-indicator.shadow-outline.-inset-2.text-cyan-600.is-hidden
-//-                         input.sr-only(type='radio', name='trueOrFalse', value='true', checked='')
-//-                         span#true.flex.flex-1.items-center.justify-center.px-8.py-2.rounded-2.font-sans.text-base.leading-8.transition.ease-in-out.duration-100.font-600.bg-white.text-grey-700(class='hover:text-green-600 hover:bg-green-100 ', onclick="setGreen()") True
-
-//- br
-
-//- .section-top-border.bg-grey-50.width.trueFalseQ(style="margin: 0 auto; border-radius: 1em;", dir="rtl")
-//-     .container(style= "margin-top: 0;")
-//-         .btn(aria-label="Save Question",type="button", style= "float:left; margin-left: 20px; padding: 0 12px")
-//-             .relative.flex.items-center.justify-center.p-2(style = "background-color: #0099c7; border-radius: 0.5em;")
-//-                svg(viewBox="0 0 24 24" width="30" height="30" fill="#fff" focusable="false" aria-hidden="true", onclick="disabled()") 
-//-                   path(fill-rule="nonzero" d="M18.293 6.293a1 1 0 011.497 1.32l-.083.094-10 10a1 1 0 01-1.32.083l-.094-.083-5.5-5.5a1 1 0 011.32-1.497l.094.083L9 15.585l9.293-9.292z")
-//-         div(style= "margin-top: 15px; margin-left: 30px;")
-//-             .btn(aria-label="Delete Question",type="button", onclick = "deleteQ()")
-//-                 .relative.p-0.m-0.border-0.rounded-2.appearance-none.outline-none.transition.ease-in-out.duration-100.icon-button.cursor-pointer.text-cyan-600.bg-transparent  
-//-                     svg(viewBox="0 0 24 24" ,width="24" ,height="24" ,fill="#0099c7" ,focusable="false" ,aria-hidden="true")
-//-                         path(fill-rule="nonzero", d="M14.5 4a.5.5 0 00-.41-.492L14 3.5h-4a.5.5 0 00-.492.41L9.5 4v1H8V4a2 2 0 012-2h4a2 2 0 012 2v1h4.5a.75.75 0 01.102 1.493L20.5 6.5H19V19a2 2 0 01-2 2H7a2 2 0 01-2-2V6.5H3.5a.75.75 0 01-.102-1.493L3.5 5h11V4zm3 2.5h-11V19a.5.5 0 00.41.492L7 19.5h10a.5.5 0 00.492-.41L17.5 19V6.5zM9 8.25a.75.75 0 01.743.648L9.75 9v8a.75.75 0 01-1.493.102L8.25 17V9A.75.75 0 019 8.25zm3 0a.75.75 0 01.743.648L12.75 9v8a.75.75 0 01-1.493.102L11.25 17V9a.75.75 0 01.75-.75zm3 0a.75.75 0 01.743.648L15.75 9v8a.75.75 0 01-1.493.102L14.25 17V9a.75.75 0 01.75-.75z")
-            
-//-         div(style="width: 80%; margin-right: 20px;") 
-//-             span.text-md.text-blue-900(style="float: right;")  1.
-//-             //- .shadow-focus.notranslate.flex.flex-grow-1.h-auto.py-2.font-sans.text-blue-900.text-base.leading-8.border-0.rounded-2.overflow-auto.w-full.min-w-50.min-h-12.max-h-80.px-4(translate='no', style= "background-color: #f4f4f4; margin-right: 30px;")
-//-                 //- .relative.flex.flex-grow.h-full.min-h-full.ql-container(data-testid='quill-editor', role='textbox', aria-multiline='true')
-//-                     //- .ql-editor.ql-blank(data-gramm='false', contenteditable='true', data-placeholder='Answer A')
-//-             //- textarea.shadow-focus.notranslate.flex.flex-grow-1.h-auto.py-2.font-sans.text-blue-900.text-base.leading-8.border-0.rounded-2.overflow-auto.w-full.min-w-50.min-h-12.max-h-80.px-4(name="biography", id="bio", placeholder="הוסף שאלת נכון או לא נכון", style= "background-color: #f4f4f4; margin-right: 30px;  width: 80%;", dir= "ltr")
-//-                     //- .ql-clipboard(contenteditable='true', tabindex='-1', role='textbox', data-placeholder='Answer A', style="text-align: right;") הוסף שאלת נכון או לא נכון
-//-             textarea.rounded-2(name="biography", id="bio", placeholder="הוסף שאלת נכון או לא נכון",dir="ltr",style = "float:right; margin:0 15px; margin-bottom: 25px;")
-//-         br
-//-         br
-//-         br
-//-         br
-//-         br
-//-         .col-span-2.col-start-2.flex.items-start.pl-2#disableTrueFalse(style= "margin-right: 50px;")
-//-                     label.rounded-2.cursor-pointer.truefalse-option
-//-                         //- .absolute.pointer-events-none.opacity-0.transition-opacity.duration-100.ease-linear.focus-indicator.shadow-outline.-inset-2.text-cyan-600.is-hidden
-//-                         input.sr-only(type='radio', name='trueOrFalse', value='false')
-//-                         span#false.flex.flex-1.items-center.justify-center.px-8.py-2.rounded-2.font-sans.text-base.leading-8.transition.ease-in-out.duration-100.bg-red-500.text-white(class='hover:bg-red-600', onclick="setRed()") False
-
-//-                     label.mr-4.rounded-2.cursor-pointer.truefalse-option
-//-                         //- .absolute.pointer-events-none.opacity-0.transition-opacity.duration-100.ease-linear.focus-indicator.shadow-outline.-inset-2.text-cyan-600.is-hidden
-//-                         input.sr-only(type='radio', name='trueOrFalse', value='true', checked='')
-//-                         span#true.flex.flex-1.items-center.justify-center.px-8.py-2.rounded-2.font-sans.text-base.leading-8.transition.ease-in-out.duration-100.font-600.bg-white.text-grey-700(class='hover:text-green-600 hover:bg-green-100 ', onclick="setGreen()") True
-                
-//- br
-
-
-
-//- br
-//- .section-top-border.bg-grey-50.width.trueFalseQ(data-flavor='truefalse' style='margin: 0 auto; border-radius: 1em;' dir='rtl')
-//-   .container(style='margin-top: 0;')
-//-     .btn(aria-label='Save Question' type='button' style='float:left; margin-left: 20px; padding: 0 12px')
-//-       .relative.flex.items-center.justify-center.p-2(style='background-color: #0099c7; border-radius: 0.5em;')
-//-         svg(viewBox='0 0 24 24' width='30' height='30' fill='#fff' focusable='false' aria-hidden='true')
-//-           path(fill-rule='nonzero' d='M18.293 6.293a1 1 0 011.497 1.32l-.083.094-10 10a1 1 0 01-1.32.083l-.094-.083-5.5-5.5a1 1 0 011.32-1.497l.094.083L9 15.585l9.293-9.292z')
-//-     div(style='margin-top: 15px; margin-left: 30px;')
-//-       .btn(aria-label='Delete Question' type='button' onclick='deleteQ(this)')
-//-         .relative.p-0.m-0.border-0.rounded-2.appearance-none.outline-none.transition.ease-in-out.duration-100.icon-button.cursor-pointer.text-cyan-600.bg-transparent
-//-           svg(viewBox='0 0 24 24' width='24' height='24' fill='#0099c7' focusable='false' aria-hidden='true')
-//-             path(fill-rule='nonzero' d='M14.5 4a.5.5 0 00-.41-.492L14 3.5h-4a.5.5 0 00-.492.41L9.5 4v1H8V4a2 2 0 012-2h4a2 2 0 012 2v1h4.5a.75.75 0 01.102 1.493L20.5 6.5H19V19a2 2 0 01-2 2H7a2 2 0 01-2-2V6.5H3.5a.75.75 0 01-.102-1.493L3.5 5h11V4zm3 2.5h-11V19a.5.5 0 00.41.492L7 19.5h10a.5.5 0 00.492-.41L17.5 19V6.5zM9 8.25a.75.75 0 01.743.648L9.75 9v8a.75.75 0 01-1.493.102L8.25 17V9A.75.75 0 019 8.25zm3 0a.75.75 0 01.743.648L12.75 9v8a.75.75 0 01-1.493.102L11.25 17V9a.75.75 0 01.75-.75zm3 0a.75.75 0 01.743.648L15.75 9v8a.75.75 0 01-1.493.102L14.25 17V9a.75.75 0 01.75-.75z')
-//-     div(style='width: 80%; margin-right: 20px;')
-//-       span.text-md.text-blue-900(style='float: right;') ' + index + '.
-//-       textarea#bio.rounded-2(name='biography' placeholder='Add Here Youre True Or False Quistion..' dir='ltr' style='float:right; margin:0 15px; margin-bottom: 25px;')
-//-     br
-//-     br
-//-     br
-//-     br
-//-     br
-//-     #disableTrueFalse.col-span-2.col-start-2.flex.items-start.pl-2(style='margin-right: 50px;')
-//-       label.rounded-2.cursor-pointer.truefalse-option
-//-         input.sr-only(type='radio' name='trueOrFalse' value='false')
-//-         span#false.flex.flex-1.items-center.justify-center.px-8.py-2.rounded-2.font-sans.text-base.leading-8.transition.ease-in-out.duration-100.bg-red-500.text-white(class='hover:bg-red-600' onclick='setRed(this)') False
-//-       label.mr-4.rounded-2.cursor-pointer.truefalse-option
-//-         input.sr-only(type='radio' name='trueOrFalse' value='true' checked='')
-//-         span.flex.flex-1.items-center.justify-center.px-8.py-2.rounded-2.font-sans.text-base.leading-8.transition.ease-in-out.duration-100.font-600.bg-white.text-grey-700(class='hover:text-green-600 hover:bg-green-100' data-truefalse='true' onclick='setGreen(this)') True
-//-     div(dir ="rtl" ,style = "text-align: right;")
-//-       br 
-//-       label רמת קושי: &nbsp;
-//-       input#easy(type='radio' name='Difficulty')
-//-       label.light(for='easy') קל &nbsp;
-//-       input#medium(type='radio' name='Difficulty')
-//-       label.light(for='medium') בינוני &nbsp;
-//-       input#hard(type='radio' name='Difficulty')
-//-       label.light(for='hard') קשה &nbsp;
-
-//- br
-//- .section-top-border.aquest.bg-grey-50.width(data-flavor='american' style='margin: 0 auto; border-radius: 1em;' dir='rtl')
-//-   .container(style='margin-top: 0;')
-//-     .btn(aria-label='Save Question' type='button' style='float:left; margin-left: 20px; padding: 0 12px')
-//-       .relative.flex.items-center.justify-center.p-2(style='background-color: #0099c7; border-radius: 0.5em;')
-//-         svg(viewBox='0 0 24 24' width='30' height='30' fill='#fff' focusable='false' aria-hidden='true')
-//-           path(fill-rule='nonzero' d='M18.293 6.293a1 1 0 011.497 1.32l-.083.094-10 10a1 1 0 01-1.32.083l-.094-.083-5.5-5.5a1 1 0 011.32-1.497l.094.083L9 15.585l9.293-9.292z')
-//-     div(style='width: 80%; margin-right: 20px;')
-//-       span.text-md.text-blue-900(style='float: right;') ' + index + '.
-//-       input.american-title(type='text' style='float:right; margin:0 15px; margin-bottom: 25px;' placeholder='רשום כאן את השאלה')
-//-     div(style='margin-top: 15px; margin-left: 30px;')
-//-       .btn(aria-label='Delete Question' type='button' onclick='deleteQ(this)')
-//-         .relative.p-0.m-0.border-0.rounded-2.appearance-none.outline-none.transition.ease-in-out.duration-100.icon-button.cursor-pointer.text-cyan-600.bg-transparent
-//-           svg(viewBox='0 0 24 24' width='24' height='24' fill='#0099c7' focusable='false' aria-hidden='true')
-//-             path(fill-rule='nonzero' d='M14.5 4a.5.5 0 00-.41-.492L14 3.5h-4a.5.5 0 00-.492.41L9.5 4v1H8V4a2 2 0 012-2h4a2 2 0 012 2v1h4.5a.75.75 0 01.102 1.493L20.5 6.5H19V19a2 2 0 01-2 2H7a2 2 0 01-2-2V6.5H3.5a.75.75 0 01-.102-1.493L3.5 5h11V4zm3 2.5h-11V19a.5.5 0 00.41.492L7 19.5h10a.5.5 0 00.492-.41L17.5 19V6.5zM9 8.25a.75.75 0 01.743.648L9.75 9v8a.75.75 0 01-1.493.102L8.25 17V9A.75.75 0 019 8.25zm3 0a.75.75 0 01.743.648L12.75 9v8a.75.75 0 01-1.493.102L11.25 17V9a.75.75 0 01.75-.75zm3 0a.75.75 0 01.743.648L15.75 9v8a.75.75 0 01-1.493.102L14.25 17V9a.75.75 0 01.75-.75z')
-//-   .container
-//-     legend
-//-       span.number A
-//-       input(type='radio' name='rightChoice' onclick='checkedButton(this)')
-//-       input.rounded-2(type='text' placeholder='תשובה א')
-//-     legend
-//-       span.number B 
-//-       input(type='radio' name='rightChoice' onclick='checkedButton(this)')
-//-       input.rounded-2(type='text' placeholder='תשובה ב')
-//-     legend
-//-       span.number C 
-//-       input(type='radio' name='rightChoice' onclick='checkedButton(this)')
-//-       input.rounded-2(type='text' placeholder='תשובה ג')
-//-     legend
-//-       span.number D
-//-       input(type='radio' name='rightChoice' onclick='checkedButton(this)')
-//-       input.rounded-2(type='text' placeholder='תשובה ד')
-//-     .container(dir ="rtl" ,style = "text-align: right; margin-right: 30px;")
-//-       br 
-//-       label רמת קושי: &nbsp;
-//-       input#easy(type='radio' name='Difficulty')
-//-       label.light(for='easy') קל &nbsp;
-//-       input#medium(type='radio' name='Difficulty')
-//-       label.light(for='medium') בינוני &nbsp;
-//-       input#hard(type='radio' name='Difficulty')
-//-       label.light(for='hard') קשה &nbsp;
-
-//- br
-//- .section-top-border.aquest.bg-grey-50.width(data-flavor='fillblanks' style='margin: 0 auto; border-radius: 1em;' dir='rtl')
-//-   .container(style='margin-top: 0;')
-//-   p(dir='rtl' style='font-size: 0.9em; float: right; margin-right: 20px;') רשום את השאלה והדגש באמצעות הכפתור את המילים אשר ברצונך שממלאי השאלון ישלימו.
-//-   .btn(aria-label='Save Question' type='button' style='float:left; margin-left: 20px; padding: 0 12px')
-//-     .relative.flex.items-center.justify-center.p-2(style='background-color: #0099c7; border-radius: 0.5em;')
-//-       svg(viewBox='0 0 24 24' width='30' height='30' fill='#fff' focusable='false' aria-hidden='true')
-//-         path(fill-rule='nonzero' d='M18.293 6.293a1 1 0 011.497 1.32l-.083.094-10 10a1 1 0 01-1.32.083l-.094-.083-5.5-5.5a1 1 0 011.32-1.497l.094.083L9 15.585l9.293-9.292z')
-//-   div(style=' margin-left: 30px;')
-//-     .btn(aria-label='Delete Question' type='button' onclick='deleteQ(this)')
-//-       .relative.p-0.m-0.border-0.rounded-2.appearance-none.outline-none.transition.ease-in-out.duration-100.icon-button.cursor-pointer.text-cyan-600.bg-transparent
-//-         svg(viewBox='0 0 24 24' width='24' height='24' fill='#0099c7' focusable='false' aria-hidden='true')
-//-           path(fill-rule='nonzero' d='M14.5 4a.5.5 0 00-.41-.492L14 3.5h-4a.5.5 0 00-.492.41L9.5 4v1H8V4a2 2 0 012-2h4a2 2 0 012 2v1h4.5a.75.75 0 01.102 1.493L20.5 6.5H19V19a2 2 0 01-2 2H7a2 2 0 01-2-2V6.5H3.5a.75.75 0 01-.102-1.493L3.5 5h11V4zm3 2.5h-11V19a.5.5 0 00.41.492L7 19.5h10a.5.5 0 00.492-.41L17.5 19V6.5zM9 8.25a.75.75 0 01.743.648L9.75 9v8a.75.75 0 01-1.493.102L8.25 17V9A.75.75 0 019 8.25zm3 0a.75.75 0 01.743.648L12.75 9v8a.75.75 0 01-1.493.102L11.25 17V9a.75.75 0 01.75-.75zm3 0a.75.75 0 01.743.648L15.75 9v8a.75.75 0 01-1.493.102L14.25 17V9a.75.75 0 01.75-.75z')
-//-   br
-//-   div(style='width: 80%; margin-right: 20px; min-height: 150px;')
-//-     span.text-md.text-blue-900(style='float: right;') ' + index + '.
-//-     .fillblanks-input.rounded-2(contenteditable='true' name='fillTheBlanks' dir='ltr' style='box-shadow: 1px 3px 0 rgba(0,0,0,0.03) inset; float:right; margin:0 15px; margin-bottom: 25px; min-height: 150px; min-width: 600px; background-color: #f3f3f3; padding: 10px;') Write the question here..
-//-   br
-//-   button.btn.rounded-2(onclick="document.execCommand('bold')" style='float:right; margin-right: 50px; background: #fab1a0;color: white; border: 1px solid #fab1a0;') הדגש
-//-   div(dir ="rtl" ,style = "text-align: right; margin-right: 30px;")
-//-     br 
-//-     label רמת קושי: &nbsp;
-//-     input#easy(type='radio' name='Difficulty')
-//-     label.light(for='easy') קל &nbsp;
-//-     input#medium(type='radio' name='Difficulty')
-//-     label.light(for='medium') בינוני &nbsp;
-//-     input#hard(type='radio' name='Difficulty')
-//-     label.light(for='hard') קשה &nbsp;
-
-//- Amrican Questions 
-
-//- .section-top-border.bg-grey-50.width.trueFalseQ(style="margin: 0 auto; border-radius: 1em;", dir="rtl")
-//-     .container(style= "margin-top: 0;")
-//-         .btn(aria-label="Save Question",type="button", style= "float:left; margin-left: 20px; padding: 0 12px")
-//-             .relative.flex.items-center.justify-center.p-2(style = "background-color: #0099c7; border-radius: 0.5em;")
-//-                 svg(viewBox="0 0 24 24" width="30" height="30" fill="#fff" focusable="false" aria-hidden="true", onclick="disabled()") 
-//-                     path(fill-rule="nonzero" d="M18.293 6.293a1 1 0 011.497 1.32l-.083.094-10 10a1 1 0 01-1.32.083l-.094-.083-5.5-5.5a1 1 0 011.32-1.497l.094.083L9 15.585l9.293-9.292z")
-//-         div(style="width: 80%; margin-right: 20px;") 
-//-             span.text-md.text-blue-900(style="float: right;")  1.
-//-             input(type="text", style = "float:right; margin:0 15px; margin-bottom: 25px;", placeholder="רשום כאן את השאלה")
-//-         div(style= "margin-top: 15px; margin-left: 30px;")
-//-             .btn(aria-label="Delete Question",type="button", onclick = "deleteQ()")
-//-                 .relative.p-0.m-0.border-0.rounded-2.appearance-none.outline-none.transition.ease-in-out.duration-100.icon-button.cursor-pointer.text-cyan-600.bg-transparent  
-//-                     svg(viewBox="0 0 24 24" ,width="24" ,height="24" ,fill="#0099c7" ,focusable="false" ,aria-hidden="true")
-//-                         path(fill-rule="nonzero", d="M14.5 4a.5.5 0 00-.41-.492L14 3.5h-4a.5.5 0 00-.492.41L9.5 4v1H8V4a2 2 0 012-2h4a2 2 0 012 2v1h4.5a.75.75 0 01.102 1.493L20.5 6.5H19V19a2 2 0 01-2 2H7a2 2 0 01-2-2V6.5H3.5a.75.75 0 01-.102-1.493L3.5 5h11V4zm3 2.5h-11V19a.5.5 0 00.41.492L7 19.5h10a.5.5 0 00.492-.41L17.5 19V6.5zM9 8.25a.75.75 0 01.743.648L9.75 9v8a.75.75 0 01-1.493.102L8.25 17V9A.75.75 0 019 8.25zm3 0a.75.75 0 01.743.648L12.75 9v8a.75.75 0 01-1.493.102L11.25 17V9a.75.75 0 01.75-.75zm3 0a.75.75 0 01.743.648L15.75 9v8a.75.75 0 01-1.493.102L14.25 17V9a.75.75 0 01.75-.75z")
-//-     //- .col-span-2.col-start-2.flex.items-start.pl-2( dir="rtl")
-//-     .container
-//-         legend
-//-             span.number#numberA A
-//-             input(type="radio",id="Answer-A", name="rightChoice", onclick= 'checkedButton(this)')
-//-             input#A.rounded-2(type="text",placeholder="תשובה א")
-//-         legend
-//-             span.number#numberB B 
-//-             input(type="radio", id="Answer-B", name="rightChoice", onclick= 'checkedButton(this)')
-//-             input#B.rounded-2(type="text",placeholder="תשובה ב")
-//-         legend
-//-             span.number#numberC C 
-//-             input(type="radio", id="Answer-C", name="rightChoice", onclick= 'checkedButton(this)')
-//-             input#C.rounded-2(type="text",placeholder="תשובה ג")
-//-         legend
-//-             span.number#numberD D
-//-             input(type="radio", id="Answer-D", name="rightChoice", onclick= 'checkedButton(this)')
-//-             input#D(type="text",placeholder="תשובה ד")
-
-//- br
-
-//- Fill the Blanks 
-//- .section-top-border.bg-grey-50.width.trueFalseQ(style="margin: 0 auto; border-radius: 1em;", dir="rtl")
-//-     .container(style= "margin-top: 0;")
-//-     p(dir="rtl", style= "font-size: 0.9em; float: right; margin-right: 20px;") רשום את השאלה והדגש באמצעות הכפתור את המילים אשר ברצונך שממלאי השאלון ישלימו.
-//-         .btn(aria-label="Save Question",type="button", style= "float:left; margin-left: 20px; padding: 0 12px")
-//-             .relative.flex.items-center.justify-center.p-2(style = "background-color: #0099c7; border-radius: 0.5em;")
-//-                 svg(viewBox="0 0 24 24" width="30" height="30" fill="#fff" focusable="false" aria-hidden="true", onclick="disabled()") 
-//-                     path(fill-rule="nonzero" d="M18.293 6.293a1 1 0 011.497 1.32l-.083.094-10 10a1 1 0 01-1.32.083l-.094-.083-5.5-5.5a1 1 0 011.32-1.497l.094.083L9 15.585l9.293-9.292z")
-//-         div(style= " margin-left: 30px;")
-//-             .btn(aria-label="Delete Question",type="button", onclick = "deleteQ()")
-//-                 .relative.p-0.m-0.border-0.rounded-2.appearance-none.outline-none.transition.ease-in-out.duration-100.icon-button.cursor-pointer.text-cyan-600.bg-transparent  
-//-                     svg(viewBox="0 0 24 24" ,width="24" ,height="24" ,fill="#0099c7" ,focusable="false" ,aria-hidden="true")
-//-                         path(fill-rule="nonzero", d="M14.5 4a.5.5 0 00-.41-.492L14 3.5h-4a.5.5 0 00-.492.41L9.5 4v1H8V4a2 2 0 012-2h4a2 2 0 012 2v1h4.5a.75.75 0 01.102 1.493L20.5 6.5H19V19a2 2 0 01-2 2H7a2 2 0 01-2-2V6.5H3.5a.75.75 0 01-.102-1.493L3.5 5h11V4zm3 2.5h-11V19a.5.5 0 00.41.492L7 19.5h10a.5.5 0 00.492-.41L17.5 19V6.5zM9 8.25a.75.75 0 01.743.648L9.75 9v8a.75.75 0 01-1.493.102L8.25 17V9A.75.75 0 019 8.25zm3 0a.75.75 0 01.743.648L12.75 9v8a.75.75 0 01-1.493.102L11.25 17V9a.75.75 0 01.75-.75zm3 0a.75.75 0 01.743.648L15.75 9v8a.75.75 0 01-1.493.102L14.25 17V9a.75.75 0 01.75-.75z")
-//-         br
-//-         div(style="width: 80%; margin-right: 20px; min-height: 150px;")
-//-             span.text-md.text-blue-900(style="float: right;")  1.
-//-             .rounded-2(contenteditable="true" name = "fillTheBlanks", dir="ltr",style = "box-shadow: 1px 3px 0 rgba(0,0,0,0.03) inset; float:right; margin:0 15px; margin-bottom: 25px; min-height: 150px; min-width: 600px; background-color: #f3f3f3; padding: 10px;" ) רשום כאן את השאלה..
-//-         br 
-//-         button.btn.rounded-2(onclick="document.execCommand('bold');", style="float:right; margin-right: 50px; background: #fab1a0;color: white; border: 1px solid #fab1a0;") הדגש
 
 script(src='/static/js/addNewQuiz.js')
 include utilities/footer.pug

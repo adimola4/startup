@@ -15,6 +15,17 @@ app.get('/signIn',async (req, res) => {
     res.render('./signIn')
 
 });
+
+app.get('/signUp',async (req, res) => {
+    res.render('./signUp')
+
+});
+
+app.get('/forgotPassword',async (req, res) => {
+    res.render('./forgotPassword')
+
+});
+
 app.get('/:page',async (req, res) => {
 // Attempt to parse token from the incoming request
 const token = req.cookies.token || ''
