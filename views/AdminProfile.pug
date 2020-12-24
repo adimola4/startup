@@ -11,11 +11,10 @@ body
                             .d-flex.flex-column.align-items-center.text-center
                                 img.rounded-circle(src=user.img, alt='Admin', width='150')
                                 .mt-3
-                                    h4 #{user.firstName}
+                                    h4 #{user.fullName}
                                     
                                         if user.gender == "female"
-                                            
-                                            i.fas.fa-venus(style="color: pink; float: left;") &nspb;
+                                            i.fas.fa-venus(style="color: pink; float: left;")
                                         else    
                                             i.fas.fa-mars(style="color: #0984e3; float: left;") 
                                     

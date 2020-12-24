@@ -52,9 +52,9 @@ router.post("/register", async (req, res) => {
               randomNumber = 8;
         }
         else {
-        randomNumber = Math.floor(Math.random() * 9);
-          while (randomNumber == 3 || randomNumber == 8)
-            randomNumber = Math.floor(Math.random() * 9);
+            randomNumber = Math.floor(Math.random() * 7) + 1;
+            while (randomNumber == 3)
+              randomNumber = Math.floor(Math.random() * 7) + 1;
         }
         let imgUrl = 'https://bootdey.com/img/Content/avatar/avatar'+ randomNumber+'.png'
 

@@ -132,8 +132,8 @@ const templates = {
         return html;
     },
     truefalse: (title, choices) => {
-        return '<pre style="text-align: left;" dir="ltr"><code class="language-js">' +
-            title + '</code></pre><div style="margin-bottom: 6em; margin-top: 1.65em ;"><div class="choice-container" data-answer="0" style="width: 10%;  display:inline-block;"><p class="choice-text" style="padding: 18px 24px; margin-bottom: 0; width: 100%; text-align: center; ">False</p></div><div class="choice-container" data-answer="1" style="width: 10%;  display:inline-block;  margin-right: 0.5%;"><p class="choice-text" style="padding: 18px 24px; margin-bottom: 0; width: 100%; text-align: center;">True</p></div></div>';
+        return '<pre style="text-align: left;" dir="ltr"><code class="language-js" style="font-size: 1.1em;">' +
+            title + '</code></pre><div style="margin-bottom: 6em; margin-top: 1.65em ;"><div class="choice-container rounded-2 hover:bg-red-100" data-answer="0" style="width: 10%;  display:inline-block;"><p class="choice-text hover:text-red-600" style="padding: 18px 24px; margin-bottom: 0; width: 100%; text-align: center;">False</p></div><div class="choice-container rounded-2 hover:bg-green-100" data-answer="1" style="width: 10%;  display:inline-block;  margin-right: 0.5%;"><p class="choice-text hover:text-green-600" style="padding: 18px 24px; margin-bottom: 0; width: 100%; text-align: center;">True</p></div></div>';
     }
 };
 
@@ -159,7 +159,7 @@ const handlers = {
             }
            
             $(this).text(answerTrue ? 'correct' : 'incorrect');
-            $(this).css(answerTrue ?{"background-color": "#00b894;"} : {"background-color": "#d63031"});
+            $(this).css(answerTrue ?{"background-color": "#00b894"} : {"background-color": "#d63031"});
                 
             setTimeout(() => {
                 // move to next question
